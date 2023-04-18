@@ -14,7 +14,7 @@ export const development: Knex.Config = {
     seeds: {
         directory: path.resolve(__dirname, '..', 'seeds'),
     },
-    pool: {
+    pool: { //chave estrangeira Pesquisar outras funções do pool
         afterCreate: (connection: any, done: Function) => {
             connection.run('PRAGMA foreign_keys = ON');
             done();

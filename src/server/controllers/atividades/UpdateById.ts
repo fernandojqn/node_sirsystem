@@ -2,6 +2,7 @@ import { validation } from '../../shared/middlewares';
 import { StatusCodes } from 'http-status-codes';
 import { Request, Response } from 'express';
 import * as yup from 'yup';
+import { IAtividade } from '../../database/models';
 
 
 //Validação
@@ -9,7 +10,7 @@ interface IParamProps {
     id?: number;    
 }
 
-interface IBodyProps {
+interface IBodyProps extends Omit<IAtividade, 'id'> {
     atividade: string;
 }
 
