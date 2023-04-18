@@ -17,6 +17,14 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
         "quotes": [
             "error",
             "single"
@@ -25,6 +33,7 @@
             "error",
             "always"
         ],
-        "@typescript-eslint/no-empty-interface": "off"
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/ban-types": "off"
     }
 }
