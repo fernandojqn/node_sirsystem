@@ -3,7 +3,6 @@ import { StatusCodes } from 'http-status-codes';
 import { Request, Response } from 'express';
 import * as yup from 'yup';
 
-
 //Validação
 interface IAtividades {
     atividade: string;
@@ -20,5 +19,5 @@ export const create = async (req: Request<{}, {}, IAtividades>, res: Response) =
   
     console.log(req.body);
 
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado!');
+    return res.status(StatusCodes.CREATED).json(1);
 };
