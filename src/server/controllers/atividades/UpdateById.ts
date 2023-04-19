@@ -3,6 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { Request, Response } from 'express';
 import * as yup from 'yup';
 import { IAtividade } from '../../database/models';
+import { AtividadesProvider } from '../../database/providers';
 
 
 //Validação
@@ -25,11 +26,26 @@ export const updateByIdValidation = validation((getSchema) => ({
 
 
 export const updateById = async (req: Request<IParamProps, {}, IBodyProps>, res: Response) => {
-    if (Number(req.params.id) === 99999) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-        errors: {
-            default: 'Registro não encontrado'
-        }
-    });
-    
-    return res.status(StatusCodes.NO_CONTENT).send();
+    if (!req.params.id) {//verifica se o id foi informado se não é undefined
+        return res.status(StatusCodes.BAD_REQUEST).json({
+            errors: { 
+                default: 'O parametro id tem que ser informado'
+            }
+        });
+    }
+
+    //faz ação no bd
+    const result = await AtividadesProvider.UpdateById(req.params.id, req.body);
+
+    //Verifica erro no bd
+    if(result instanceof Error) {//Se der erro durante ação no bd
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            errors: { 
+                default: result.message
+            }
+        });
+    }
+
+    //Retorna para o front
+    return res.status(StatusCodes.NO_CONTENT).json(result);
 };

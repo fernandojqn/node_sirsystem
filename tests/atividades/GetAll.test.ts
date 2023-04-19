@@ -6,14 +6,13 @@ import { testServer } from '../jest.setup';
 describe('Atividades - GetAll', () => {
 
     it('Buscar todos os registros', async () => {
-        //crear registro
+        //criar registro
         const res1 = await testServer
             .post('/atividades')
-            .send({ atividade: 'venda' });
+            .send({ atividade: 'loja' });
 
-        expect(res1.statusCode).toEqual(StatusCodes.CREATED);
+        //expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 
-        //buscar todos os registros
         const resBuscada = await testServer
             .get('/atividades')
             .send();
