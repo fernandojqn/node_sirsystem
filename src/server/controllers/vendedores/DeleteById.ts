@@ -2,7 +2,7 @@ import { validation } from '../../shared/middlewares';
 import { StatusCodes } from 'http-status-codes';
 import { Request, Response } from 'express';
 import * as yup from 'yup';
-import { AtividadesProvider } from '../../database/providers';
+import { VendedoresProvider } from '../../database/providers';
 
 
 //Validação
@@ -27,7 +27,7 @@ export const deleteById = async (req: Request<IParamProps>, res: Response) => {
         });
     }
     
-    const result = await AtividadesProvider.deleteById(req.params.id);
+    const result = await VendedoresProvider.deleteById(req.params.id);
     if (result instanceof Error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: {

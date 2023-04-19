@@ -1,3 +1,4 @@
 export enum ETableNames {
-    atividades = 'atividades'
+    atividades = 'atividades',
+    vendedores = 'vendedores',
 }

@@ -18,27 +18,24 @@ export const getByIdValidation = validation((getSchema) => ({
 
 
 export const getById = async (req: Request<IParamProps>, res: Response) => {
-    
-    if (!req.params.id) {//verifica se o id foi informado se não é undefined
+  
+    if (!req.params.id) {
         return res.status(StatusCodes.BAD_REQUEST).json({
-            errors: { 
-                default: 'O parametro id tem que ser informado'
+            errors: {
+                default: 'O parâmetro "id" precisa ser informado.'
             }
         });
     }
-
-    //Faz ação no bd
+    
     const result = await AtividadesProvider.getById(req.params.id);
-
-    //Verifica erro no bd
-    if(result instanceof Error) {//Se der erro durante ação no bd
+    if (result instanceof Error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            errors: { 
+            errors: {
                 default: result.message
             }
         });
     }
-
-    //me retorna os dados 
+    
     return res.status(StatusCodes.OK).json(result);
+    
 };

@@ -1,12 +1,12 @@
 import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
-import { IAtividade } from '../../models';
+import { IVendedor } from '../../models';
 
 
-export const getAll = async (page: number, limit: number, filter: string, id = 0): Promise<IAtividade[] | Error> => {
+export const getAll = async (page: number, limit: number, filter: string, id = 0): Promise<IVendedor[] | Error> => {
 
     try {
-        const result = await Knex(ETableNames.atividades)
+        const result = await Knex(ETableNames.vendedores)
             .select('*') // seleciona tudo
             .where('id', Number(id)) //que tenha esse id
             .orWhere('nome', 'like', `%${filter}%`) // "ou" que o nome "seja igual" ao filtro
@@ -15,7 +15,7 @@ export const getAll = async (page: number, limit: number, filter: string, id = 0
 
         //se teve resultado  && every(diferente) se todos os ids forem diferente do resultado da busca {
         if (id > 0 && result.every(item => item.id !== id)) { 
-            const resultById = await Knex(ETableNames.atividades)
+            const resultById = await Knex(ETableNames.vendedores)
                 .select('*')
                 .where('id', '=', id)
                 .first();

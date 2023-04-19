@@ -2,7 +2,7 @@ import { validation } from '../../shared/middlewares';
 import { StatusCodes } from 'http-status-codes';
 import { Request, Response } from 'express';
 import * as yup from 'yup';
-import { AtividadesProvider } from '../../database/providers';
+import { VendedoresProvider } from '../../database/providers';
 
 //Validação
 interface IQueryProps {
@@ -24,9 +24,9 @@ export const getAllValidation = validation((getSchema) => ({
 
 
 export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) => {
-    const result = await AtividadesProvider.getAll(req.query.page || 1, 
+    const result = await VendedoresProvider.getAll(req.query.page || 1, 
         req.query.limit || 7, req.query.filter || '', Number(req.query.id));
-    const count = await AtividadesProvider.count(req.query.filter);
+    const count = await VendedoresProvider.count(req.query.filter);
 
     if (result instanceof Error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

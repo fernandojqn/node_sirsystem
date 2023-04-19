@@ -1,9 +1,8 @@
-import { IAtividade} from '../../models';
+import { IAtividade, IVendedor} from '../../models';
 
 declare module 'knex/types/tables' {
     interface Tables {
       atividades: IAtividade
-      // clientes: ICliente
-      // empresas: IEmpresa
+      vendedores: IVendedor      
     }
   }
