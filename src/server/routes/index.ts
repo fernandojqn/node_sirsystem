@@ -1,6 +1,5 @@
 import { Router } from 'express';
-import { StatusCodes } from 'http-status-codes';
-import { AtividadesController } from './../controllers';
+import { AtividadesController, VendedoresController } from './../controllers';
 
 const router = Router();
 
@@ -13,6 +12,14 @@ router.get('/atividades', AtividadesController.getAllValidation, AtividadesContr
 router.get('/atividades/:id', AtividadesController.getByIdValidation, AtividadesController.getById);
 router.put('/atividades/:id', AtividadesController.updateByIdValidation, AtividadesController.updateById);
 router.delete('/atividades/:id', AtividadesController.deleteByIdValidation, AtividadesController.deleteById);
+
+// Rotas da pagina vendedores
+router.post('/vendedores', VendedoresController.createValidation, VendedoresController.create);
+router.get('/vendedores', VendedoresController.getAllValidation, VendedoresController.getAll);
+router.get('/vendedores/:id', VendedoresController.getByIdValidation, VendedoresController.getById);
+router.put('/vendedores/:id', VendedoresController.updateByIdValidation, VendedoresController.updateById);
+router.delete('/vendedores/:id', VendedoresController.deleteByIdValidation, VendedoresController.deleteById);
+
 
 
 //Exporta os caminhos para o Server.ts
