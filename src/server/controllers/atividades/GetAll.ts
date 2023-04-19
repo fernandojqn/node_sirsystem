@@ -1,7 +1,7 @@
-import { validation } from '../../shared/middlewares';
-import { StatusCodes } from 'http-status-codes';
 import { Request, Response } from 'express';
+import { validation } from '../../shared/middlewares';
 import * as yup from 'yup';
+import { StatusCodes } from 'http-status-codes';
 import { AtividadesProvider } from '../../database/providers';
 
 //Validação

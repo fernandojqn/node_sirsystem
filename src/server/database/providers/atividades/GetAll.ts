@@ -9,7 +9,7 @@ export const getAll = async (page: number, limit: number, filter: string, id = 0
         const result = await Knex(ETableNames.atividades)
             .select('*') // seleciona tudo
             .where('id', Number(id)) //que tenha esse id
-            .orWhere('nome', 'like', `%${filter}%`) // "ou" que o nome "seja igual" ao filtro
+            .orWhere('atividade', 'like', `%${filter}%`) // "ou" que o nome "seja igual" ao filtro
             .offset((page - 1) * limit) //formula para aparecer a quantidade por pagina
             .limit(limit); // limita quantos registros vai aparecer por paginação
 
