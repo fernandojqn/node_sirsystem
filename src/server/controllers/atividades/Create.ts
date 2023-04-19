@@ -16,8 +16,11 @@ export const createValidation = validation((getSchema) => ({
 
 
 export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
+    
+    // Salvar no bd
     const result = await AtividadesProvider.create(req.body);
-    // se der errado
+    
+    // Se der errado
     if (result instanceof Error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: {
@@ -25,6 +28,7 @@ export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
             }
         });
     }
+    
     // se der ok
     return res.status(StatusCodes.CREATED).json(result);
 };

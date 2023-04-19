@@ -6,7 +6,9 @@ import { IAtividade } from '../../models';
 export const create = async (atividade: Omit<IAtividade, 'id'>): Promise<number | Error> => {
 
     try {
-        const [result] = await Knex(ETableNames.atividades).insert(atividade).returning('id');
+        const [result] = await Knex(ETableNames.atividades)
+            .insert(atividade)
+            .returning('id');
 
         if (typeof result === 'object') {
             return result.id;
@@ -14,8 +16,8 @@ export const create = async (atividade: Omit<IAtividade, 'id'>): Promise<number 
             return result;
         }
 
-        return new Error('Erro ao cadastrar o registro');
-        
+
+        return new Error('Erro ao cadastrar o registro');        
     } catch (error) {
         return new Error('Erro ao cadastrar o registro');
     }
