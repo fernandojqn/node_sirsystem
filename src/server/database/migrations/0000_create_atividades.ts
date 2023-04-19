@@ -8,7 +8,7 @@ export async function up(knex: Knex) {
         .schema
         .createTable(ETableNames.atividades, table => {
             table.bigIncrements('id').primary().index();
-            table.string('atividade', 150).index().notNullable();
+            table.string('atividade', 150).checkLength('<=', 150).index().notNullable();
 
             table.comment('Tabela usada para armazenar atividades.');
         })
