@@ -10,7 +10,7 @@ interface IBodyProps extends Omit<IAtividade, 'id'> {}
 
 export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
-        atividade: yup.string().required().min(3).max(150),
+        atividade: yup.string().required().min(3).max(50),
     }))
 }));
 

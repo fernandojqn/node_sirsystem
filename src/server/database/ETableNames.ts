@@ -1,5 +1,17 @@
 export enum ETableNames {
     atividades = 'atividades',
-    vendedores = 'vendedores',
+    clientes = 'clientes',
+    empresas = 'empresas',
+    fornecedores = 'fornecedores',
+    grupos = 'grupos',
+    modelos = 'modelos',
     ncm = 'ncm',
+    produtos = 'produtos',
+    subTipos = 'subTipos',
+    tipos = 'tipos',
+    transportadoras = 'transportadoras',
+    tributacoes = 'tributacoes',
+    usuarios = 'usuarios',
+    vendedores = 'vendedores',
+    
 }

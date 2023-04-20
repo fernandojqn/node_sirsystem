@@ -7,7 +7,7 @@ export async function up(knex: Knex) {
         .schema
         .createTable(ETableNames.vendedores, table => {
             table.bigIncrements('id').primary().index();
-            table.string('nome', 150).checkLength('<=', 150).index().notNullable();
+            table.string('nome', 50).checkLength('<=', 50).index().notNullable();
             table.string('tipoEmpresa', 10).checkLength('<=', 10);
             table.string('documento', 20).checkLength('<=', 20);
             table.string('inscricao', 20).checkLength('<=', 20);

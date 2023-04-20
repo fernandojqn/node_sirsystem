@@ -78,7 +78,7 @@ describe('NCM - Create', () => {
     });
 
     it('Descrição longo', async () => {
-        const res1 = await testServer.post('/ncm').send({ ncmNumero: '123456789', descricao: '0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567891', cestNumero: '12345678'});
+        const res1 = await testServer.post('/ncm').send({ ncmNumero: '123456789', descricao: '12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901', cestNumero: '12345678'});
 
         expect(res1.statusCode).toEqual(StatusCodes.BAD_REQUEST);
         expect(res1.body).toHaveProperty('errors.body.descricao');

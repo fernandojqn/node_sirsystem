@@ -23,7 +23,7 @@ describe('Vendedores - Create', () => {
 
     
     it('txtNome longo', async () => {
-        const res1 = await testServer.post('/vendedores').send({ nome: '1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901'});
+        const res1 = await testServer.post('/vendedores').send({ nome: '123456789012345678901234567890123456789012345678901'});
 
         expect(res1.statusCode).toEqual(StatusCodes.BAD_REQUEST);
         expect(res1.body).toHaveProperty('errors.body.nome');

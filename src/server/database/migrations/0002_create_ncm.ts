@@ -7,8 +7,8 @@ export async function up(knex: Knex) {
         .schema
         .createTable(ETableNames.ncm, table => {
             table.bigIncrements('id').primary().index();
-            table.string('ncmNumero', 8).checkLength('=', 8).index().notNullable().unique();
-            table.string('descricao', 150).checkLength('<=', 150).index().notNullable();
+            table.string('ncmNumero', 8).checkLength('=', 8).index().notNullable();
+            table.string('descricao', 100).checkLength('<=', 100).index().notNullable();
             table.string('cestNumero', 7).checkLength('=', 7).notNullable();
             
             table.comment('Tabela usada para armazenar ncm.');
