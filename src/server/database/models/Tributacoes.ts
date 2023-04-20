@@ -4,7 +4,7 @@ export interface ITributacao {
     regra: string;
     cfop: string;
     cst: string;
-    ncm: number;
+    ncmNumero: number; // forgot do ncm
     uf: string;
     icms: number;
     ipi: number;

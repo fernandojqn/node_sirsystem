@@ -13,7 +13,7 @@ export async function up(knex: Knex) {
             table.string('inscricao', 20).checkLength('<=', 20);
             table.string('telefone', 15).checkLength('<=', 15);
             table.string('celular', 15).checkLength('<=', 15);
-            table.string('email', 100).checkLength('<=', 100);
+            table.string('email', 100).checkLength('>=', 5).checkLength('<=', 100);
 
             table.string('endereco', 150).checkLength('<=', 150);
             table.string('numero', 10).checkLength('<=', 10);

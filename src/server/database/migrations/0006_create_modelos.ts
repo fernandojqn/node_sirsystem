@@ -7,7 +7,7 @@ import { ETableNames } from '../ETableNames';
 export async function up(knex: Knex) {
     return knex
         .schema
-        .createTable(ETableNames.subTipos, table => {
+        .createTable(ETableNames.modelos, table => {
             
             table.bigIncrements('id').primary().index();
 
@@ -31,18 +31,18 @@ export async function up(knex: Knex) {
             
             table.string('modeloDescricao', 50).checkLength('<=', 50).index().notNullable();
 
-            table.comment('Tabela usada para armazenar subtipos.');
+            table.comment('Tabela usada para armazenar modelos.');
         })
         .then(() => {
-            console.log(`# Created table ${ETableNames.subTipos}`);
+            console.log(`# Created table ${ETableNames.modelos}`);
         });
 }
 
 export async function down(knex: Knex) {
     return knex
         .schema
-        .dropTable(ETableNames.subTipos)
+        .dropTable(ETableNames.modelos)
         .then(() => {
-            console.log(`# Dropped table ${ETableNames.subTipos}`);
+            console.log(`# Dropped table ${ETableNames.modelos}`);
         });
 }
