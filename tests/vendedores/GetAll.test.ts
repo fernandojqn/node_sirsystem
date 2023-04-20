@@ -9,7 +9,7 @@ describe('Vendedores - GetAll', () => {
         //crear registro
         const res1 = await testServer
             .post('/vendedores')
-            .send({ nome: 'Busca' });
+            .send({ nome: 'Manuel' });
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 

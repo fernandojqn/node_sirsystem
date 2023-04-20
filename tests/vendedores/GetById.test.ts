@@ -3,13 +3,13 @@ import { StatusCodes } from 'http-status-codes';
 import { testServer } from '../jest.setup';
 
 
-describe('Vendedores - GetById', () => {
+describe('vendedores - GetById', () => {
 
     it('Busca registro por id', async () => {
 
         const res1 = await testServer
             .post('/vendedores')
-            .send({ nome: 'Paulo' });
+            .send({ nome: 'José' });
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 

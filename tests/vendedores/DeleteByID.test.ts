@@ -6,7 +6,7 @@ describe('Vendedores - DeleteById', () => {
 
     it('deleta registro', async () => {
         //criar um registro
-        const res1 = await testServer.post('/vendedores').send({nome: 'Delete'});
+        const res1 = await testServer.post('/vendedores').send({nome: 'Paulo'});
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);
         

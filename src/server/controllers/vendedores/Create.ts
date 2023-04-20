@@ -38,9 +38,11 @@ export const createValidation = validation(get => ({
     })),
 }));
 
+
 export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
 
     const result = await VendedoresProvider.create(req.body);
+
     if (result instanceof Error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: {

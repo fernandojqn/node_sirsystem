@@ -26,4 +26,5 @@ export interface IVendedor {
     conta: string; 
     pix: string;
     obs: string;
+
 }
