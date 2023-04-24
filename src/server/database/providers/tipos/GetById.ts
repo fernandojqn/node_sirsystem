@@ -1,12 +1,12 @@
 import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
-import { IAtividade } from '../../models';
+import { ITipo } from '../../models';
 
 
-export const getById = async (id: number): Promise<IAtividade | Error> => {
+export const getById = async (id: number): Promise<ITipo | Error> => {
 
     try {
-        const result = await Knex(ETableNames.atividades)
+        const result = await Knex(ETableNames.tipos)
             .select('*')
             .where('id', '=', id)
             .first(); // só quero o primeiro da lista, ele para de procurar no bd

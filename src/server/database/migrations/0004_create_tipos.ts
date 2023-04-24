@@ -1,4 +1,3 @@
-
 import { Knex } from 'knex';
 
 import { ETableNames } from '../ETableNames';
