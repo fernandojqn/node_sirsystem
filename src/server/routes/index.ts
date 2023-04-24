@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { AtividadesController, GruposController, ModelosController, NcmController, SubTiposController, TiposController, UsuariosController, VendedoresController } from './../controllers';
+import { AtividadesController, GruposController, ModelosController, NcmController, SubTiposController, TiposController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 
 const router = Router();
 
@@ -47,6 +47,13 @@ router.get('/tipos', TiposController.getAllValidation, TiposController.getAll);
 router.get('/tipos/:id', TiposController.getByIdValidation, TiposController.getById);
 router.put('/tipos/:id', TiposController.updateByIdValidation, TiposController.updateById);
 router.delete('/tipos/:id', TiposController.deleteByIdValidation, TiposController.deleteById);
+
+// Rotas da paginas Tributacoes
+router.post('/tributacoes', TributacoesController.createValidation, TributacoesController.create);
+router.get('/tributacoes', TributacoesController.getAllValidation, TributacoesController.getAll);
+router.get('/tributacoes/:id', TributacoesController.getByIdValidation, TributacoesController.getById);
+router.put('/tributacoes/:id', TributacoesController.updateByIdValidation, TributacoesController.updateById);
+router.delete('/tributacoes/:id', TributacoesController.deleteByIdValidation, TributacoesController.deleteById);
 
 // Rotas da paginas Usuarios
 router.post('/usuarios', UsuariosController.createValidation, UsuariosController.create);

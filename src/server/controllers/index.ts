@@ -4,5 +4,6 @@ export * from './modelos';
 export * from './ncm';
 export * from './subTipos';
 export * from './tipos';
+export * from './tributacoes';
 export * from './usuarios';
 export * from './vendedores';
