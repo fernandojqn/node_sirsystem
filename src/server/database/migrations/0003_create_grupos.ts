@@ -22,6 +22,8 @@ export async function up(knex: Knex) {
                 .onDelete('RESTRICT');
 
             table.double('comissao');
+
+            
             table.comment('Tabela usada para armazenar grupos.');
         })
         .then(() => {

@@ -5,6 +5,7 @@ export interface ITransportadora {
     tipoEmpresa: string; 
     documento: string; 
     inscricao: string;
+    
     contato: string; 
     telefone: string; 
     celular: string; 

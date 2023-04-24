@@ -4,26 +4,26 @@ export interface IProduto {
     produto: string; 
     codigoProduto: string; 
     ean: string; 
-    grupo: number; 
-    tipo: number; 
-    sub: number; 
-    modelo: number; 
+    grupo: number; //forgot grupo
+    tipo: number; //forgot tipo
+    sub: number; //forgot subtipo
+    modelo: number; //forgot modelo
     descricaoDetalhada: string; 
     
     origem: string; 
     cfop: string; 
     cstVendas: string; 
     escrituracao: string; 
-    ncm: number; 
+    ncm: number; //forgot ncm
 
     embalagem: string; 
     quantidadeEmbalagem: string; 
     unidade: string; 
     liquido: string; 
     bruto: string; 
-    fornecedor1: number; 
-    fornecedor2: number; 
-    fornecedor3: number; 
+    fornecedor1: number; // forgot fornecedor
+    fornecedor2: number; // forgot fornecedor
+    fornecedor3: number; // forgot fornecedor
     codigoFabricante: string; 
     dataUltimaCompra: string; 
     nfe: string; 
@@ -35,16 +35,15 @@ export interface IProduto {
     receita: boolean; 
     paraVenda: boolean; 
     paraCompra: boolean; 
-    outros: boolean; 
-    descricaoOutros: string; 
+    outro: boolean; 
+    descricaoOutro: string; 
 
-    promocao: string; 
+    promocao: boolean; 
     moeda: string; 
     precoCusto: number; 
     capagem: number; 
     precoCompra: number;
     
-    acrecimo: string;
     margemLucro1: number; 
     margemLucro2: number; 
     margemLucro3: number; 
@@ -67,8 +66,8 @@ export interface IProduto {
     icmsVenda: number; 
     pis: number; 
     cofins: number; 
-    baseCalcReduzida: boolean; 
-    porcReducao: number; 
-    comisDiferenciada: boolean; 
-    porcComissao: number;
+    baseCalculoReduzida: boolean; 
+    porcentagemReducao: number; 
+    comissaoDiferenciada: boolean; 
+    porcentagemComissao: number;
 }

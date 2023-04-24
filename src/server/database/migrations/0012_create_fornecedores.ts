@@ -1,22 +1,28 @@
+
 import { Knex } from 'knex';
 
 import { ETableNames } from '../ETableNames';
 
+
 export async function up(knex: Knex) {
     return knex
         .schema
-        .createTable(ETableNames.vendedores, table => {
+        .createTable(ETableNames.fornecedores, table => {
             table.bigIncrements('id').primary().index();
-            
+            table.string('sufixo', 50).checkLength('<=', 50).index().notNullable();
             table.string('nome', 50).checkLength('<=', 50).index().notNullable();
-            table.string('tipoEmpresa', 4).checkLength('<=', 4);
+            table.string('tipoEmpresa', 10).checkLength('<=', 10);
             table.string('documento', 20).checkLength('<=', 20);
             table.string('inscricao', 20).checkLength('<=', 20);
+            table.string('ccm', 20).checkLength('<=', 20);
+
+            table.string('contato', 50).checkLength('<=', 50);
             table.string('telefone', 15).checkLength('<=', 15);
             table.string('celular', 15).checkLength('<=', 15);
             table.string('email', 50).checkLength('>=', 5).checkLength('<=', 50);
+            table.string('site', 50).checkLength('<=', 50);
 
-            table.string('endereco', 50).checkLength('<=', 50);
+            table.string('endereco', 100).checkLength('<=', 100);
             table.string('numero', 10).checkLength('<=', 10);
             table.string('complemento', 50).checkLength('<=', 50);
             table.string('bairro', 50).checkLength('<=', 50);
@@ -24,29 +30,31 @@ export async function up(knex: Knex) {
             table.string('uf', 2).checkLength('<=', 2);
             table.string('cep', 10).checkLength('<=', 10);
             table.string('pais', 50).checkLength('<=', 50);
-            table.string('municipio', 7).checkLength('=', 7);
+            table.string('municipio', 50).checkLength('<=', 50);
 
-            table.double('comissao');
-            table.double('irpf');
-            table.string('banco', 20).checkLength('<=', 20);
-            table.string('agencia', 20).checkLength('<=', 20);
-            table.string('conta', 20).checkLength('<=', 20);
-            table.string('pix', 50).checkLength('<=', 50);
-            table.string('obs', 8000).checkLength('<=', 8000);
+            table.boolean('cliente');
 
+            table
+                .bigInteger('idCliente')
+                .index()
+                .references('id')
+                .inTable(ETableNames.clientes)
+                .onUpdate('CASCADE')
+                .onDelete('RESTRICT');
 
-            table.comment('Tabela usada para armazenar vendedores.');
+            
+            table.comment('Tabela usada para armazenar fornecedores.');
         })
         .then(() => {
-            console.log(`# Created table ${ETableNames.vendedores}`);
+            console.log(`# Created table ${ETableNames.fornecedores}`);
         });
 }
 
 export async function down(knex: Knex) {
     return knex
         .schema
-        .dropTable(ETableNames.vendedores)
+        .dropTable(ETableNames.fornecedores)
         .then(() => {
-            console.log(`# Dropped table ${ETableNames.vendedores}`);
+            console.log(`# Dropped table ${ETableNames.fornecedores}`);
         });
 }

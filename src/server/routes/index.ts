@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { AtividadesController, NcmController, VendedoresController } from './../controllers';
+import { AtividadesController, GruposController, NcmController, VendedoresController } from './../controllers';
 
 const router = Router();
 
@@ -12,6 +12,13 @@ router.get('/atividades', AtividadesController.getAllValidation, AtividadesContr
 router.get('/atividades/:id', AtividadesController.getByIdValidation, AtividadesController.getById);
 router.put('/atividades/:id', AtividadesController.updateByIdValidation, AtividadesController.updateById);
 router.delete('/atividades/:id', AtividadesController.deleteByIdValidation, AtividadesController.deleteById);
+
+// Rotas da paginas Grupos
+router.post('/grupos', GruposController.createValidation, GruposController.create);
+router.get('/grupos', GruposController.getAllValidation, GruposController.getAll);
+router.get('/grupos/:id', GruposController.getByIdValidation, GruposController.getById);
+router.put('/grupos/:id', GruposController.updateByIdValidation, GruposController.updateById);
+router.delete('/grupos/:id', GruposController.deleteByIdValidation, GruposController.deleteById);
 
 // Rotas da paginas NCM
 router.post('/ncm', NcmController.createValidation, NcmController.create);

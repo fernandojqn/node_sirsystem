@@ -55,8 +55,8 @@ export interface ICliente {
     desconto3: string; 
     obs: string; 
     
-    atividade: number; 
-    vendedor: number;
+    atividade: number; //forgot atividade
+    vendedor: number; //forgot vendedor
     cofins: number; 
     pis: number; 
     icms: number; 

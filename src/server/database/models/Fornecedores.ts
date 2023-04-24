@@ -7,6 +7,7 @@ export interface IFornecedor {
     documento: string; 
     inscricao: string; 
     ccm: string;
+    
     contato: string; 
     telefone: string; 
     celular: string; 
@@ -24,4 +25,6 @@ export interface IFornecedor {
     municipio: string;
 
     cliente: boolean;
+    idCliente: number; //forgot cliente
+
 }

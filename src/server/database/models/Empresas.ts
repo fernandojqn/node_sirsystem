@@ -32,19 +32,19 @@ export interface IEmpresa {
     obs: string;
     obsFisco: string;
 
-    codNatureza: string; 
+    codigoNatureza: string; 
     modeloNF: string; 
     serie: string; 
-    optSN: string;
+    optanteSN: boolean;
     aliqICMS: number; 
     aliqCOFINS: number; 
     aliqPIS: number; 
     perfil: string;
     
     tipoRegime: string; 
-    criEscrit: string; 
-    aproCredito: string; 
-    tipoContri: string;
-    codEstrutura: string; 
-    codOperacao: string;
+    criterioEscrit: string; 
+    apropriacaoCredito: string; 
+    tipoContribuicao: string;
+    codigoEstrutura: string; 
+    codigoOperacao: string;
 }
