@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { AtividadesController, GruposController, NcmController, TiposController, VendedoresController } from './../controllers';
+import { AtividadesController, GruposController, ModelosController, NcmController, SubTiposController, TiposController, UsuariosController, VendedoresController } from './../controllers';
 
 const router = Router();
 
@@ -20,6 +20,13 @@ router.get('/grupos/:id', GruposController.getByIdValidation, GruposController.g
 router.put('/grupos/:id', GruposController.updateByIdValidation, GruposController.updateById);
 router.delete('/grupos/:id', GruposController.deleteByIdValidation, GruposController.deleteById);
 
+// Rotas da paginas Modelos
+router.post('/modelos', ModelosController.createValidation, ModelosController.create);
+router.get('/modelos', ModelosController.getAllValidation, ModelosController.getAll);
+router.get('/modelos/:id', ModelosController.getByIdValidation, ModelosController.getById);
+router.put('/modelos/:id', ModelosController.updateByIdValidation, ModelosController.updateById);
+router.delete('/modelos/:id', ModelosController.deleteByIdValidation, ModelosController.deleteById);
+
 // Rotas da paginas NCM
 router.post('/ncm', NcmController.createValidation, NcmController.create);
 router.get('/ncm', NcmController.getAllValidation, NcmController.getAll);
@@ -27,12 +34,26 @@ router.get('/ncm/:id', NcmController.getByIdValidation, NcmController.getById);
 router.put('/ncm/:id', NcmController.updateByIdValidation, NcmController.updateById);
 router.delete('/ncm/:id', NcmController.deleteByIdValidation, NcmController.deleteById);
 
-// Rotas da paginas Tipo
+// Rotas da paginas SubTipo
+router.post('/subtipos', SubTiposController.createValidation, SubTiposController.create);
+router.get('/subtipos', SubTiposController.getAllValidation, SubTiposController.getAll);
+router.get('/subtipos/:id', SubTiposController.getByIdValidation, SubTiposController.getById);
+router.put('/subtipos/:id', SubTiposController.updateByIdValidation, SubTiposController.updateById);
+router.delete('/subtipos/:id', SubTiposController.deleteByIdValidation, SubTiposController.deleteById);
+
+// Rotas da paginas Tipos
 router.post('/tipos', TiposController.createValidation, TiposController.create);
 router.get('/tipos', TiposController.getAllValidation, TiposController.getAll);
 router.get('/tipos/:id', TiposController.getByIdValidation, TiposController.getById);
 router.put('/tipos/:id', TiposController.updateByIdValidation, TiposController.updateById);
 router.delete('/tipos/:id', TiposController.deleteByIdValidation, TiposController.deleteById);
+
+// Rotas da paginas Usuarios
+router.post('/usuarios', UsuariosController.createValidation, UsuariosController.create);
+router.get('/usuarios', UsuariosController.getAllValidation, UsuariosController.getAll);
+router.get('/usuarios/:id', UsuariosController.getByIdValidation, UsuariosController.getById);
+router.put('/usuarios/:id', UsuariosController.updateByIdValidation, UsuariosController.updateById);
+router.delete('/usuarios/:id', UsuariosController.deleteByIdValidation, UsuariosController.deleteById);
 
 // Rotas da paginas vendedores
 router.post('/vendedores', VendedoresController.createValidation, VendedoresController.create);
