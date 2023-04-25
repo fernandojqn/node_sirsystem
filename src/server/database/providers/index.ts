@@ -5,6 +5,7 @@ export * from './fornecedores';
 export * from './grupos';
 export * from './modelos';
 export * from './ncm';
+export * from './produtos';
 export * from './subtipos';
 export * from './tipos';
 export * from './transportadoras';

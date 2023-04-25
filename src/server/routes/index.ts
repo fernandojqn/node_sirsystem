@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { AtividadesController, ClientesController, EmpresasController, GruposController, ModelosController, NcmController, SubTiposController, TiposController, TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
+import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, ModelosController, NcmController, SubTiposController, TiposController, TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 
 const router = Router();
 
@@ -26,6 +26,13 @@ router.get('/empresas', EmpresasController.getAllValidation, EmpresasController.
 router.get('/empresas/:id', EmpresasController.getByIdValidation, EmpresasController.getById);
 router.put('/empresas/:id', EmpresasController.updateByIdValidation, EmpresasController.updateById);
 router.delete('/empresas/:id', EmpresasController.deleteByIdValidation, EmpresasController.deleteById);
+
+// Rotas da paginas fornecedores
+router.post('/fornecedores', FornecedoresController.createValidation, FornecedoresController.create);
+router.get('/fornecedores', FornecedoresController.getAllValidation, FornecedoresController.getAll);
+router.get('/fornecedores/:id', FornecedoresController.getByIdValidation, FornecedoresController.getById);
+router.put('/fornecedores/:id', FornecedoresController.updateByIdValidation, FornecedoresController.updateById);
+router.delete('/fornecedores/:id', FornecedoresController.deleteByIdValidation, FornecedoresController.deleteById);
 
 // Rotas da paginas Grupos
 router.post('/grupos', GruposController.createValidation, GruposController.create);

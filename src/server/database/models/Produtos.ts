@@ -3,11 +3,13 @@ export interface IProduto {
     
     produto: string; 
     codigoProduto: string; 
-    ean: string; 
+    ean: string;
+
     grupo: number; //forgot grupo
     tipo: number; //forgot tipo
     sub: number; //forgot subtipo
     modelo: number; //forgot modelo
+
     descricaoDetalhada: string; 
     
     origem: string; 
@@ -21,9 +23,11 @@ export interface IProduto {
     unidade: string; 
     liquido: string; 
     bruto: string; 
+
     fornecedor1: number; // forgot fornecedor
     fornecedor2: number; // forgot fornecedor
     fornecedor3: number; // forgot fornecedor
+    
     codigoFabricante: string; 
     dataUltimaCompra: string; 
     nfe: string; 

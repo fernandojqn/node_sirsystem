@@ -1,6 +1,7 @@
 export * from './atividades';
 export * from './clientes';
 export * from './empresas';
+export * from './fornecedores';
 export * from './grupos';
 export * from './modelos';
 export * from './ncm';

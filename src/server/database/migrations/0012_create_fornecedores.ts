@@ -34,15 +34,7 @@ export async function up(knex: Knex) {
 
             table.boolean('cliente');
 
-            table
-                .bigInteger('idCliente')
-                .index()
-                .references('id')
-                .inTable(ETableNames.clientes)
-                .onUpdate('CASCADE')
-                .onDelete('RESTRICT');
-
-            
+                        
             table.comment('Tabela usada para armazenar fornecedores.');
         })
         .then(() => {

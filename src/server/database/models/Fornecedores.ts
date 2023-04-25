@@ -25,6 +25,6 @@ export interface IFornecedor {
     municipio: string;
 
     cliente: boolean;
-    idCliente: number; //forgot cliente
+    
 
 }
