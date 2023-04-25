@@ -11,7 +11,7 @@ export async function up(knex: Knex) {
             table.bigIncrements('id').primary().index();
             table.string('sufixo', 50).checkLength('<=', 50).index().notNullable();
             table.string('nome', 50).checkLength('<=', 50).index().notNullable();
-            table.string('tipoEmpresa', 10).checkLength('<=', 10);
+            table.string('tipoEmpresa', 4).checkLength('<=', 4);
             table.string('documento', 20).checkLength('<=', 20);
             table.string('inscricao', 20).checkLength('<=', 20);
             table.string('ccm', 20).checkLength('<=', 20);
@@ -22,7 +22,7 @@ export async function up(knex: Knex) {
             table.string('email', 50).checkLength('>=', 5).checkLength('<=', 50);
             table.string('site', 50).checkLength('<=', 50);
 
-            table.string('endereco', 100).checkLength('<=', 100);
+            table.string('endereco', 50).checkLength('<=', 50);
             table.string('numero', 10).checkLength('<=', 10);
             table.string('complemento', 50).checkLength('<=', 50);
             table.string('bairro', 50).checkLength('<=', 50);
@@ -32,7 +32,7 @@ export async function up(knex: Knex) {
             table.string('pais', 50).checkLength('<=', 50);
             table.string('municipio', 50).checkLength('<=', 50);
 
-            table.string('enderecoEnt', 100).checkLength('<=', 100);
+            table.string('enderecoEnt', 50).checkLength('<=', 50);
             table.string('numeroEnt', 10).checkLength('<=', 10);
             table.string('complementoEnt', 50).checkLength('<=', 50);
             table.string('bairroEnt', 50).checkLength('<=', 50);
@@ -42,7 +42,7 @@ export async function up(knex: Knex) {
             table.string('paisEnt', 50).checkLength('<=', 50);
             table.string('municipioEnt', 50).checkLength('<=', 50);
 
-            table.string('enderecoCor', 100).checkLength('<=', 100);
+            table.string('enderecoCor', 50).checkLength('<=', 50);
             table.string('numeroCor', 10).checkLength('<=', 10);
             table.string('complementoCor', 50).checkLength('<=', 50);
             table.string('bairroCor', 50).checkLength('<=', 50);
@@ -58,10 +58,10 @@ export async function up(knex: Knex) {
             table.string('pagamento4', 20).checkLength('<=', 20);
             table.string('pagamento5', 20).checkLength('<=', 20);
             table.string('pagamento6', 20).checkLength('<=', 20);
-            table.string('desconto1', 20).checkLength('<=', 20);
-            table.string('desconto2', 20).checkLength('<=', 20);
-            table.string('desconto3', 20).checkLength('<=', 20);
-            table.string('obs', 20).checkLength('<=', 20);
+            table.double('desconto1');
+            table.double('desconto2');
+            table.double('desconto3');
+            table.string('obs', 8000).checkLength('<=', 8000);
 
             table
                 .bigInteger('atividade')
@@ -83,8 +83,8 @@ export async function up(knex: Knex) {
             table.double('pis');
             table.double('icms');
             table.double('ipi');
-            table.string('simplesNascional', 20).checkLength('<=', 20);
-            table.string('retemISS', 20).checkLength('<=', 20);
+            table.boolean('simplesNascional');
+            table.boolean('retemISS');
 
             table.comment('Tabela usada para armazenar clientes.');
         })

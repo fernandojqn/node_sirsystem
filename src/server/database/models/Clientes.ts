@@ -9,11 +9,11 @@ export interface ICliente {
     ccm: string;
     
     contato: string; 
-    telelefone: string; 
+    telefone: string; 
     celular: string; 
     email: string; 
     site: string; 
-
+    
     endereco: string; 
     numero: string; 
     complemento: string; 
@@ -50,9 +50,9 @@ export interface ICliente {
     pagamento4: string; 
     pagamento5: string; 
     pagamento6: string; 
-    desconto1: string; 
-    desconto2: string; 
-    desconto3: string; 
+    desconto1: number; 
+    desconto2: number; 
+    desconto3: number; 
     obs: string; 
     
     atividade: number; //forgot atividade
@@ -61,6 +61,6 @@ export interface ICliente {
     pis: number; 
     icms: number; 
     ipi: number;
-    simplesNascional: string; 
-    retemISS: string;
+    simplesNascional: boolean; 
+    retemISS: boolean;
 }

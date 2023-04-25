@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { AtividadesController, GruposController, ModelosController, NcmController, SubTiposController, TiposController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
+import { AtividadesController, ClientesController, EmpresasController, GruposController, ModelosController, NcmController, SubTiposController, TiposController, TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 
 const router = Router();
 
@@ -12,6 +12,20 @@ router.get('/atividades', AtividadesController.getAllValidation, AtividadesContr
 router.get('/atividades/:id', AtividadesController.getByIdValidation, AtividadesController.getById);
 router.put('/atividades/:id', AtividadesController.updateByIdValidation, AtividadesController.updateById);
 router.delete('/atividades/:id', AtividadesController.deleteByIdValidation, AtividadesController.deleteById);
+
+// Rotas da paginas clientes
+router.post('/clientes', ClientesController.createValidation, ClientesController.create);
+router.get('/clientes', ClientesController.getAllValidation, ClientesController.getAll);
+router.get('/clientes/:id', ClientesController.getByIdValidation, ClientesController.getById);
+router.put('/clientes/:id', ClientesController.updateByIdValidation, ClientesController.updateById);
+router.delete('/clientes/:id', ClientesController.deleteByIdValidation, ClientesController.deleteById);
+
+// Rotas da paginas empresas
+router.post('/empresas', EmpresasController.createValidation, EmpresasController.create);
+router.get('/empresas', EmpresasController.getAllValidation, EmpresasController.getAll);
+router.get('/empresas/:id', EmpresasController.getByIdValidation, EmpresasController.getById);
+router.put('/empresas/:id', EmpresasController.updateByIdValidation, EmpresasController.updateById);
+router.delete('/empresas/:id', EmpresasController.deleteByIdValidation, EmpresasController.deleteById);
 
 // Rotas da paginas Grupos
 router.post('/grupos', GruposController.createValidation, GruposController.create);
@@ -47,6 +61,13 @@ router.get('/tipos', TiposController.getAllValidation, TiposController.getAll);
 router.get('/tipos/:id', TiposController.getByIdValidation, TiposController.getById);
 router.put('/tipos/:id', TiposController.updateByIdValidation, TiposController.updateById);
 router.delete('/tipos/:id', TiposController.deleteByIdValidation, TiposController.deleteById);
+
+// Rotas da paginas Transportadoras
+router.post('/transportadoras', TransportadorasController.createValidation, TransportadorasController.create);
+router.get('/transportadoras', TransportadorasController.getAllValidation, TransportadorasController.getAll);
+router.get('/transportadoras/:id', TransportadorasController.getByIdValidation, TransportadorasController.getById);
+router.put('/transportadoras/:id', TransportadorasController.updateByIdValidation, TransportadorasController.updateById);
+router.delete('/transportadoras/:id', TransportadorasController.deleteByIdValidation, TransportadorasController.deleteById);
 
 // Rotas da paginas Tributacoes
 router.post('/tributacoes', TributacoesController.createValidation, TributacoesController.create);

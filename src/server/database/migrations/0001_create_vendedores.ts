@@ -10,7 +10,7 @@ export async function up(knex: Knex) {
             
             table.string('nome', 50).checkLength('<=', 50).index().notNullable();
             table.string('tipoEmpresa', 4).checkLength('<=', 4);
-            table.string('documento', 20).checkLength('<=', 20);
+            table.string('documento', 20).checkLength('<=', 20).unique();
             table.string('inscricao', 20).checkLength('<=', 20);
             table.string('telefone', 15).checkLength('<=', 15);
             table.string('celular', 15).checkLength('<=', 15);

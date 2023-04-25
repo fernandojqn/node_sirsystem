@@ -26,7 +26,7 @@ export const createValidation = validation(get => ({
         uf: yup.string().optional().default('').max(2), 
         cep: yup.string().optional().default('').max(10), 
         pais: yup.string().optional().default('').max(50), 
-        municipio: yup.string().optional().default('').max(50),
+        municipio: yup.string().optional().default('').max(7),
 
         comissao: yup.number().optional().default(0), 
         irpf: yup.number().optional().default(0), 
