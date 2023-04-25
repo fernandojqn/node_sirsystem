@@ -27,19 +27,18 @@ export async function up(knex: Knex) {
                 .inTable(ETableNames.modelos).onUpdate('CASCADE').onDelete('RESTRICT');
 
             table.string('descricaoDetalhada', 150).checkLength('<=', 150);
-
             table.string('origem', 20).checkLength('<=', 20);
             table.string('cfop', 20).checkLength('<=', 20);
             table.string('cstVendas', 20).checkLength('<=', 20);
             table.string('escrituracao', 50).checkLength('<=', 50);
             
-            table.bigInteger('ncm').index().references('id')
+            table.bigInteger('ncmNumero').index().references('id')
                 .inTable(ETableNames.ncm).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.string('embalagem', 15).checkLength('<=', 15);
-            table.string('quantidadeEmbalagem', 50).checkLength('>=', 5).checkLength('<=', 50);
-            table.string('unidade', 50).checkLength('<=', 50);
-            table.string('liquido', 100).checkLength('<=', 100);
+            table.string('embalagem', 10).checkLength('<=', 10);
+            table.string('quantidadeEmbalagem', 10).checkLength('<=', 10);
+            table.string('unidade', 10).checkLength('<=', 10);
+            table.string('liquido', 10).checkLength('<=', 10);
             table.string('bruto', 10).checkLength('<=', 10);
 
             table.bigInteger('fornecedor1').index().references('id')
@@ -66,26 +65,26 @@ export async function up(knex: Knex) {
             table.string('descricaoOutro', 20).checkLength('<=', 20);
 
             table.boolean('promocao');
-            table.string('moeda', 10).checkLength('<=', 10);
+            table.string('moeda', 20).checkLength('<=', 20);
             table.double('precoCusto');
             table.double('capagem');
             table.double('precoCompra');
 
-            table.string('margemLucro1', 20).checkLength('<=', 20);
-            table.string('margemLucro2', 20).checkLength('<=', 20);
-            table.string('margemLucro3', 20).checkLength('<=', 20);
-            table.string('margemLucro4', 20).checkLength('<=', 20);
-            table.string('margemLucro5', 20).checkLength('<=', 20);
+            table.double('margemLucro1');
+            table.double('margemLucro2');
+            table.double('margemLucro3');
+            table.double('margemLucro4');
+            table.double('margemLucro5');
             table.string('condicao1', 20).checkLength('<=', 20);
             table.string('condicao2', 20).checkLength('<=', 20);
             table.string('condicao3', 20).checkLength('<=', 20);
             table.string('condicao4', 20).checkLength('<=', 20);
             table.string('condicao5', 20).checkLength('<=', 20);
-            table.string('precoVenda1', 20).checkLength('<=', 20);
-            table.string('precoVenda2', 20).checkLength('<=', 20);
-            table.string('precoVenda3', 20).checkLength('<=', 20);
-            table.string('precoVenda4', 20).checkLength('<=', 20);
-            table.string('precoVenda5', 20).checkLength('<=', 20);
+            table.double('precoVenda1');
+            table.double('precoVenda2');
+            table.double('precoVenda3');
+            table.double('precoVenda4');
+            table.double('precoVenda5');
 
             table.double('ipiCompra');
             table.double('ipiVenda');
@@ -95,7 +94,7 @@ export async function up(knex: Knex) {
             table.double('cofins');
             table.boolean('baseCalculoReduzida');
             table.double('porcentagemReducao');
-            table.double('comissaoDiferenciada');
+            table.boolean('comissaoDiferenciada');
             table.double('porcentagemComissao');
             
 

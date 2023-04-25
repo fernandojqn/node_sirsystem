@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, ModelosController, NcmController, SubTiposController, TiposController, TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
+import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, ModelosController, NcmController, ProdutosController, SubTiposController, TiposController, TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 
 const router = Router();
 
@@ -54,6 +54,13 @@ router.get('/ncm', NcmController.getAllValidation, NcmController.getAll);
 router.get('/ncm/:id', NcmController.getByIdValidation, NcmController.getById);
 router.put('/ncm/:id', NcmController.updateByIdValidation, NcmController.updateById);
 router.delete('/ncm/:id', NcmController.deleteByIdValidation, NcmController.deleteById);
+
+// Rotas da paginas Produtos
+router.post('/produtos', ProdutosController.createValidation, ProdutosController.create);
+router.get('/produtos', ProdutosController.getAllValidation, ProdutosController.getAll);
+router.get('/produtos/:id', ProdutosController.getByIdValidation, ProdutosController.getById);
+router.put('/produtos/:id', ProdutosController.updateByIdValidation, ProdutosController.updateById);
+router.delete('/produtos/:id', ProdutosController.deleteByIdValidation, ProdutosController.deleteById);
 
 // Rotas da paginas SubTipo
 router.post('/subtipos', SubTiposController.createValidation, SubTiposController.create);
