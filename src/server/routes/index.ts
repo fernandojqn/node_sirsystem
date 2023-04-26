@@ -1,10 +1,13 @@
 import { Router } from 'express';
-import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, ModelosController, NcmController, ProdutosController, SubTiposController, TiposController, TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
+import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, LoginController, ModelosController, NcmController, ProdutosController, SubTiposController, TiposController, TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 
 const router = Router();
 
 // Rota teste
 router.get('/', (_, res) => { return res.send('Olá, DEV!'); });
+
+// Rotas da paginas de Login
+router.post('/entrar', LoginController.singInValidation, LoginController.singIn);
 
 // Rotas da paginas atividades
 router.post('/atividades', AtividadesController.createValidation, AtividadesController.create);
