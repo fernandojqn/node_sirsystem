@@ -1,7 +1,7 @@
 import express from 'express';
 import { router } from './routes';
 import 'dotenv/config';
-import './shared/services/TranslationsYup';
+import './shared/services';
 
 const server = express(); //fazendo uma constante da biblioteca express
 
