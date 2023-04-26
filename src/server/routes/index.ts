@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, LoginController, ModelosController, NcmController, ProdutosController, SubTiposController, TiposController, TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
+import { ensureAuthenticated } from '../shared/middlewares';
 
 const router = Router();
 
@@ -10,102 +11,102 @@ router.get('/', (_, res) => { return res.send('Olá, DEV!'); });
 router.post('/entrar', LoginController.singInValidation, LoginController.singIn);
 
 // Rotas da paginas atividades
-router.post('/atividades', AtividadesController.createValidation, AtividadesController.create);
-router.get('/atividades', AtividadesController.getAllValidation, AtividadesController.getAll);
-router.get('/atividades/:id', AtividadesController.getByIdValidation, AtividadesController.getById);
-router.put('/atividades/:id', AtividadesController.updateByIdValidation, AtividadesController.updateById);
-router.delete('/atividades/:id', AtividadesController.deleteByIdValidation, AtividadesController.deleteById);
+router.post('/atividades', ensureAuthenticated, AtividadesController.createValidation, AtividadesController.create);
+router.get('/atividades', ensureAuthenticated, AtividadesController.getAllValidation, AtividadesController.getAll);
+router.get('/atividades/:id', ensureAuthenticated, AtividadesController.getByIdValidation, AtividadesController.getById);
+router.put('/atividades/:id', ensureAuthenticated, AtividadesController.updateByIdValidation, AtividadesController.updateById);
+router.delete('/atividades/:id', ensureAuthenticated, AtividadesController.deleteByIdValidation, AtividadesController.deleteById);
 
 // Rotas da paginas clientes
-router.post('/clientes', ClientesController.createValidation, ClientesController.create);
-router.get('/clientes', ClientesController.getAllValidation, ClientesController.getAll);
-router.get('/clientes/:id', ClientesController.getByIdValidation, ClientesController.getById);
-router.put('/clientes/:id', ClientesController.updateByIdValidation, ClientesController.updateById);
-router.delete('/clientes/:id', ClientesController.deleteByIdValidation, ClientesController.deleteById);
+router.post('/clientes', ensureAuthenticated, ClientesController.createValidation, ClientesController.create);
+router.get('/clientes', ensureAuthenticated, ClientesController.getAllValidation, ClientesController.getAll);
+router.get('/clientes/:id', ensureAuthenticated, ClientesController.getByIdValidation, ClientesController.getById);
+router.put('/clientes/:id', ensureAuthenticated, ClientesController.updateByIdValidation, ClientesController.updateById);
+router.delete('/clientes/:id', ensureAuthenticated, ClientesController.deleteByIdValidation, ClientesController.deleteById);
 
 // Rotas da paginas empresas
-router.post('/empresas', EmpresasController.createValidation, EmpresasController.create);
-router.get('/empresas', EmpresasController.getAllValidation, EmpresasController.getAll);
-router.get('/empresas/:id', EmpresasController.getByIdValidation, EmpresasController.getById);
-router.put('/empresas/:id', EmpresasController.updateByIdValidation, EmpresasController.updateById);
-router.delete('/empresas/:id', EmpresasController.deleteByIdValidation, EmpresasController.deleteById);
+router.post('/empresas', ensureAuthenticated, EmpresasController.createValidation, EmpresasController.create);
+router.get('/empresas', ensureAuthenticated, EmpresasController.getAllValidation, EmpresasController.getAll);
+router.get('/empresas/:id', ensureAuthenticated, EmpresasController.getByIdValidation, EmpresasController.getById);
+router.put('/empresas/:id', ensureAuthenticated, EmpresasController.updateByIdValidation, EmpresasController.updateById);
+router.delete('/empresas/:id', ensureAuthenticated, EmpresasController.deleteByIdValidation, EmpresasController.deleteById);
 
 // Rotas da paginas fornecedores
-router.post('/fornecedores', FornecedoresController.createValidation, FornecedoresController.create);
-router.get('/fornecedores', FornecedoresController.getAllValidation, FornecedoresController.getAll);
-router.get('/fornecedores/:id', FornecedoresController.getByIdValidation, FornecedoresController.getById);
-router.put('/fornecedores/:id', FornecedoresController.updateByIdValidation, FornecedoresController.updateById);
-router.delete('/fornecedores/:id', FornecedoresController.deleteByIdValidation, FornecedoresController.deleteById);
+router.post('/fornecedores', ensureAuthenticated, FornecedoresController.createValidation, FornecedoresController.create);
+router.get('/fornecedores', ensureAuthenticated, FornecedoresController.getAllValidation, FornecedoresController.getAll);
+router.get('/fornecedores/:id', ensureAuthenticated, FornecedoresController.getByIdValidation, FornecedoresController.getById);
+router.put('/fornecedores/:id', ensureAuthenticated, FornecedoresController.updateByIdValidation, FornecedoresController.updateById);
+router.delete('/fornecedores/:id', ensureAuthenticated, FornecedoresController.deleteByIdValidation, FornecedoresController.deleteById);
 
 // Rotas da paginas Grupos
-router.post('/grupos', GruposController.createValidation, GruposController.create);
-router.get('/grupos', GruposController.getAllValidation, GruposController.getAll);
-router.get('/grupos/:id', GruposController.getByIdValidation, GruposController.getById);
-router.put('/grupos/:id', GruposController.updateByIdValidation, GruposController.updateById);
-router.delete('/grupos/:id', GruposController.deleteByIdValidation, GruposController.deleteById);
+router.post('/grupos', ensureAuthenticated, GruposController.createValidation, GruposController.create);
+router.get('/grupos', ensureAuthenticated, GruposController.getAllValidation, GruposController.getAll);
+router.get('/grupos/:id', ensureAuthenticated, GruposController.getByIdValidation, GruposController.getById);
+router.put('/grupos/:id', ensureAuthenticated, GruposController.updateByIdValidation, GruposController.updateById);
+router.delete('/grupos/:id', ensureAuthenticated, GruposController.deleteByIdValidation, GruposController.deleteById);
 
 // Rotas da paginas Modelos
-router.post('/modelos', ModelosController.createValidation, ModelosController.create);
-router.get('/modelos', ModelosController.getAllValidation, ModelosController.getAll);
-router.get('/modelos/:id', ModelosController.getByIdValidation, ModelosController.getById);
-router.put('/modelos/:id', ModelosController.updateByIdValidation, ModelosController.updateById);
-router.delete('/modelos/:id', ModelosController.deleteByIdValidation, ModelosController.deleteById);
+router.post('/modelos', ensureAuthenticated, ModelosController.createValidation, ModelosController.create);
+router.get('/modelos', ensureAuthenticated, ModelosController.getAllValidation, ModelosController.getAll);
+router.get('/modelos/:id', ensureAuthenticated, ModelosController.getByIdValidation, ModelosController.getById);
+router.put('/modelos/:id', ensureAuthenticated, ModelosController.updateByIdValidation, ModelosController.updateById);
+router.delete('/modelos/:id', ensureAuthenticated, ModelosController.deleteByIdValidation, ModelosController.deleteById);
 
 // Rotas da paginas NCM
-router.post('/ncm', NcmController.createValidation, NcmController.create);
-router.get('/ncm', NcmController.getAllValidation, NcmController.getAll);
-router.get('/ncm/:id', NcmController.getByIdValidation, NcmController.getById);
-router.put('/ncm/:id', NcmController.updateByIdValidation, NcmController.updateById);
-router.delete('/ncm/:id', NcmController.deleteByIdValidation, NcmController.deleteById);
+router.post('/ncm', ensureAuthenticated, NcmController.createValidation, NcmController.create);
+router.get('/ncm', ensureAuthenticated, NcmController.getAllValidation, NcmController.getAll);
+router.get('/ncm/:id', ensureAuthenticated, NcmController.getByIdValidation, NcmController.getById);
+router.put('/ncm/:id', ensureAuthenticated, NcmController.updateByIdValidation, NcmController.updateById);
+router.delete('/ncm/:id', ensureAuthenticated, NcmController.deleteByIdValidation, NcmController.deleteById);
 
 // Rotas da paginas Produtos
-router.post('/produtos', ProdutosController.createValidation, ProdutosController.create);
-router.get('/produtos', ProdutosController.getAllValidation, ProdutosController.getAll);
-router.get('/produtos/:id', ProdutosController.getByIdValidation, ProdutosController.getById);
-router.put('/produtos/:id', ProdutosController.updateByIdValidation, ProdutosController.updateById);
-router.delete('/produtos/:id', ProdutosController.deleteByIdValidation, ProdutosController.deleteById);
+router.post('/produtos', ensureAuthenticated, ProdutosController.createValidation, ProdutosController.create);
+router.get('/produtos', ensureAuthenticated, ProdutosController.getAllValidation, ProdutosController.getAll);
+router.get('/produtos/:id', ensureAuthenticated, ProdutosController.getByIdValidation, ProdutosController.getById);
+router.put('/produtos/:id', ensureAuthenticated, ProdutosController.updateByIdValidation, ProdutosController.updateById);
+router.delete('/produtos/:id', ensureAuthenticated, ProdutosController.deleteByIdValidation, ProdutosController.deleteById);
 
 // Rotas da paginas SubTipo
-router.post('/subtipos', SubTiposController.createValidation, SubTiposController.create);
-router.get('/subtipos', SubTiposController.getAllValidation, SubTiposController.getAll);
-router.get('/subtipos/:id', SubTiposController.getByIdValidation, SubTiposController.getById);
-router.put('/subtipos/:id', SubTiposController.updateByIdValidation, SubTiposController.updateById);
-router.delete('/subtipos/:id', SubTiposController.deleteByIdValidation, SubTiposController.deleteById);
+router.post('/subtipos', ensureAuthenticated, SubTiposController.createValidation, SubTiposController.create);
+router.get('/subtipos', ensureAuthenticated, SubTiposController.getAllValidation, SubTiposController.getAll);
+router.get('/subtipos/:id', ensureAuthenticated, SubTiposController.getByIdValidation, SubTiposController.getById);
+router.put('/subtipos/:id', ensureAuthenticated, SubTiposController.updateByIdValidation, SubTiposController.updateById);
+router.delete('/subtipos/:id', ensureAuthenticated, SubTiposController.deleteByIdValidation, SubTiposController.deleteById);
 
 // Rotas da paginas Tipos
-router.post('/tipos', TiposController.createValidation, TiposController.create);
-router.get('/tipos', TiposController.getAllValidation, TiposController.getAll);
-router.get('/tipos/:id', TiposController.getByIdValidation, TiposController.getById);
-router.put('/tipos/:id', TiposController.updateByIdValidation, TiposController.updateById);
-router.delete('/tipos/:id', TiposController.deleteByIdValidation, TiposController.deleteById);
+router.post('/tipos', ensureAuthenticated, TiposController.createValidation, TiposController.create);
+router.get('/tipos', ensureAuthenticated, TiposController.getAllValidation, TiposController.getAll);
+router.get('/tipos/:id', ensureAuthenticated, TiposController.getByIdValidation, TiposController.getById);
+router.put('/tipos/:id', ensureAuthenticated, TiposController.updateByIdValidation, TiposController.updateById);
+router.delete('/tipos/:id', ensureAuthenticated, TiposController.deleteByIdValidation, TiposController.deleteById);
 
 // Rotas da paginas Transportadoras
-router.post('/transportadoras', TransportadorasController.createValidation, TransportadorasController.create);
-router.get('/transportadoras', TransportadorasController.getAllValidation, TransportadorasController.getAll);
-router.get('/transportadoras/:id', TransportadorasController.getByIdValidation, TransportadorasController.getById);
-router.put('/transportadoras/:id', TransportadorasController.updateByIdValidation, TransportadorasController.updateById);
-router.delete('/transportadoras/:id', TransportadorasController.deleteByIdValidation, TransportadorasController.deleteById);
+router.post('/transportadoras', ensureAuthenticated, TransportadorasController.createValidation, TransportadorasController.create);
+router.get('/transportadoras', ensureAuthenticated, TransportadorasController.getAllValidation, TransportadorasController.getAll);
+router.get('/transportadoras/:id', ensureAuthenticated, TransportadorasController.getByIdValidation, TransportadorasController.getById);
+router.put('/transportadoras/:id', ensureAuthenticated, TransportadorasController.updateByIdValidation, TransportadorasController.updateById);
+router.delete('/transportadoras/:id', ensureAuthenticated, TransportadorasController.deleteByIdValidation, TransportadorasController.deleteById);
 
 // Rotas da paginas Tributacoes
-router.post('/tributacoes', TributacoesController.createValidation, TributacoesController.create);
-router.get('/tributacoes', TributacoesController.getAllValidation, TributacoesController.getAll);
-router.get('/tributacoes/:id', TributacoesController.getByIdValidation, TributacoesController.getById);
-router.put('/tributacoes/:id', TributacoesController.updateByIdValidation, TributacoesController.updateById);
-router.delete('/tributacoes/:id', TributacoesController.deleteByIdValidation, TributacoesController.deleteById);
+router.post('/tributacoes', ensureAuthenticated, TributacoesController.createValidation, TributacoesController.create);
+router.get('/tributacoes', ensureAuthenticated, TributacoesController.getAllValidation, TributacoesController.getAll);
+router.get('/tributacoes/:id', ensureAuthenticated, TributacoesController.getByIdValidation, TributacoesController.getById);
+router.put('/tributacoes/:id', ensureAuthenticated, TributacoesController.updateByIdValidation, TributacoesController.updateById);
+router.delete('/tributacoes/:id', ensureAuthenticated, TributacoesController.deleteByIdValidation, TributacoesController.deleteById);
 
 // Rotas da paginas Usuarios
-router.post('/usuarios', UsuariosController.createValidation, UsuariosController.create);
-router.get('/usuarios', UsuariosController.getAllValidation, UsuariosController.getAll);
-router.get('/usuarios/:id', UsuariosController.getByIdValidation, UsuariosController.getById);
-router.put('/usuarios/:id', UsuariosController.updateByIdValidation, UsuariosController.updateById);
-router.delete('/usuarios/:id', UsuariosController.deleteByIdValidation, UsuariosController.deleteById);
+router.post('/usuarios', ensureAuthenticated, UsuariosController.createValidation, UsuariosController.create);
+router.get('/usuarios', ensureAuthenticated, UsuariosController.getAllValidation, UsuariosController.getAll);
+router.get('/usuarios/:id', ensureAuthenticated, UsuariosController.getByIdValidation, UsuariosController.getById);
+router.put('/usuarios/:id', ensureAuthenticated, UsuariosController.updateByIdValidation, UsuariosController.updateById);
+router.delete('/usuarios/:id', ensureAuthenticated, UsuariosController.deleteByIdValidation, UsuariosController.deleteById);
 
 // Rotas da paginas vendedores
-router.post('/vendedores', VendedoresController.createValidation, VendedoresController.create);
-router.get('/vendedores', VendedoresController.getAllValidation, VendedoresController.getAll);
-router.get('/vendedores/:id', VendedoresController.getByIdValidation, VendedoresController.getById);
-router.put('/vendedores/:id', VendedoresController.updateByIdValidation, VendedoresController.updateById);
-router.delete('/vendedores/:id', VendedoresController.deleteByIdValidation, VendedoresController.deleteById);
+router.post('/vendedores', ensureAuthenticated, VendedoresController.createValidation, VendedoresController.create);
+router.get('/vendedores', ensureAuthenticated, VendedoresController.getAllValidation, VendedoresController.getAll);
+router.get('/vendedores/:id', ensureAuthenticated, VendedoresController.getByIdValidation, VendedoresController.getById);
+router.put('/vendedores/:id', ensureAuthenticated, VendedoresController.updateByIdValidation, VendedoresController.updateById);
+router.delete('/vendedores/:id', ensureAuthenticated, VendedoresController.deleteByIdValidation, VendedoresController.deleteById);
 
 
 //Exporta os caminhos para o Server.ts

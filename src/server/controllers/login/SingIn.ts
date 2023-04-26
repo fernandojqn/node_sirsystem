@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 import * as yup from 'yup';
 import { IUsuario } from '../../database/models';
 import { UsuariosProvider } from '../../database/providers';
+import { JWTService, PasswordCrypto } from '../../shared/services';
 
 //Validação
 interface IBodyProps extends Omit<IUsuario, 'id' | 'nome' | 'permissoes' | 'departamento' | 
@@ -23,10 +24,10 @@ export const singIn = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
     const {email, senha } = req.body;
 
     //Pesquiso no banco pelo email
-    const result = await UsuariosProvider.getByEmail(email);
+    const usuario = await UsuariosProvider.getByEmail(email);
     
     // Se não encontrar o email
-    if (result instanceof Error) {
+    if (usuario instanceof Error) {
         return res.status(StatusCodes.UNAUTHORIZED).json({
             errors: {
                 default: 'Email ou senha são inválidos'
@@ -34,14 +35,27 @@ export const singIn = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
         });
     }
 
-    // Se a senha estiver errada
-    if (senha !== result.senha) {
+    // Verificando senha
+    // comparando senha com senha crypto
+    const passwordMatch = await PasswordCrypto.verifyPassword(senha, usuario.senha);
+
+    if (!passwordMatch) {
         return res.status(StatusCodes.UNAUTHORIZED).json({
             errors: {
                 default: 'Email ou senha são inválidos'
             }
         });    
-    } else { //Se for igual
-        return res.status(StatusCodes.OK).json({ acessToken: 'teste.teste.teste'});
+    } else { //Senha okay
+        //fabricando um token
+        const acessToken = JWTService.sign({uid: usuario.id});
+        if (acessToken === 'JWT_SECRET_NOT_FOUND') {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+                errors: {
+                    default: 'Erro ao gerar o token de acesso'
+                }
+            });
+        }
+
+        return res.status(StatusCodes.OK).json({ acessToken: acessToken});
     }
 };
