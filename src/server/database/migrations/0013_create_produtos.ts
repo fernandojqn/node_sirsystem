@@ -11,48 +11,48 @@ export async function up(knex: Knex) {
             table.bigIncrements('id').primary().index();
 
             table.string('produto', 50).checkLength('<=', 50).index().notNullable();
-            table.string('codigoProduto', 50).checkLength('<=', 50).index().notNullable();
-            table.string('ean', 10).checkLength('<=', 10);
+            table.string('codigoProduto', 13).checkLength('<=', 13).index().notNullable();
+            table.string('ean', 13).checkLength('<=', 13);
 
-            table.bigInteger('grupo').index().references('id')
+            table.bigInteger('grupoId').index().references('id')
                 .inTable(ETableNames.grupos).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.bigInteger('tipo').index().references('id')
+            table.bigInteger('tipoId').index().references('id')
                 .inTable(ETableNames.tipos).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.bigInteger('sub').index().references('id')
+            table.bigInteger('subId').index().references('id')
                 .inTable(ETableNames.subTipos).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.bigInteger('modelo').index().references('id')
+            table.bigInteger('modeloId').index().references('id')
                 .inTable(ETableNames.modelos).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.string('descricaoDetalhada', 150).checkLength('<=', 150);
-            table.string('origem', 20).checkLength('<=', 20);
-            table.string('cfop', 20).checkLength('<=', 20);
-            table.string('cstVendas', 20).checkLength('<=', 20);
-            table.string('escrituracao', 50).checkLength('<=', 50);
+            table.string('descricaoDetalhada', 100).checkLength('<=', 100);
+            table.string('origem', 1).checkLength('<=', 1);
+            table.string('cfop', 4).checkLength('<=', 4);
+            table.string('cstVendas', 3).checkLength('<=', 3);
+            table.string('escrituracao', 2).checkLength('<=', 2);
             
-            table.bigInteger('ncmNumero').index().references('id')
+            table.bigInteger('ncmId').index().references('id')
                 .inTable(ETableNames.ncm).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.string('embalagem', 10).checkLength('<=', 10);
-            table.string('quantidadeEmbalagem', 10).checkLength('<=', 10);
-            table.string('unidade', 10).checkLength('<=', 10);
-            table.string('liquido', 10).checkLength('<=', 10);
-            table.string('bruto', 10).checkLength('<=', 10);
+            table.string('embalagem', 3).checkLength('<=', 3);
+            table.float('quantidadeEmbalagem');
+            table.string('unidade', 2).checkLength('<=', 2);
+            table.float('liquido');
+            table.float('bruto');
 
-            table.bigInteger('fornecedor1').index().references('id')
+            table.bigInteger('fornecedor1Id').index().references('id')
                 .inTable(ETableNames.fornecedores).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.bigInteger('fornecedor2').index().references('id')
+            table.bigInteger('fornecedor2Id').index().references('id')
                 .inTable(ETableNames.fornecedores).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.bigInteger('fornecedor3').index().references('id')
+            table.bigInteger('fornecedor3Id').index().references('id')
                 .inTable(ETableNames.fornecedores).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.string('codigoFabricante', 50).checkLength('<=', 50);
-            table.string('dataUltimaCompra', 50).checkLength('<=', 50);
-            table.string('nfe', 50).checkLength('<=', 50);
+            table.string('codigoFabricante', 20).checkLength('<=', 20);
+            table.string('dataUltimaCompra', 10).checkLength('<=', 10);
+            table.string('nfe', 9).checkLength('<=', 9);
 
             table.boolean('produtoAtivo');
             table.boolean('produtoAcabado');
@@ -65,37 +65,37 @@ export async function up(knex: Knex) {
             table.string('descricaoOutro', 20).checkLength('<=', 20);
 
             table.boolean('promocao');
-            table.string('moeda', 20).checkLength('<=', 20);
-            table.double('precoCusto');
-            table.double('capagem');
-            table.double('precoCompra');
+            table.string('moeda', 3).checkLength('<=', 3);
+            table.float('precoCusto');
+            table.float('capagem');
+            table.float('precoCompra');
 
-            table.double('margemLucro1');
-            table.double('margemLucro2');
-            table.double('margemLucro3');
-            table.double('margemLucro4');
-            table.double('margemLucro5');
+            table.float('margemLucro1');
+            table.float('margemLucro2');
+            table.float('margemLucro3');
+            table.float('margemLucro4');
+            table.float('margemLucro5');
             table.string('condicao1', 20).checkLength('<=', 20);
             table.string('condicao2', 20).checkLength('<=', 20);
             table.string('condicao3', 20).checkLength('<=', 20);
             table.string('condicao4', 20).checkLength('<=', 20);
             table.string('condicao5', 20).checkLength('<=', 20);
-            table.double('precoVenda1');
-            table.double('precoVenda2');
-            table.double('precoVenda3');
-            table.double('precoVenda4');
-            table.double('precoVenda5');
+            table.float('precoVenda1');
+            table.float('precoVenda2');
+            table.float('precoVenda3');
+            table.float('precoVenda4');
+            table.float('precoVenda5');
 
-            table.double('ipiCompra');
-            table.double('ipiVenda');
-            table.double('icmsCompra');
-            table.double('icmsVenda');
-            table.double('pis');
-            table.double('cofins');
+            table.float('ipiCompra');
+            table.float('ipiVenda');
+            table.float('icmsCompra');
+            table.float('icmsVenda');
+            table.float('pis');
+            table.float('cofins');
             table.boolean('baseCalculoReduzida');
-            table.double('porcentagemReducao');
+            table.float('porcentagemReducao');
             table.boolean('comissaoDiferenciada');
-            table.double('porcentagemComissao');
+            table.float('porcentagemComissao');
             
 
             table.comment('Tabela usada para armazenar produtos.');

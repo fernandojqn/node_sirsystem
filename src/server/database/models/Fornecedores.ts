@@ -5,7 +5,7 @@ export interface IFornecedor {
     nome: string; 
     tipoEmpresa: string; 
     documento: string; 
-    inscricao: string; 
+    inscricaoEstadual: string; 
     ccm: string;
     
     contato: string; 
@@ -22,9 +22,9 @@ export interface IFornecedor {
     uf: string; 
     cep: string; 
     pais: string; 
-    municipio: string;
+    codMunicipal: string;
 
     cliente: boolean;
-    
+    clienteId: number;
 
 }

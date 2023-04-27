@@ -9,9 +9,9 @@ export async function up(knex: Knex) {
             
             table.bigIncrements('id').primary().index();
 
-            table.string('nome', 50).checkLength('<=', 50).index().notNullable();
-            table.string('email').index().unique().notNullable().checkLength('>=', 5);
-            table.string('senha').notNullable().checkLength('>=', 6);
+            table.string('nome', 50).index().checkLength('<=', 50).notNullable();
+            table.string('email', 50).index().unique().checkLength('<=', 50).notNullable();
+            table.string('senha').checkLength('>=', 6).notNullable();
             table.string('permissoes', 30).checkLength('<=', 30);
             table.string('departamento', 30).checkLength('<=', 30);
             table.string('telefone', 15).checkLength('<=', 15);

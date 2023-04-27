@@ -8,6 +8,8 @@
 #   tipoEmpresa         4
 #   documento          18
 #   inscricao estadual 14
+
+#   contato            50
 #   telefone           15
 #   celular            15
 #   email              50
@@ -40,14 +42,47 @@
 #   ncmNumero   8
 #   descricao   100
 #   cest        7
-#
-#
-#
-#
-#
-#
-#
-#
+
+
+# Grupo
+#   grupoDescricao  50
+#   produtoAcabado  boolean
+#   materiaPrima    boolean
+#   ncmId
+#   comissao float
+
+
+# Tipo
+#   tipoDescricao 50
+
+
+# SubTipo
+#   tipoId
+#   subDescricao 50
+
+
+# Modelo
+#   idDoTipo
+#   idDoSub
+#   modeloDescricao 50
+
+
+# Usuario
+#   permissao       30
+#   departamento    30
+
+
+# Tributacoes
+#   regra   50
+#   cfop    4
+#   cst     3
+#   ncmId
+#   uf      2
+
+
+# Empresas
+#   ccm     12
+#   numeroSerie 60
 #
 #
 #

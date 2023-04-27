@@ -14,7 +14,7 @@ export async function up(knex: Knex) {
             table.string('cst', 3).checkLength('=', 3);
 
             table
-                .bigInteger('ncmNumero')
+                .bigInteger('ncmId')
                 .index()
                 .references('id')
                 .inTable(ETableNames.ncm)
@@ -22,16 +22,16 @@ export async function up(knex: Knex) {
                 .onDelete('RESTRICT');
 
             table.string('uf', 2).checkLength('=', 2);
-            table.double('icms');
-            table.double('ipi');
-            table.double('pis');
-            table.double('cofins');
-            table.double('csll');
-            table.double('irrf');
-            table.double('inss');
-            table.double('iss');
-            table.double('anp');
-            table.double('ibpt');
+            table.float('icms');
+            table.float('ipi');
+            table.float('pis');
+            table.float('cofins');
+            table.float('csll');
+            table.float('irrf');
+            table.float('inss');
+            table.float('iss');
+            table.float('anp');
+            table.float('ibpt');
 
 
 

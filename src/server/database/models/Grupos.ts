@@ -4,6 +4,6 @@ export interface IGrupo {
     grupoDescricao: string;
     produtoAcabado: boolean; 
     materiaPrima: boolean; 
-    ncmNumero: number; //forget do ncm
+    ncmId: number; //forget do ncm
     comissao: number;
 }

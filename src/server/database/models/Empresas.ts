@@ -6,7 +6,7 @@ export interface IEmpresa {
     
     tipoEmpresa: string; 
     documento: string; 
-    inscricao: string; 
+    inscricaoEstadual: string; 
     ccm: string;
     
     contato: string; 
@@ -23,11 +23,10 @@ export interface IEmpresa {
     uf: string; 
     cep: string; 
     pais: string; 
-    municipio: string;
+    codMunicipio: string;
     
-    unidade: string; 
-    nomeUnidade: string; 
-    modeloCF: string; 
+    modeloCF: string;
+    serieCF: string;
     numSerie: string; 
     obs: string;
     obsFisco: string;

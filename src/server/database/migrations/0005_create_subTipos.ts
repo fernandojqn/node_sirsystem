@@ -12,7 +12,7 @@ export async function up(knex: Knex) {
             table.bigIncrements('id').primary().index();
 
             table
-                .bigInteger('idTipo')
+                .bigInteger('tipoId')
                 .index()
                 .notNullable()
                 .references('id')

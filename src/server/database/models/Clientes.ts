@@ -5,7 +5,7 @@ export interface ICliente {
     nome: string; 
     tipoEmpresa: string; 
     documento: string; 
-    inscricao: string; 
+    inscricaoEstadual: string; 
     ccm: string;
     
     contato: string; 
@@ -22,7 +22,7 @@ export interface ICliente {
     uf: string; 
     cep: string; 
     pais: string; 
-    municipio: string;
+    codMunicipal: string;
 
     enderecoEnt: string; 
     numeroEnt: string; 
@@ -32,7 +32,7 @@ export interface ICliente {
     ufEnt: string; 
     cepEnt: string; 
     paisEnt: string; 
-    municipioEnt: string; 
+    codMunicipalEnt: string; 
 
     enderecoCor: string; 
     numeroCor: string; 
@@ -42,7 +42,7 @@ export interface ICliente {
     ufCor: string; 
     cepCor: string; 
     paisCor: string; 
-    municipioCor: string; 
+    codMunicipalCor: string; 
 
     pagamento1: string; 
     pagamento2: string; 
@@ -55,8 +55,8 @@ export interface ICliente {
     desconto3: number; 
     obs: string; 
     
-    atividade: number; //forgot atividade
-    vendedor: number; //forgot vendedor
+    atividadeId: number; //forgot atividade
+    vendedorId: number; //forgot vendedor
     cofins: number; 
     pis: number; 
     icms: number; 

@@ -1,6 +1,6 @@
 export interface INcm {
     id: number;
     ncmNumero: string;
-    descricaoNcm: string;
+    ncmDescricao: string;
     cestNumero: string;
 }

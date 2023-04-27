@@ -4,7 +4,7 @@ export interface ITransportadora {
     sufixo: string;
     tipoEmpresa: string; 
     documento: string; 
-    inscricao: string;
+    inscricaoEstadual: string;
     
     contato: string; 
     telefone: string; 
@@ -20,5 +20,5 @@ export interface ITransportadora {
     uf: string; 
     cep: string; 
     pais: string; 
-    municipio: string;
+    codMunicipal: string;
 }

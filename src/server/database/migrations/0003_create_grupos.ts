@@ -14,14 +14,14 @@ export async function up(knex: Knex) {
             table.boolean('materiaPrima');
 
             table
-                .bigInteger('ncmNumero')
+                .bigInteger('ncmId')
                 .index()
                 .references('id')
                 .inTable(ETableNames.ncm)
                 .onUpdate('CASCADE')
                 .onDelete('RESTRICT');
 
-            table.double('comissao');
+            table.float('comissao');
 
             
             table.comment('Tabela usada para armazenar grupos.');
