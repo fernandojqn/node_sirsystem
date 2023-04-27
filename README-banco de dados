@@ -1,0 +1,68 @@
+# Atividades
+#   atividade 50
+
+
+# Pessoal
+#   nome               50
+#   sufixo             50
+#   tipoEmpresa         4
+#   documento          18
+#   inscricao estadual 14
+#   telefone           15
+#   celular            15
+#   email              50
+#   site               50
+
+
+# Endereço
+#   endereco    60
+#   numero       6
+#   complemento 20
+#   bairro      60
+#   cidade      40
+#   uf           2
+#   cep          9
+#   pais        25
+#   codMunicipio 7
+
+
+# vendedores
+#   comisso float
+#   irpf    float
+#   banco   20
+#   agencia 10
+#   conta   15
+#   pix     50
+#   obs     8000
+
+
+# NCM
+#   ncmNumero   8
+#   descricao   100
+#   cest        7
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#

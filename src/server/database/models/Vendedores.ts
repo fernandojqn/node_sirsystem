@@ -2,12 +2,14 @@ export interface IVendedor {
     id: number;
 
     nome: string;
+    sufixo: string;
     tipoEmpresa: string;
     documento: string;
-    inscricao: string; 
+    inscricaoEstadual: string; 
     telefone: string;
     celular: string; 
     email: string;
+    site: string;
 
     endereco: string; 
     numero: string; 
@@ -17,7 +19,7 @@ export interface IVendedor {
     uf: string; 
     cep: string; 
     pais: string; 
-    municipio: string;
+    codMunicipal: string;
 
     comissao: number; 
     irpf: number; 

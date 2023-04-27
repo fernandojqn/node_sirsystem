@@ -11,18 +11,18 @@ router.get('/', (_, res) => { return res.send('Olá, DEV!'); });
 router.post('/entrar', LoginController.singInValidation, LoginController.singIn);
 
 // Rotas da paginas atividades
-router.post('/atividades', ensureAuthenticated, AtividadesController.createValidation, AtividadesController.create);
-router.get('/atividades', ensureAuthenticated, AtividadesController.getAllValidation, AtividadesController.getAll);
-router.get('/atividades/:id', ensureAuthenticated, AtividadesController.getByIdValidation, AtividadesController.getById);
-router.put('/atividades/:id', ensureAuthenticated, AtividadesController.updateByIdValidation, AtividadesController.updateById);
-router.delete('/atividades/:id', ensureAuthenticated, AtividadesController.deleteByIdValidation, AtividadesController.deleteById);
+router.post('/atividades', AtividadesController.createValidation, AtividadesController.create);
+router.get('/atividades', AtividadesController.getAllValidation, AtividadesController.getAll);
+router.get('/atividades/:id', AtividadesController.getByIdValidation, AtividadesController.getById);
+router.put('/atividades/:id', AtividadesController.updateByIdValidation, AtividadesController.updateById);
+router.delete('/atividades/:id', AtividadesController.deleteByIdValidation, AtividadesController.deleteById);
 
 // Rotas da paginas clientes
-router.post('/clientes', ensureAuthenticated, ClientesController.createValidation, ClientesController.create);
-router.get('/clientes', ensureAuthenticated, ClientesController.getAllValidation, ClientesController.getAll);
-router.get('/clientes/:id', ensureAuthenticated, ClientesController.getByIdValidation, ClientesController.getById);
-router.put('/clientes/:id', ensureAuthenticated, ClientesController.updateByIdValidation, ClientesController.updateById);
-router.delete('/clientes/:id', ensureAuthenticated, ClientesController.deleteByIdValidation, ClientesController.deleteById);
+router.post('/clientes', ClientesController.createValidation, ClientesController.create);
+router.get('/clientes', ClientesController.getAllValidation, ClientesController.getAll);
+router.get('/clientes/:id', ClientesController.getByIdValidation, ClientesController.getById);
+router.put('/clientes/:id', ClientesController.updateByIdValidation, ClientesController.updateById);
+router.delete('/clientes/:id', ClientesController.deleteByIdValidation, ClientesController.deleteById);
 
 // Rotas da paginas empresas
 router.post('/empresas', ensureAuthenticated, EmpresasController.createValidation, EmpresasController.create);
