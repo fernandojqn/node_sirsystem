@@ -10,12 +10,12 @@ interface IParamProps {
   id?: number;
 }
 
-interface IBodyProps extends Omit<INcm, 'id'> { }
+interface IBodyProps extends Omit<INcm, 'id' | 'empresaId' | 'usuarioId'> { }
 
 export const updateByIdValidation = validation(get => ({
     body: get<IBodyProps>(yup.object().shape({
         ncmNumero: yup.string().required().min(8).max(8),
-        descricao: yup.string().required().min(3).max(100),
+        ncmDescricao: yup.string().required().min(3).max(100),
         cestNumero: yup.string().required().min(7).max(7),
     })),
     params: get<IParamProps>(yup.object().shape({

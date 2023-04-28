@@ -11,8 +11,8 @@ export async function up(knex: Knex) {
             table.bigIncrements('id').primary().index();
 
             table.string('produto', 50).checkLength('<=', 50).index().notNullable();
-            table.string('codigoProduto', 13).checkLength('<=', 13).index().notNullable();
-            table.string('ean', 13).checkLength('<=', 13);
+            table.string('codigoProduto', 13).checkLength('<=', 13).index().notNullable().unique();
+            table.string('ean', 13).checkLength('<=', 13).index().notNullable().unique();
 
             table.bigInteger('grupoId').index().references('id')
                 .inTable(ETableNames.grupos).onUpdate('CASCADE').onDelete('RESTRICT');
@@ -96,7 +96,13 @@ export async function up(knex: Knex) {
             table.float('porcentagemReducao');
             table.boolean('comissaoDiferenciada');
             table.float('porcentagemComissao');
-            
+
+            //Para o banco logico
+            table.bigInteger('empresaId').index().references('id')
+                .inTable(ETableNames.empresas).onUpdate('CASCADE').onDelete('RESTRICT');
+
+            table.bigInteger('usuarioId').index().references('id')
+                .inTable(ETableNames.usuarios).onUpdate('CASCADE').onDelete('RESTRICT');
 
             table.comment('Tabela usada para armazenar produtos.');
         })

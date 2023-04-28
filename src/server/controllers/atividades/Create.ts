@@ -6,7 +6,7 @@ import { IAtividade } from '../../database/models';
 import { AtividadesProvider } from '../../database/providers';
 
 //Validação
-interface IBodyProps extends Omit<IAtividade, 'id'> {}
+interface IBodyProps extends Omit<IAtividade, 'id' | 'usuarioId' | 'empresaId'> {}
 
 export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({

@@ -3,7 +3,7 @@ import { Knex } from '../../knex';
 import { ITipo } from '../../models';
 
 
-export const updateById = async (id: number, tipo: Omit<ITipo, 'id'>): Promise<void | Error> => {
+export const updateById = async (id: number, tipo: Omit<ITipo, 'id' | 'empresaId' | 'usuarioId'>): Promise<void | Error> => {
 
     try {
         const result = await Knex(ETableNames.tipos)

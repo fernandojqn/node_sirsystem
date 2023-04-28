@@ -3,7 +3,7 @@ import { Knex } from '../../knex';
 import { ITransportadora } from '../../models';
 
 
-export const create = async (transportadora: Omit<ITransportadora, 'id'>): Promise<number | Error> => {
+export const create = async (transportadora: Omit<ITransportadora, 'id' | 'empresaId' | 'usuarioId'>): Promise<number | Error> => {
 
     try {
         const [result] = await Knex(ETableNames.transportadoras)

@@ -6,14 +6,14 @@ import { ITransportadora } from '../../database/models';
 import { TransportadorasProvider } from '../../database/providers';
 
 //Validação
-interface IBodyProps extends Omit<ITransportadora, 'id'> {}
+interface IBodyProps extends Omit<ITransportadora, 'id' | 'empresaId' | 'usuarioId'> {}
 
 export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
         sufixo: yup.string().required().min(3).max(50),
         tipoEmpresa: yup.string().optional().min(1).max(4).default(''),
-        documento: yup.string().optional().min(3).max(20).default(''),
-        inscricao: yup.string().optional().min(3).max(20).default(''),
+        documento: yup.string().optional().min(3).max(18).default(''),
+        inscricaoEstadual: yup.string().optional().min(3).max(14).default(''),
         
         contato: yup.string().optional().min(3).max(50).default(''),
         telefone: yup.string().optional().min(3).max(15).default(''),
@@ -21,15 +21,15 @@ export const createValidation = validation((getSchema) => ({
         email: yup.string().optional().min(5).max(50).default('').email(),
         site: yup.string().optional().min(3).max(50).default(''),
         
-        endereco: yup.string().optional().min(3).max(50).default(''),
-        numero: yup.string().optional().min(3).max(10).default(''),
-        complemento: yup.string().optional().min(3).max(50).default(''),
-        bairro: yup.string().optional().min(3).max(50).default(''),
-        cidade: yup.string().optional().min(3).max(50).default(''),
+        endereco: yup.string().optional().min(3).max(60).default(''),
+        numero: yup.string().optional().min(3).max(6).default(''),
+        complemento: yup.string().optional().min(3).max(20).default(''),
+        bairro: yup.string().optional().min(3).max(60).default(''),
+        cidade: yup.string().optional().min(3).max(40).default(''),
         uf: yup.string().optional().min(2).max(2).default(''),
-        cep: yup.string().optional().min(3).max(10).default(''),
-        pais: yup.string().optional().min(3).max(50).default(''),
-        municipio: yup.string().optional().min(7).max(7).default('')
+        cep: yup.string().optional().min(3).max(9).default(''),
+        pais: yup.string().optional().min(3).max(25).default(''),
+        codMunicipal: yup.string().optional().min(7).max(7).default('')
     }))
 }));
 

@@ -63,4 +63,9 @@ export interface ICliente {
     ipi: number;
     simplesNascional: boolean; 
     retemISS: boolean;
+
+    
+
+    empresaId: number;
+    usuarioId: number;
 }

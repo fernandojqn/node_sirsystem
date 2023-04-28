@@ -10,17 +10,19 @@ interface IParamProps {
   id?: number;
 }
 
-interface IBodyProps extends Omit<IVendedor, 'id'> { }
+interface IBodyProps extends Omit<IVendedor, 'id' | 'empresaId' | 'usuarioId'> { }
 
 export const updateByIdValidation = validation(get => ({
     body: get<IBodyProps>(yup.object().shape({
         nome: yup.string().required().min(3).max(50),
+        sufixo: yup.string().optional().max(50).default(''),
         tipoEmpresa: yup.string().optional().default('').max(10),
         documento: yup.string().optional().default('').max(20),
-        inscricao: yup.string().optional().default('').max(20),
+        inscricaoEstadual: yup.string().optional().default('').max(20),
         telefone: yup.string().optional().default('').max(15),
         celular: yup.string().optional().default('').max(15),
         email: yup.string().email().optional().default('').max(100),
+        site: yup.string().optional().default('').max(100),
 
         endereco: yup.string().optional().default('').max(150), 
         numero: yup.string().optional().default('').max(10), 
@@ -30,7 +32,7 @@ export const updateByIdValidation = validation(get => ({
         uf: yup.string().optional().default('').max(2), 
         cep: yup.string().optional().default('').max(10), 
         pais: yup.string().optional().default('').max(50), 
-        municipio: yup.string().optional().default('').max(50),
+        codMunicipal: yup.string().optional().default('').max(7),
 
         comissao: yup.number().optional().default(0), 
         irpf: yup.number().optional().default(0), 

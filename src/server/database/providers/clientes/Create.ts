@@ -3,7 +3,7 @@ import { Knex } from '../../knex';
 import { ICliente } from '../../models';
 
 
-export const create = async (cliente: Omit<ICliente, 'id'>): Promise<number | Error> => {
+export const create = async (cliente: Omit<ICliente, 'id' | 'empresaId' | 'usuarioId'>): Promise<number | Error> => {
 
     try {
         const [result] = await Knex(ETableNames.clientes)

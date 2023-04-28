@@ -11,15 +11,16 @@ export async function up(knex: Knex) {
             table.bigIncrements('id').primary().index();
             table.string('sufixo', 50).checkLength('<=', 50).index().notNullable();
             table.string('nome', 50).checkLength('<=', 50).index().notNullable();
+
             table.string('tipoEmpresa', 4).checkLength('<=', 4);
             table.string('documento', 18).checkLength('<=', 20);
-            table.string('inscricao', 14).checkLength('<=', 20);
+            table.string('inscricaoEstadual', 14).checkLength('<=', 20);
             table.string('ccm', 12).checkLength('<=', 20);
 
             table.string('contato', 50).checkLength('<=', 50);
             table.string('telefone', 15).checkLength('<=', 15);
             table.string('celular', 15).checkLength('<=', 15);
-            table.string('email', 50).checkLength('>=', 5).checkLength('<=', 50);
+            table.string('email', 50).checkLength('<=', 50);
             table.string('site', 50).checkLength('<=', 50);
 
             table.string('endereco', 60).checkLength('<=', 60);
@@ -30,7 +31,7 @@ export async function up(knex: Knex) {
             table.string('uf', 2).checkLength('<=', 2);
             table.string('cep', 9).checkLength('<=', 9);
             table.string('pais', 25).checkLength('<=', 25);
-            table.string('municipio', 7).checkLength('<=', 7);
+            table.string('codMunicipal', 7).checkLength('<=', 7);
 
             table.boolean('cliente');
 
@@ -41,6 +42,19 @@ export async function up(knex: Knex) {
                 .inTable(ETableNames.clientes)
                 .onUpdate('CASCADE')
                 .onDelete('RESTRICT');
+
+
+            //Para o banco logico
+            table.bigInteger('empresaId').index().references('id')
+                .inTable(ETableNames.empresas).onUpdate('CASCADE').onDelete('RESTRICT');
+
+            table.bigInteger('usuarioId').index().references('id')
+                .inTable(ETableNames.usuarios).onUpdate('CASCADE').onDelete('RESTRICT');
+
+            table.comment('Tabela usada para armazenar produtos.');
+
+
+            
                         
             table.comment('Tabela usada para armazenar fornecedores.');
         })

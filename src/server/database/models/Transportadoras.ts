@@ -21,4 +21,8 @@ export interface ITransportadora {
     cep: string; 
     pais: string; 
     codMunicipal: string;
+    
+
+    empresaId: number;
+    usuarioId: number;
 }

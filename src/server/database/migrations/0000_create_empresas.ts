@@ -52,7 +52,13 @@ export async function up(knex: Knex) {
             table.string('apropriacaoCredito', 1).checkLength('<=', 1);
             table.string('tipoContribuicao', 1).checkLength('<=', 1);
             table.string('codigoEstrutura', 1).checkLength('<=', 1);
-            table.string('codigoOperacao', 1).checkLength('<=', 1);            
+            table.string('codigoOperacao', 1).checkLength('<=', 1);  
+            
+            //Para o banco logico
+            table.bigInteger('usuarioId').index().references('id')
+                .inTable(ETableNames.usuarios).onUpdate('CASCADE').onDelete('RESTRICT');
+
+            table.comment('Tabela usada para armazenar produtos.');
 
             table.comment('Tabela usada para armazenar empresas.');
         })

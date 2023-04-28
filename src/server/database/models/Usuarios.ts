@@ -7,5 +7,8 @@ export interface IUsuario {
     permissoes: string; 
     departamento: string;
     telefone: string; 
-    celular: string; 
+    celular: string;
+    
+
+    empresaId: number;
 }

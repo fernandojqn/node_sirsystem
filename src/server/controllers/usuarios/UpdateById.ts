@@ -10,7 +10,7 @@ interface IParamProps {
   id?: number;
 }
 
-interface IBodyProps extends Omit<IUsuario, 'id'> { }
+interface IBodyProps extends Omit<IUsuario, 'id' | 'empresaId' | 'usuarioId'> { }
 
 export const updateByIdValidation = validation(get => ({
     body: get<IBodyProps>(yup.object().shape({

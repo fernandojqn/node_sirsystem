@@ -6,4 +6,8 @@ export interface IGrupo {
     materiaPrima: boolean; 
     ncmId: number; //forget do ncm
     comissao: number;
+    
+
+    empresaId: number;
+    usuarioId: number;
 }

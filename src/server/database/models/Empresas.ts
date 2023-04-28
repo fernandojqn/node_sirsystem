@@ -23,7 +23,7 @@ export interface IEmpresa {
     uf: string; 
     cep: string; 
     pais: string; 
-    codMunicipio: string;
+    codMunicipal: string;
     
     modeloCF: string;
     serieCF: string;
@@ -44,5 +44,8 @@ export interface IEmpresa {
     apropriacaoCredito: string; 
     tipoContribuicao: string;
     codigoEstrutura: string; 
-    codigoOperacao: string;    
+    codigoOperacao: string;
+    
+
+    usuarioId: number;
 }

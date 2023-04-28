@@ -1,6 +1,5 @@
 export interface IVendedor {
     id: number;
-
     nome: string;
     sufixo: string;
     tipoEmpresa: string;
@@ -28,4 +27,8 @@ export interface IVendedor {
     conta: string; 
     pix: string;
     obs: string;
+    
+
+    empresaId: number;
+    usuarioId: number;
 }

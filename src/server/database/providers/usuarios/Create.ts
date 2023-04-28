@@ -4,7 +4,7 @@ import { Knex } from '../../knex';
 import { IUsuario } from '../../models';
 
 
-export const create = async (usuario: Omit<IUsuario, 'id'>): Promise<number | Error> => {
+export const create = async (usuario: Omit<IUsuario, 'id' | 'empresaId' | 'usuarioId'>): Promise<number | Error> => {
 
     try {
         //Gerando crypto para senha

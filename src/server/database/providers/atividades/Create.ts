@@ -3,7 +3,7 @@ import { Knex } from '../../knex';
 import { IAtividade } from '../../models';
 
 
-export const create = async (atividade: Omit<IAtividade, 'id'>): Promise<number | Error> => {
+export const create = async (atividade: Omit<IAtividade, 'id' | 'empresaId' | 'usuarioId'>): Promise<number | Error> => {
 
     try {
         const [result] = await Knex(ETableNames.atividades)

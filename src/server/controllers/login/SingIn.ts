@@ -8,7 +8,7 @@ import { JWTService, PasswordCrypto } from '../../shared/services';
 
 //Validação
 interface IBodyProps extends Omit<IUsuario, 'id' | 'nome' | 'permissoes' | 'departamento' | 
-        'telefone' | 'celular'> {}
+        'telefone' | 'celular' | 'empresaId' | 'usuarioId'> {}
 
 export const singInValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({

@@ -23,6 +23,15 @@ export async function up(knex: Knex) {
 
             table.float('comissao');
 
+            //Para o banco logico
+            table.bigInteger('empresaId').index().references('id')
+                .inTable(ETableNames.empresas).onUpdate('CASCADE').onDelete('RESTRICT');
+
+            table.bigInteger('usuarioId').index().references('id')
+                .inTable(ETableNames.usuarios).onUpdate('CASCADE').onDelete('RESTRICT');
+
+            table.comment('Tabela usada para armazenar produtos.');
+
             
             table.comment('Tabela usada para armazenar grupos.');
         })

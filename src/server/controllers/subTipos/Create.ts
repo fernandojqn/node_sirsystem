@@ -6,11 +6,11 @@ import { ISubTipo } from '../../database/models';
 import { SubTiposProvider } from '../../database/providers';
 
 //Validação
-interface IBodyProps extends Omit<ISubTipo, 'id'> {}
+interface IBodyProps extends Omit<ISubTipo, 'id' | 'empresaId' | 'usuarioId'> {}
 
 export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
-        idTipo: yup.number().required(),
+        tipoId: yup.number().required(),
         subDescricao: yup.string().required().min(3).max(50)
     }))
 }));

@@ -6,14 +6,14 @@ import { ITributacao } from '../../database/models';
 import { TributacoesProvider } from '../../database/providers';
 
 //Validação
-interface IBodyProps extends Omit<ITributacao, 'id'> {}
+interface IBodyProps extends Omit<ITributacao, 'id' | 'empresaId' | 'usuarioId'> {}
 
 export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
         regra: yup.string().required().min(3).max(50),
         cfop: yup.string().optional().min(4).max(4).default(''),
         cst: yup.string().optional().min(3).max(3).default(''),
-        ncmNumero: yup.number().optional().default(0),
+        ncmId: yup.number().optional().default(0),
         uf: yup.string().optional().min(2).max(2).default(''),
         icms: yup.number().optional().default(0),
         ipi: yup.number().optional().default(0),

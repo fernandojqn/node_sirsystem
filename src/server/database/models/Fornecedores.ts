@@ -3,6 +3,7 @@ export interface IFornecedor {
     
     sufixo: string; 
     nome: string; 
+    
     tipoEmpresa: string; 
     documento: string; 
     inscricaoEstadual: string; 
@@ -26,5 +27,9 @@ export interface IFornecedor {
 
     cliente: boolean;
     clienteId: number;
+    
+
+    empresaId: number;
+    usuarioId: number;
 
 }

@@ -6,14 +6,14 @@ import { IGrupo } from '../../database/models';
 import { GruposProvider } from '../../database/providers';
 
 //Validação
-interface IBodyProps extends Omit<IGrupo, 'id'> {}
+interface IBodyProps extends Omit<IGrupo, 'id' | 'empresaId' | 'usuarioId'> {}
 
 export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
         grupoDescricao: yup.string().required().min(3).max(50),
         produtoAcabado: yup.boolean().optional().default(false),
         materiaPrima: yup.boolean().optional().default(false),
-        ncmNumero: yup.number().optional().default(0),
+        ncmId: yup.number().optional().default(0),
         comissao: yup.number().optional().default(0)
     }))
 }));

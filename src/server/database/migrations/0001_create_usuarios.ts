@@ -17,6 +17,13 @@ export async function up(knex: Knex) {
             table.string('telefone', 15).checkLength('<=', 15);
             table.string('celular', 15).checkLength('<=', 15);
 
+            //Para o banco logico
+            table.bigInteger('empresaId').index().references('id')
+                .inTable(ETableNames.empresas).onUpdate('CASCADE').onDelete('RESTRICT');
+
+            
+
+            table.comment('Tabela usada para armazenar produtos.');
 
             table.comment('Tabela usada para armazenar usuarios.');
         })

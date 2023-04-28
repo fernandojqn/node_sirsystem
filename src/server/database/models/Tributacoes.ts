@@ -16,4 +16,8 @@ export interface ITributacao {
     iss: number;
     anp: number;
     ibpt: number;
+    
+
+    empresaId: number;
+    usuarioId: number;
 }

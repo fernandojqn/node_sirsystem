@@ -3,4 +3,8 @@ export interface INcm {
     ncmNumero: string;
     ncmDescricao: string;
     cestNumero: string;
+    
+
+    empresaId: number;
+    usuarioId: number;
 }
