@@ -15,7 +15,7 @@ interface IBodyProps extends Omit<ITransportadora, 'id' | 'empresaId' | 'usuario
 export const updateByIdValidation = validation(get => ({
     body: get<IBodyProps>(yup.object().shape({
         sufixo: yup.string().required().min(3).max(50),
-        tipoEmpresa: yup.string().optional().min(1).max(4).default(''),
+        tipoEmpresa: yup.string().optional().max(10).default(''),
         documento: yup.string().optional().min(3).max(18).default(''),
         inscricaoEstadual: yup.string().optional().min(3).max(14).default(''),
         
@@ -33,7 +33,7 @@ export const updateByIdValidation = validation(get => ({
         uf: yup.string().optional().min(2).max(2).default(''),
         cep: yup.string().optional().min(3).max(9).default(''),
         pais: yup.string().optional().min(3).max(25).default(''),
-        codMunicipal: yup.string().optional().min(7).max(7).default('')
+        codMunicipal: yup.string().optional().min(7).default('')
     })),
     params: get<IParamProps>(yup.object().shape({
         id: yup.number().integer().required().moreThan(0),

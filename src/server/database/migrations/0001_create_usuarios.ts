@@ -23,8 +23,6 @@ export async function up(knex: Knex) {
 
             
 
-            table.comment('Tabela usada para armazenar produtos.');
-
             table.comment('Tabela usada para armazenar usuarios.');
         })
         .then(() => {

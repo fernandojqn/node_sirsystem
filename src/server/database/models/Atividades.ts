@@ -6,5 +6,4 @@ export interface IAtividade {
 
     empresaId: number;
     usuarioId: number;
-
 }

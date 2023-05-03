@@ -14,7 +14,10 @@ export const createValidation = validation((getSchema) => ({
         produtoAcabado: yup.boolean().optional().default(false),
         materiaPrima: yup.boolean().optional().default(false),
         ncmId: yup.number().optional().default(0),
-        comissao: yup.number().optional().default(0)
+        icms: yup.number().optional().default(0),
+        ipi: yup.number().optional().default(0),
+        comissao: yup.number().optional().default(0),
+        valorMinimoPraticado: yup.number().optional().default(0)
     }))
 }));
 

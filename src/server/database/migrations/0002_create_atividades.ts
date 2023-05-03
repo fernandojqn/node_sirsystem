@@ -18,8 +18,7 @@ export async function up(knex: Knex) {
             table.bigInteger('usuarioId').index().references('id')
                 .inTable(ETableNames.usuarios).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.comment('Tabela usada para armazenar produtos.');
-
+                
             
             table.comment('Tabela usada para armazenar atividades.');
         })

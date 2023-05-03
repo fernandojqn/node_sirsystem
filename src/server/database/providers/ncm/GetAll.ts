@@ -9,7 +9,7 @@ export const getAll = async (page: number, limit: number, filter: string, id = 0
         const result = await Knex(ETableNames.ncm)
             .select('*') // seleciona tudo
             .where('id', Number(id)) //que tenha esse id            
-            .orWhere('descricao', 'like', `%${filter}%`)
+            .orWhere('ncmDescricao', 'like', `%${filter}%`)
             .offset((page - 1) * limit) //formula para aparecer a quantidade por pagina
             .limit(limit); // limita quantos registros vai aparecer por paginação
 

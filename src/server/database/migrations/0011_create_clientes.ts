@@ -11,7 +11,7 @@ export async function up(knex: Knex) {
             table.bigIncrements('id').primary().index();
             table.string('sufixo', 50).checkLength('<=', 50).index().notNullable();
             table.string('nome', 50).checkLength('<=', 50).index().notNullable();
-            table.string('tipoEmpresa', 4).checkLength('<=', 4);
+            table.string('tipoEmpresa', 10).checkLength('<=', 10);
             table.string('documento', 18).checkLength('<=', 18);
             table.string('inscricaoEstadual', 14).checkLength('<=', 14);
             table.string('ccm', 12).checkLength('<=', 12);
@@ -93,10 +93,7 @@ export async function up(knex: Knex) {
             table.bigInteger('usuarioId').index().references('id')
                 .inTable(ETableNames.usuarios).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.comment('Tabela usada para armazenar produtos.');
-
             
-
             table.comment('Tabela usada para armazenar clientes.');
         })
         .then(() => {

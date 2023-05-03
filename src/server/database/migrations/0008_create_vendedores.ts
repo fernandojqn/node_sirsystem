@@ -10,7 +10,7 @@ export async function up(knex: Knex) {
             
             table.string('nome', 50).checkLength('<=', 50).index().notNullable();
             table.string('sufixo', 50).checkLength('<=', 50).index();
-            table.string('tipoEmpresa', 4).checkLength('<=', 4);
+            table.string('tipoEmpresa', 10).checkLength('<=', 10);
             table.string('documento', 18).index().checkLength('<=', 18);
             table.string('inscricaoEstadual', 14).checkLength('<=', 14);
             table.string('telefone', 15).checkLength('<=', 15);

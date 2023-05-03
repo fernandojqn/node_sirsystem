@@ -18,7 +18,10 @@ export const updateByIdValidation = validation(get => ({
         produtoAcabado: yup.boolean().optional().default(false),
         materiaPrima: yup.boolean().optional().default(false),
         ncmId: yup.number().optional().default(0),
-        comissao: yup.number().optional().default(0)
+        icms: yup.number().optional().default(0),
+        ipi: yup.number().optional().default(0),
+        comissao: yup.number().optional().default(0),
+        valorMinimoPraticado: yup.number().optional().default(0)
     })),
     params: get<IParamProps>(yup.object().shape({
         id: yup.number().integer().required().moreThan(0),

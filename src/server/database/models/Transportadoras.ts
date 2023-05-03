@@ -2,7 +2,7 @@ export interface ITransportadora {
     id: number;
     
     sufixo: string;
-    tipoEmpresa: string; 
+    tipoEmpresa: string;
     documento: string; 
     inscricaoEstadual: string;
     

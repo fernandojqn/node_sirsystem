@@ -21,7 +21,11 @@ export async function up(knex: Knex) {
                 .onUpdate('CASCADE')
                 .onDelete('RESTRICT');
 
+            table.float('icms');
+            table.float('ipi');
             table.float('comissao');
+            table.float('valorMinimoPraticado');
+            
 
             //Para o banco logico
             table.bigInteger('empresaId').index().references('id')
@@ -30,8 +34,7 @@ export async function up(knex: Knex) {
             table.bigInteger('usuarioId').index().references('id')
                 .inTable(ETableNames.usuarios).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.comment('Tabela usada para armazenar produtos.');
-
+            
             
             table.comment('Tabela usada para armazenar grupos.');
         })
