@@ -30,6 +30,7 @@ export interface IEmpresa {
     numSerie: string; 
     obs: string;
     obsFisco: string;
+    
     codigoNatureza: string; 
     modeloNF: string; 
     serie: string; 

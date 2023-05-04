@@ -29,7 +29,7 @@ export async function up(knex: Knex) {
             table.string('uf', 2).checkLength('<=', 2);
             table.string('cep', 9).checkLength('<=', 9);
             table.string('pais', 25).checkLength('<=', 25);
-            table.string('codMunicipio', 7).checkLength('=', 7);
+            table.string('codMunicipal', 7).checkLength('<=', 7);
 
             table.string('modeloCF', 2).checkLength('<=', 2);
             table.string('serieCF', 2).checkLength('<=', 2);
@@ -45,7 +45,7 @@ export async function up(knex: Knex) {
             table.float('aliquotaICMS');
             table.float('aliquotaCOFINS');
             table.float('aliquotaPIS');
-            table.string('perfil', 1).checkLength('=', 1);
+            table.string('perfil', 1).checkLength('<=', 1);
 
             table.string('tipoRegime', 1).checkLength('<=', 1);
             table.string('criterioEscritura', 1).checkLength('<=', 1);
