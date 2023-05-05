@@ -13,9 +13,9 @@ export const createValidation = validation((getSchema) => ({
         sufixo: yup.string().required().min(3).max(50),
         nome: yup.string().required().max(50).default(''),
 
-        tipoEmpresa: yup.string().optional().max(4).default(''),
-        documento: yup.string().optional().max(20).default(''),
-        inscricaoEstadual: yup.string().optional().max(20).default(''),
+        tipoEmpresa: yup.string().optional().max(10).default(''),
+        documento: yup.string().optional().max(18).default(''),
+        inscricaoEstadual: yup.string().optional().max(14).default(''),
         ccm: yup.string().optional().max(20).default(''),
         
         contato: yup.string().optional().max(50).default(''),

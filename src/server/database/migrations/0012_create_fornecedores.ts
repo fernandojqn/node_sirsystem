@@ -13,8 +13,8 @@ export async function up(knex: Knex) {
             table.string('nome', 50).checkLength('<=', 50).index().notNullable();
 
             table.string('tipoEmpresa', 10).checkLength('<=', 10);
-            table.string('documento', 18).checkLength('<=', 20);
-            table.string('inscricaoEstadual', 14).checkLength('<=', 20);
+            table.string('documento', 18).checkLength('<=', 18);
+            table.string('inscricaoEstadual', 14).checkLength('<=', 14);
             table.string('ccm', 12).checkLength('<=', 20);
 
             table.string('contato', 50).checkLength('<=', 50);

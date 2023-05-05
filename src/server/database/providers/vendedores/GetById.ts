@@ -14,7 +14,7 @@ export const getById = async (id: number): Promise<IVendedor | Error> => {
         if(result) return result;
 
 
-        return new Error('Registro não encontrado');        
+        return new Error('Registro não encontrado');
     } catch (error) {
         return new Error('Erro ao consultar o registro');
     }
