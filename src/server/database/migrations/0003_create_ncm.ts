@@ -7,9 +7,9 @@ export async function up(knex: Knex) {
         .schema
         .createTable(ETableNames.ncm, table => {
             table.bigIncrements('id').primary().index();
-            table.string('ncmNumero', 8).checkLength('=', 8).index().notNullable();
+            table.string('ncmNumero', 8).checkLength('<=', 8).index().notNullable();
             table.string('ncmDescricao', 100).checkLength('<=', 100).index().notNullable();
-            table.string('cestNumero', 7).checkLength('=', 7);
+            table.string('cestNumero', 7).checkLength('<=', 7);
 
             //Para o banco logico
             table.bigInteger('empresaId').index().references('id')

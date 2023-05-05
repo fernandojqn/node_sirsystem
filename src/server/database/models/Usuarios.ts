@@ -4,11 +4,10 @@ export interface IUsuario {
     nome: string; 
     email: string;
     senha: string;
-    permissoes: string; 
-    departamento: string;
     telefone: string; 
     celular: string;
-    
+    permissoes: string; 
+    departamento: string;
 
     empresaId: number;
 }

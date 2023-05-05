@@ -6,17 +6,16 @@ import { IUsuario } from '../../database/models';
 import { UsuariosProvider } from '../../database/providers';
 
 //Validação
-interface IBodyProps extends Omit<IUsuario, 'id' | 'empresaId' | 'usuarioId'> {}
+interface IBodyProps extends Omit<IUsuario, 'id' | 'senha' | 'empresaId' | 'usuarioId'> {}
 
 export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
         nome: yup.string().required().min(3).max(50),
         email: yup.string().required().min(3).max(50).email(),
-        senha: yup.string().required().min(6),
-        permissoes: yup.string().optional().min(3).max(30).default(''),
-        departamento: yup.string().optional().min(3).max(30).default(''),
-        telefone: yup.string().optional().max(15).default(''),
-        celular: yup.string().optional().max(15).default(''),
+        permissoes: yup.string().optional().max(30).default(''),
+        departamento: yup.string().optional().max(30).default(''),
+        telefone: yup.string().optional().default(''),
+        celular: yup.string().optional().default(''),
     }))
 }));
 

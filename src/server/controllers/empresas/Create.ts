@@ -40,7 +40,7 @@ export const createValidation = validation((getSchema) => ({
         obs: yup.string().optional().max(8000).default(''),
         obsFisco: yup.string().optional().max(8000).default(''),
         
-        codigoNatureza: yup.string().optional().max(50).default(''),
+        codigoNatureza: yup.string().optional().max(1).default(''),
         modeloNF: yup.string().optional().max(2).default(''),
         serie: yup.string().optional().max(2).default(''),
         
@@ -50,12 +50,12 @@ export const createValidation = validation((getSchema) => ({
         aliquotaPIS: yup.number().optional().default(0),
         perfil: yup.string().optional().max(1).default(''),
 
-        tipoRegime: yup.string().optional().max(50).default(''),        
-        criterioEscritura: yup.string().optional().max(50).default(''),        
-        apropriacaoCredito: yup.string().optional().max(50).default(''),        
-        tipoContribuicao: yup.string().optional().max(50).default(''),        
-        codigoEstrutura: yup.string().optional().max(100).default(''),        
-        codigoOperacao: yup.string().optional().max(50).default('')        
+        tipoRegime: yup.string().optional().max(1).default(''),        
+        criterioEscritura: yup.string().optional().max(1).default(''),        
+        apropriacaoCredito: yup.string().optional().max(1).default(''),        
+        tipoContribuicao: yup.string().optional().max(1).default(''),        
+        codigoEstrutura: yup.string().optional().max(1).default(''),        
+        codigoOperacao: yup.string().optional().max(1).default('')        
     }))
 }));
 

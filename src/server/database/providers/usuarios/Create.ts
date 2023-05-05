@@ -4,24 +4,18 @@ import { Knex } from '../../knex';
 import { IUsuario } from '../../models';
 
 
-export const create = async (usuario: Omit<IUsuario, 'id' | 'empresaId' | 'usuarioId'>): Promise<number | Error> => {
+export const create = async (usuario: Omit<IUsuario, 'id' | 'senha' | 'empresaId' | 'usuarioId'>): Promise<object | number | Error> => {
 
     try {
         //Gerando crypto para senha
-        const hashedPassword = await PasswordCrypto.hashPassword(usuario.senha);
+        const hashedPassword = await PasswordCrypto.hashPassword('12345678');  //usuario.senha
 
         const [result] = await Knex(ETableNames.usuarios)
             .insert({...usuario, senha: hashedPassword})
             .returning('id');
 
-        if (typeof result === 'object') {
-            return result.id;
-        } else if (typeof result === 'number') {
-            return result;
-        }
-
-
-        return new Error('Erro ao cadastrar o registro');
+        return result;
+        
     } catch (error) {
         return new Error('Erro ao cadastrar o registro');
     }

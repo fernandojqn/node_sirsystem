@@ -11,9 +11,9 @@ interface IBodyProps extends Omit<INcm, 'id' | 'empresaId' | 'usuarioId'> {}
 
 export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
-        ncmNumero: yup.string().required().min(8).max(8),
+        ncmNumero: yup.string().required().max(8),
         ncmDescricao: yup.string().required().min(3).max(100),
-        cestNumero: yup.string().required().min(7).max(7),
+        cestNumero: yup.string().optional().max(7).default('')
     }))
 }));
 
