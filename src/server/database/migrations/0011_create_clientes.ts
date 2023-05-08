@@ -3,7 +3,6 @@ import { Knex } from 'knex';
 
 import { ETableNames } from '../ETableNames';
 
-
 export async function up(knex: Knex) {
     return knex
         .schema
@@ -65,6 +64,8 @@ export async function up(knex: Knex) {
 
             table
                 .bigInteger('atividadeId')
+                .nullable()
+                .defaultTo(null)
                 .index()
                 .references('id')
                 .inTable(ETableNames.atividades)
@@ -73,6 +74,8 @@ export async function up(knex: Knex) {
 
             table
                 .bigInteger('vendedorId')
+                .nullable()
+                .defaultTo(null)
                 .index()
                 .references('id')
                 .inTable(ETableNames.vendedores)

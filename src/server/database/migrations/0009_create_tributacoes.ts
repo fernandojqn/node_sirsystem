@@ -10,8 +10,8 @@ export async function up(knex: Knex) {
         .createTable(ETableNames.tributacoes, table => {
             table.bigIncrements('id').primary().index();
             table.string('regra', 50).checkLength('<=', 50).index().notNullable().unique();
-            table.string('cfop', 4).checkLength('=', 4);
-            table.string('cst', 3).checkLength('=', 3);
+            table.string('cfop', 4).checkLength('<=', 4);
+            table.string('cst', 3).checkLength('<=', 3);
 
             table
                 .bigInteger('ncmId')
@@ -21,7 +21,7 @@ export async function up(knex: Knex) {
                 .onUpdate('CASCADE')
                 .onDelete('RESTRICT');
 
-            table.string('uf', 2).checkLength('=', 2);
+            table.string('uf', 2).checkLength('<=', 2);
             table.float('icms');
             table.float('ipi');
             table.float('pis');

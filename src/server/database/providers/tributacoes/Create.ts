@@ -3,21 +3,23 @@ import { Knex } from '../../knex';
 import { ITributacao } from '../../models';
 
 
-export const create = async (tributacao: Omit<ITributacao, 'id' | 'empresaId' | 'usuarioId'>): Promise<number | Error> => {
+export const create = async (tributacao: Omit<ITributacao, 'id' | 'empresaId' | 'usuarioId'>): Promise<object | number | Error> => {
 
     try {
+        // os IFs são para quando deixar o cbos em branco ele tira os
+        // campos do form para salvar nulo
+        if (tributacao.ncmId === 0) {
+            delete tributacao.ncmId;
+        }
+
+
         const [result] = await Knex(ETableNames.tributacoes)
             .insert(tributacao)
             .returning('id');
 
-        if (typeof result === 'object') {
-            return result.id;
-        } else if (typeof result === 'number') {
-            return result;
-        }
 
+        return result;
 
-        return new Error('Erro ao cadastrar o registro');
     } catch (error) {
         return new Error('Erro ao cadastrar o registro');
     }

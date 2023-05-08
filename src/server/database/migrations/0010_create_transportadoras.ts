@@ -26,7 +26,7 @@ export async function up(knex: Knex) {
             table.string('uf', 2).checkLength('<=', 2);
             table.string('cep', 9).checkLength('<=', 9);
             table.string('pais', 25).checkLength('<=', 25);
-            table.string('codMunicipal', 7).checkLength('=', 7);
+            table.string('codMunicipal', 7).checkLength('<=', 7);
 
 
             //Para o banco logico

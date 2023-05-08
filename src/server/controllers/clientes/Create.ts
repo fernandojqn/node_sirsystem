@@ -12,7 +12,7 @@ export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
         sufixo: yup.string().required().min(3).max(50),
         nome: yup.string().required().max(50).default(''),
-        tipoEmpresa: yup.string().optional().max(4).default(''),
+        tipoEmpresa: yup.string().optional().max(10).default(''),
         documento: yup.string().optional().max(18).default(''),
         inscricaoEstadual: yup.string().optional().max(14).default(''),
         ccm: yup.string().optional().max(12).default(''),
