@@ -11,19 +11,19 @@ export async function up(knex: Knex) {
             table.bigIncrements('id').primary().index();
 
             table.string('produto', 50).checkLength('<=', 50).index().notNullable();
-            table.string('codigoProduto', 13).checkLength('<=', 13).index().notNullable().unique();
-            table.string('ean', 13).checkLength('<=', 13).index().notNullable().unique();
+            table.string('codigoProduto', 13).checkLength('<=', 13).index().notNullable();
+            table.string('ean', 13).checkLength('<=', 13).index().notNullable();
 
-            table.bigInteger('grupoId').index().references('id')
+            table.bigInteger('grupoId').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.grupos).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.bigInteger('tipoId').index().references('id')
+            table.bigInteger('tipoId').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.tipos).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.bigInteger('subId').index().references('id')
+            table.bigInteger('subId').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.subTipos).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.bigInteger('modeloId').index().references('id')
+            table.bigInteger('modeloId').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.modelos).onUpdate('CASCADE').onDelete('RESTRICT');
 
             table.string('descricaoDetalhada', 100).checkLength('<=', 100);
@@ -32,7 +32,7 @@ export async function up(knex: Knex) {
             table.string('cstVendas', 3).checkLength('<=', 3);
             table.string('escrituracao', 2).checkLength('<=', 2);
             
-            table.bigInteger('ncmId').index().references('id')
+            table.bigInteger('ncmId').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.ncm).onUpdate('CASCADE').onDelete('RESTRICT');
 
             table.string('embalagem', 3).checkLength('<=', 3);
@@ -41,13 +41,13 @@ export async function up(knex: Knex) {
             table.float('liquido');
             table.float('bruto');
 
-            table.bigInteger('fornecedor1Id').index().references('id')
+            table.bigInteger('fornecedor1Id').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.fornecedores).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.bigInteger('fornecedor2Id').index().references('id')
+            table.bigInteger('fornecedor2Id').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.fornecedores).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.bigInteger('fornecedor3Id').index().references('id')
+            table.bigInteger('fornecedor3Id').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.fornecedores).onUpdate('CASCADE').onDelete('RESTRICT');
 
             table.string('codigoFabricante', 20).checkLength('<=', 20);

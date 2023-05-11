@@ -24,6 +24,7 @@ export interface ICliente {
     pais: string; 
     codMunicipal: string;
 
+    omesmoEntrega: boolean;
     enderecoEnt: string; 
     numeroEnt: string; 
     complementoEnt: string; 
@@ -34,6 +35,7 @@ export interface ICliente {
     paisEnt: string; 
     codMunicipalEnt: string; 
 
+    omesmoCorrespondencia:boolean;
     enderecoCor: string; 
     numeroCor: string; 
     complementoCor: string; 

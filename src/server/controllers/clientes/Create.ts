@@ -33,6 +33,7 @@ export const createValidation = validation((getSchema) => ({
         pais: yup.string().optional().max(25).default(''),
         codMunicipal: yup.string().optional().max(7).default(''),
         
+        omesmoEntrega: yup.boolean().optional().default(false),
         enderecoEnt: yup.string().optional().max(60).default(''),
         numeroEnt: yup.string().optional().max(6).default(''),
         complementoEnt: yup.string().optional().max(20).default(''),
@@ -43,6 +44,7 @@ export const createValidation = validation((getSchema) => ({
         paisEnt: yup.string().optional().max(25).default(''),
         codMunicipalEnt: yup.string().optional().max(7).default(''),
         
+        omesmoCorrespondencia: yup.boolean().optional().default(false),
         enderecoCor: yup.string().optional().max(60).default(''),
         numeroCor: yup.string().optional().max(6).default(''),
         complementoCor: yup.string().optional().max(20).default(''),

@@ -28,6 +28,8 @@ export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Respons
         req.query.limit || 7, req.query.filter || '', Number(req.query.id));
     const count = await AtividadesProvider.count(req.query.filter);
 
+    console.log('id',req.headers.id);
+
     if (result instanceof Error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: { default: result.message }

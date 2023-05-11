@@ -37,6 +37,7 @@ export const ensureAuthenticated: RequestHandler = async (req, res, next) => {
     //resgatar o id do usuario no jwt
     req.headers.idUsuario = jwtData.uid.toString();
     // em qualquer controller req.headers.idUsuario
+    //console.log('idUsuario', req.headers.idUsuario);
 
     return next();
 };

@@ -4,10 +4,10 @@ export interface IProduto {
     codigoProduto: string;     
     ean: string;
     
-    grupoId: number; //forgot grupo
-    tipoId: number; //forgot tipo
-    subId: number; //forgot subtipo
-    modeloId: number; //forgot modelo
+    grupoId?: number; //forgot grupo
+    tipoId?: number; //forgot tipo
+    subId?: number; //forgot subtipo
+    modeloId?: number; //forgot modelo
 
     descricaoDetalhada: string; 
     origem: string; 
@@ -15,7 +15,7 @@ export interface IProduto {
     cstVendas: string; 
     escrituracao: string; 
 
-    ncmId: number; //forgot ncm
+    ncmId?: number; //forgot ncm
 
     embalagem: string; 
 
@@ -27,9 +27,9 @@ export interface IProduto {
 
     bruto: number; 
 
-    fornecedor1Id: number; // forgot fornecedor
-    fornecedor2Id: number; // forgot fornecedor
-    fornecedor3Id: number; // forgot fornecedor
+    fornecedor1Id?: number; // forgot fornecedor
+    fornecedor2Id?: number; // forgot fornecedor
+    fornecedor3Id?: number; // forgot fornecedor
 
     codigoFabricante: string; 
     dataUltimaCompra: string; 

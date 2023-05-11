@@ -56,7 +56,7 @@ export const updateByIdValidation = validation(get => ({
         descricaoOutro: yup.string().optional().max(20).default(''),
         
         promocao: yup.boolean().optional().default(false),  
-        moeda: yup.string().optional().max(3).default(''),
+        moeda: yup.string().optional().max(10).default(''),
         precoCusto: yup.number().optional().default(0), 
         capagem: yup.number().optional().default(0), 
         precoCompra: yup.number().optional().default(0),

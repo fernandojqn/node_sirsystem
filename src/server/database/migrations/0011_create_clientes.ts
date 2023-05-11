@@ -31,6 +31,7 @@ export async function up(knex: Knex) {
             table.string('pais', 25).checkLength('<=', 25);
             table.string('codMunicipal', 7).checkLength('<=', 7);
 
+            table.boolean('omesmoEntrega');
             table.string('enderecoEnt', 60).checkLength('<=', 60);
             table.string('numeroEnt', 6).checkLength('<=', 6);
             table.string('complementoEnt', 20).checkLength('<=', 20);
@@ -41,6 +42,7 @@ export async function up(knex: Knex) {
             table.string('paisEnt', 25).checkLength('<=', 25);
             table.string('codMunicipalEnt', 7).checkLength('<=', 7);
 
+            table.boolean('omesmoCorrespondencia');
             table.string('enderecoCor', 60).checkLength('<=', 60);
             table.string('numeroCor', 6).checkLength('<=', 6);
             table.string('complementoCor', 20).checkLength('<=', 20);
