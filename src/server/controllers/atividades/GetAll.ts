@@ -22,13 +22,15 @@ export const getAllValidation = validation((getSchema) => ({
 }));
 
 
-
 export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) => {
     const result = await AtividadesProvider.getAll(req.query.page || 1, 
         req.query.limit || 7, req.query.filter || '', Number(req.query.id));
     const count = await AtividadesProvider.count(req.query.filter);
 
-    console.log('id',req.headers.id);
+    console.log('id', req.headers.id);
+    console.log('nome', req.headers.nome);
+    console.log('permissoes', req.headers.permissoes);
+    console.log('empresaId', req.headers.empresaId);
 
     if (result instanceof Error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

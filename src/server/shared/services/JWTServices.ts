@@ -3,9 +3,13 @@ import * as jwt from 'jsonwebtoken';
 
 interface IJwtData {
   uid: number; //passar o ID de usuario
+  nome: string;
+  permissoes: string;
+  empresaId: number;
 }
 
 const sign = (data: IJwtData): string | 'JWT_SECRET_NOT_FOUND' => {
+    
     if (!process.env.JWT_SECRET) return 'JWT_SECRET_NOT_FOUND'; //Se não conseguir encontrar o JWT
 
     //Primeira coisa que passa é a data (informações), depois o segredo, expired em 24h

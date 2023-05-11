@@ -22,6 +22,8 @@ export const ensureAuthenticated: RequestHandler = async (req, res, next) => {
     }
 
 
+    
+
     const jwtData = JWTService.verify(token); // só passar o token para o verificador
     
     if (jwtData === 'JWT_SECRET_NOT_FOUND') { //se ele é uma msg de erro
@@ -34,10 +36,12 @@ export const ensureAuthenticated: RequestHandler = async (req, res, next) => {
         });
     }
 
-    //resgatar o id do usuario no jwt
-    req.headers.idUsuario = jwtData.uid.toString();
-    // em qualquer controller req.headers.idUsuario
-    //console.log('idUsuario', req.headers.idUsuario);
+    console.log(jwtData);
+
+    req.headers.id = jwtData.uid.toString();
+    req.headers.nome = jwtData.nome;
+    req.headers.permissoes = jwtData.permissoes;
+    req.headers.empresaId = jwtData.empresaId.toString();
 
     return next();
 };

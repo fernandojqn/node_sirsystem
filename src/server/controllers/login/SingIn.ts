@@ -47,7 +47,12 @@ export const singIn = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
         });    
     } else { //Senha okay
         //fabricando um token
-        const acessToken = JWTService.sign({uid: usuario.id});
+        const acessToken = JWTService.sign({
+            uid: usuario.id,
+            nome: usuario.nome,
+            permissoes: usuario.permissoes,
+            empresaId: usuario.empresaId
+        });
         if (acessToken === 'JWT_SECRET_NOT_FOUND') {
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
                 errors: {
