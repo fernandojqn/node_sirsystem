@@ -3,9 +3,9 @@ import * as jwt from 'jsonwebtoken';
 
 interface IJwtData {
   uid: number; //passar o ID de usuario
-  nome: string;
-  permissoes: string;
-  empresaId: number;
+  nome?: string;
+  permissoes?: string;
+  empresaId?: number;
 }
 
 const sign = (data: IJwtData): string | 'JWT_SECRET_NOT_FOUND' => {
