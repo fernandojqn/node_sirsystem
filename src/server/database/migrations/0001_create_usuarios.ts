@@ -12,6 +12,7 @@ export async function up(knex: Knex) {
             table.string('nome', 50).index().checkLength('<=', 50).notNullable();
             table.string('email', 50).index().unique().checkLength('<=', 50).notNullable();
             table.string('senha').checkLength('>=', 6).notNullable();
+            
             table.string('permissoes', 1).checkLength('<=', 1);
             table.string('departamento', 30).checkLength('<=', 30);
             table.string('telefone', 15).checkLength('<=', 15);

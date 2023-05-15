@@ -4,6 +4,8 @@ export interface IUsuario {
     nome: string; 
     email: string;
     senha: string;
+
+    
     telefone: string; 
     celular: string;
     permissoes: string; 

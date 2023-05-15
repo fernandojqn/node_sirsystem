@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { IUsuario } from '../../database/models';
 import { UsuariosProvider } from '../../database/providers';
 
+
 //Validação
 interface IBodyProps extends Omit<IUsuario, 'id' | 'senha' | 'empresaId' | 'usuarioId'> {}
 

@@ -19,10 +19,12 @@ export const singInValidation = validation((getSchema) => ({
 
 
 export const singIn = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
-    
+    console.log ('controller parte 1');
     // desestruturo o IBoryProps
     const {email, senha } = req.body;
-
+    console.log (email);
+    console.log (senha);
+    
     //Pesquiso no banco pelo email
     const usuario = await UsuariosProvider.getByEmail(email);
     
@@ -33,8 +35,26 @@ export const singIn = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
                 default: 'Email ou senha são inválidos'
             }
         });
+        console.log('deu erro');
+    } else {
+        const accessToken = JWTService.sign({ 
+            uid: usuario.id, 
+            nome: usuario.nome, 
+            permissoes: usuario.permissoes,
+            empresaId: usuario.empresaId});
+    
+        if (accessToken === 'JWT_SECRET_NOT_FOUND') {
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+                errors: {
+                    default: 'Erro ao gerar o token de acesso'
+                }
+            });
+        }
+
+        return res.status(StatusCodes.OK).json({ accessToken });
     }
 
+    /**
     // Verificando senha
     // comparando senha com senha crypto
     const passwordMatch = await PasswordCrypto.verifyPassword(senha, usuario.senha);
@@ -46,6 +66,7 @@ export const singIn = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
             }
         });    
     } else { //Senha okay
+
         //fabricando um token
         const acessToken = JWTService.sign({
             uid: usuario.id,
@@ -53,6 +74,7 @@ export const singIn = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
             permissoes: usuario.permissoes,
             empresaId: usuario.empresaId
         });
+
         if (acessToken === 'JWT_SECRET_NOT_FOUND') {
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
                 errors: {
@@ -61,6 +83,7 @@ export const singIn = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
             });
         }
 
-        return res.status(StatusCodes.OK).json({ acessToken: acessToken});
+        return res.status(StatusCodes.OK).json({acessToken});
     }
+    */
 };

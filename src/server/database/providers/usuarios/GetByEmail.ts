@@ -1,7 +1,6 @@
 import { ETableNames } from '../../ETableNames';
-import { Knex } from '../../knex';
 import { IUsuario } from '../../models';
-
+import { Knex } from '../../knex';
 
 export const getByEmail = async (email: string): Promise<IUsuario | Error> => {
 

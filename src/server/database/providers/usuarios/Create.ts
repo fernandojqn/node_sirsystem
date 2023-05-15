@@ -3,7 +3,6 @@ import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
 import { IUsuario } from '../../models';
 
-
 export const create = async (usuario: Omit<IUsuario, 'id' | 'senha' | 'empresaId' | 'usuarioId'>): Promise<object | number | Error> => {
 
     try {

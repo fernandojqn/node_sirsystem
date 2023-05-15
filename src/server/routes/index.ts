@@ -96,10 +96,10 @@ router.delete('/tributacoes/:id', ensureAuthenticated, TributacoesController.del
 
 // Rotas da paginas Usuarios
 router.post('/usuarios', UsuariosController.createValidation, UsuariosController.create);
-router.get('/usuarios', ensureAuthenticated, UsuariosController.getAllValidation, UsuariosController.getAll);
-router.get('/usuarios/:id', ensureAuthenticated, UsuariosController.getByIdValidation, UsuariosController.getById);
-router.put('/usuarios/:id', ensureAuthenticated, UsuariosController.updateByIdValidation, UsuariosController.updateById);
-router.delete('/usuarios/:id', ensureAuthenticated, UsuariosController.deleteByIdValidation, UsuariosController.deleteById);
+router.get('/usuarios', UsuariosController.getAllValidation, UsuariosController.getAll);
+router.get('/usuarios/:id', UsuariosController.getByIdValidation, UsuariosController.getById);
+router.put('/usuarios/:id', UsuariosController.updateByIdValidation, UsuariosController.updateById);
+router.delete('/usuarios/:id', UsuariosController.deleteByIdValidation, UsuariosController.deleteById);
 
 // Rotas da paginas vendedores
 router.post('/vendedores', ensureAuthenticated, VendedoresController.createValidation, VendedoresController.create);
