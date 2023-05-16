@@ -6,7 +6,7 @@ import { IGrupo } from '../../database/models';
 import { GruposProvider } from '../../database/providers';
 
 //Validação
-interface IBodyProps extends Omit<IGrupo, 'id' | 'empresaId' | 'usuarioId'> {}
+interface IBodyProps extends Omit<IGrupo, 'id'> {}
 
 export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
@@ -17,12 +17,24 @@ export const createValidation = validation((getSchema) => ({
         icms: yup.number().optional().default(0),
         ipi: yup.number().optional().default(0),
         comissao: yup.number().optional().default(0),
-        valorMinimoPraticado: yup.number().optional().default(0)
+        valorMinimoPraticado: yup.number().optional().default(0),
+        empresaId: yup.number().optional().default(0),
+        usuarioId: yup.number().optional().default(0)
     }))
 }));
 
 
 export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
+    
+    // Adicionar usuario id e empresaId ao corpo da solicitação
+    const idUser = req.headers.id;
+    if (typeof idUser === 'string' && !isNaN(Number(idUser))) {
+        req.body.usuarioId = parseInt(idUser);
+    }
+    const idEmpresa = req.headers.empresaId;
+    if (typeof idEmpresa === 'string' && !isNaN(Number(idEmpresa))) {
+        req.body.empresaId = parseInt(idEmpresa);
+    }
     
     // Salvar no bd
     const result = await GruposProvider.create(req.body);

@@ -6,7 +6,7 @@ import { IVendedor } from './../../database/models';
 import { validation } from '../../shared/middlewares';
 
 
-interface IBodyProps extends Omit<IVendedor, 'id' | 'empresaId' | 'usuarioId'> { }
+interface IBodyProps extends Omit<IVendedor, 'id'> { }
 
 export const createValidation = validation(get => ({
     body: get<IBodyProps>(yup.object().shape({
@@ -37,12 +37,24 @@ export const createValidation = validation(get => ({
         conta: yup.string().optional().default('').max(15), 
         pix: yup.string().optional().default('').max(50),
         obs: yup.string().optional().default('').max(8000),
+        empresaId: yup.number().optional().default(0),
+        usuarioId: yup.number().optional().default(0)
     })),
 }));
 
 
 export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
 
+    // Adicionar usuario id e empresaId ao corpo da solicitação
+    const idUser = req.headers.id;
+    if (typeof idUser === 'string' && !isNaN(Number(idUser))) {
+        req.body.usuarioId = parseInt(idUser);
+    }
+    const idEmpresa = req.headers.empresaId;
+    if (typeof idEmpresa === 'string' && !isNaN(Number(idEmpresa))) {
+        req.body.empresaId = parseInt(idEmpresa);
+    }
+    
     const result = await VendedoresProvider.create(req.body);
 
     if (result instanceof Error) {

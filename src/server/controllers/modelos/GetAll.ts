@@ -27,7 +27,8 @@ export const getAllValidation = validation((getSchema) => ({
 
 export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) => {
     const result = await ModelosProvider.getAll(req.query.page || 1, 
-        req.query.limit || 7, req.query.filter || '', req.query.filter2 || '');
+        req.query.limit || 7, req.query.filter || '', req.query.filter2 || '',
+        Number(req.headers.empresaId));
 
     
     const count = await ModelosProvider.count(req.query.filter);

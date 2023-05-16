@@ -19,17 +19,11 @@ export const createValidation = validation((getSchema) => ({
 
 export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
     
-    console.log('id', req.headers.id);
-    console.log('nome', req.headers.nome);
-    console.log('permissoes', req.headers.permissoes);
-    console.log('empresaId', req.headers.empresaId);
-
     // Adicionar usuario id e empresaId ao corpo da solicitação
     const idUser = req.headers.id;
     if (typeof idUser === 'string' && !isNaN(Number(idUser))) {
         req.body.usuarioId = parseInt(idUser);
     }
-    
     const idEmpresa = req.headers.empresaId;
     if (typeof idEmpresa === 'string' && !isNaN(Number(idEmpresa))) {
         req.body.empresaId = parseInt(idEmpresa);

@@ -3,13 +3,14 @@ import { Knex } from '../../knex';
 import { ISubTipo } from '../../models';
 
 
-export const getAll = async (page: number, limit: number, filter: string, id = 0): Promise<ISubTipo[] | Error> => {
+export const getAll = async (page: number, limit: number, filter: string, id = 0, empresaId: number): Promise<ISubTipo[] | Error> => {
 
     try {
         const result = await Knex(ETableNames.subTipos)
             .select('*') // seleciona tudo
             .where('id', Number(id)) //que tenha esse id
-            .orWhere('tipoId', 'like', `%${filter}%`) // "ou" que o nome "seja igual" ao filtro
+            .orWhere('tipoId', 'like', `%${filter}%`) // "ou" que o nome "seja igual" ao filtro.andWhere('empresaId', Number(empresaId))
+            .andWhere('empresaId', Number(empresaId))
             .orderBy('subDescricao')
             .offset((page - 1) * limit) //formula para aparecer a quantidade por pagina
             .limit(limit); // limita quantos registros vai aparecer por paginação

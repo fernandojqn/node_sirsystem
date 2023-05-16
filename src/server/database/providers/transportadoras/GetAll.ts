@@ -3,13 +3,15 @@ import { Knex } from '../../knex';
 import { ITransportadora } from '../../models';
 
 
-export const getAll = async (page: number, limit: number, filter: string, id = 0): Promise<ITransportadora[] | Error> => {
+export const getAll = async (page: number, limit: number, filter: string, id = 0, empresaId: number): Promise<ITransportadora[] | Error> => {
 
     try {
         const result = await Knex(ETableNames.transportadoras)
             .select('*') // seleciona tudo
             .where('id', Number(id)) //que tenha esse id
             .orWhere('sufixo', 'like', `%${filter}%`) // "ou" que o nome "seja igual" ao filtro
+            .andWhere('empresaId', Number(empresaId))
+            .orderBy('sufixo')
             .offset((page - 1) * limit) //formula para aparecer a quantidade por pagina
             .limit(limit); // limita quantos registros vai aparecer por paginação
 

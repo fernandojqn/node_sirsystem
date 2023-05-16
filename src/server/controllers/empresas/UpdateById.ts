@@ -10,7 +10,7 @@ interface IParamProps {
   id?: number;
 }
 
-interface IBodyProps extends Omit<IEmpresa, 'id' | 'empresaId' | 'usuarioId'> { }
+interface IBodyProps extends Omit<IEmpresa, 'id'> { }
 
 export const updateByIdValidation = validation(get => ({
     body: get<IBodyProps>(yup.object().shape({
@@ -59,7 +59,9 @@ export const updateByIdValidation = validation(get => ({
         apropriacaoCredito: yup.string().optional().max(1).default(''),        
         tipoContribuicao: yup.string().optional().max(1).default(''),        
         codigoEstrutura: yup.string().optional().max(1).default(''),        
-        codigoOperacao: yup.string().optional().max(1).default('')      
+        codigoOperacao: yup.string().optional().max(1).default(''),
+        usuarioId: yup.number().optional().default(0)
+          
     })),
     params: get<IParamProps>(yup.object().shape({
         id: yup.number().integer().required().moreThan(0),

@@ -3,13 +3,14 @@ import { Knex } from '../../knex';
 import { IAtividade } from '../../models';
 
 
-export const getAll = async (page: number, limit: number, filter: string, id = 0): Promise<IAtividade[] | Error> => {
+export const getAll = async (page: number, limit: number, filter: string, id = 0, empresaId: number): Promise<IAtividade[] | Error> => {
 
     try {
         const result = await Knex(ETableNames.atividades)
             .select('*') // seleciona tudo
             .where('id', Number(id)) //que tenha esse id
             .orWhere('atividade', 'like', `%${filter}%`) // "ou" que o nome "seja igual" ao filtro
+            .andWhere('empresaId', Number(empresaId))
             .orderBy('atividade')
             .offset((page - 1) * limit) //formula para aparecer a quantidade por pagina
             .limit(limit); // limita quantos registros vai aparecer por paginação

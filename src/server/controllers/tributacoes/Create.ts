@@ -6,7 +6,7 @@ import { ITributacao } from '../../database/models';
 import { TributacoesProvider } from '../../database/providers';
 
 //Validação
-interface IBodyProps extends Omit<ITributacao, 'id' | 'empresaId' | 'usuarioId'> {}
+interface IBodyProps extends Omit<ITributacao, 'id'> {}
 
 export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
@@ -24,12 +24,24 @@ export const createValidation = validation((getSchema) => ({
         inss: yup.number().optional().default(0),
         iss: yup.number().optional().default(0),
         anp: yup.number().optional().default(0),
-        ibpt: yup.number().optional().default(0)
+        ibpt: yup.number().optional().default(0),
+        empresaId: yup.number().optional().default(0),
+        usuarioId: yup.number().optional().default(0)
     }))
 }));
 
 
 export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
+    
+    // Adicionar usuario id e empresaId ao corpo da solicitação
+    const idUser = req.headers.id;
+    if (typeof idUser === 'string' && !isNaN(Number(idUser))) {
+        req.body.usuarioId = parseInt(idUser);
+    }
+    const idEmpresa = req.headers.empresaId;
+    if (typeof idEmpresa === 'string' && !isNaN(Number(idEmpresa))) {
+        req.body.empresaId = parseInt(idEmpresa);
+    }
     
     // Salvar no bd
     const result = await TributacoesProvider.create(req.body);

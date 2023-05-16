@@ -27,7 +27,8 @@ export const getAllValidation = validation((getSchema) => ({
 
 export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) => {
     const result = await NcmProvider.getAll(req.query.page || 1, req.query.limit || 7, 
-        req.query.filter || '', Number(req.query.id));
+        req.query.filter || '', Number(req.query.id),
+        Number(req.headers.empresaId));
     
     const count = await NcmProvider.count(req.query.filter);
 

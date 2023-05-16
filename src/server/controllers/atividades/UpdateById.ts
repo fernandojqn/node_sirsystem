@@ -5,16 +5,17 @@ import * as yup from 'yup';
 import { StatusCodes } from 'http-status-codes';
 import { AtividadesProvider } from '../../database/providers';
 
-
 interface IParamProps {
   id?: number;
 }
 
-interface IBodyProps extends Omit<IAtividade, 'id' | 'empresaId' | 'usuarioId'> { }
+interface IBodyProps extends Omit<IAtividade, 'id'> { }
 
 export const updateByIdValidation = validation(get => ({
     body: get<IBodyProps>(yup.object().shape({
-        atividade: yup.string().required().min(3).max(50)
+        atividade: yup.string().required().min(3).max(50),
+        empresaId: yup.number().optional().default(0),
+        usuarioId: yup.number().optional().default(0)
     })),
     params: get<IParamProps>(yup.object().shape({
         id: yup.number().integer().required().moreThan(0),
@@ -22,6 +23,18 @@ export const updateByIdValidation = validation(get => ({
 }));
 
 export const updateById = async (req: Request<IParamProps, {}, IBodyProps>, res: Response) => {
+    
+    // Adicionar usuario id e empresaId ao corpo da solicitação
+    const idUser = req.headers.id;
+    if (typeof idUser === 'string' && !isNaN(Number(idUser))) {
+        req.body.usuarioId = parseInt(idUser);
+    }
+    const idEmpresa = req.headers.empresaId;
+    if (typeof idEmpresa === 'string' && !isNaN(Number(idEmpresa))) {
+        req.body.empresaId = parseInt(idEmpresa);
+    }
+    
+    
     if (!req.params.id) {
         return res.status(StatusCodes.BAD_REQUEST).json({
             errors: {

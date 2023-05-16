@@ -12,7 +12,6 @@ export const updateById = async (id: number, atividade: Omit<IAtividade, 'id' | 
             
         if(result) return;
 
-
         return new Error('Erro ao atualizar o registro');        
     } catch (error) {
         return new Error('Erro ao atualizar o registro');
