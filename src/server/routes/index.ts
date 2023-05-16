@@ -1,6 +1,9 @@
-import { Router } from 'express';
-import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, LoginController, ModelosController, NcmController, ProdutosController, SubTiposController, TiposController, TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 import { ensureAuthenticated } from '../shared/middlewares';
+import { Router } from 'express';
+import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, LoginController, 
+    ModelosController, NcmController, ProdutosController, SubTiposController, TiposController, TransportadorasController, 
+    TributacoesController, UsuariosController, VendedoresController } from './../controllers';
+
 
 const router = Router();
 
@@ -11,7 +14,7 @@ router.get('/', (_, res) => { return res.send('Olá, DEV!'); });
 router.post('/entrar', LoginController.singInValidation, LoginController.singIn);
 
 // Rotas da paginas atividades
-router.post('/atividades', ensureAuthenticated, AtividadesController.createValidation, AtividadesController.create); // ensureAuthenticated,
+router.post('/atividades', ensureAuthenticated, AtividadesController.createValidation, AtividadesController.create);
 router.get('/atividades', ensureAuthenticated, AtividadesController.getAllValidation, AtividadesController.getAll);
 router.get('/atividades/:id', ensureAuthenticated, AtividadesController.getByIdValidation, AtividadesController.getById);
 router.put('/atividades/:id', ensureAuthenticated, AtividadesController.updateByIdValidation, AtividadesController.updateById);
@@ -25,7 +28,7 @@ router.put('/clientes/:id', ensureAuthenticated, ClientesController.updateByIdVa
 router.delete('/clientes/:id', ensureAuthenticated, ClientesController.deleteByIdValidation, ClientesController.deleteById);
 
 // Rotas da paginas empresas
-router.post('/empresas', ensureAuthenticated, EmpresasController.createValidation, EmpresasController.create); 
+router.post('/empresas', EmpresasController.createValidation, EmpresasController.create); 
 router.get('/empresas', ensureAuthenticated, EmpresasController.getAllValidation, EmpresasController.getAll);
 router.get('/empresas/:id', ensureAuthenticated, EmpresasController.getByIdValidation, EmpresasController.getById);
 router.put('/empresas/:id', ensureAuthenticated, EmpresasController.updateByIdValidation, EmpresasController.updateById);
@@ -96,10 +99,10 @@ router.delete('/tributacoes/:id', ensureAuthenticated, TributacoesController.del
 
 // Rotas da paginas Usuarios
 router.post('/usuarios', UsuariosController.createValidation, UsuariosController.create);
-router.get('/usuarios', UsuariosController.getAllValidation, UsuariosController.getAll);
-router.get('/usuarios/:id', UsuariosController.getByIdValidation, UsuariosController.getById);
-router.put('/usuarios/:id', UsuariosController.updateByIdValidation, UsuariosController.updateById);
-router.delete('/usuarios/:id', UsuariosController.deleteByIdValidation, UsuariosController.deleteById);
+router.get('/usuarios', ensureAuthenticated, UsuariosController.getAllValidation, UsuariosController.getAll);
+router.get('/usuarios/:id', ensureAuthenticated, UsuariosController.getByIdValidation, UsuariosController.getById);
+router.put('/usuarios/:id', ensureAuthenticated, UsuariosController.updateByIdValidation, UsuariosController.updateById);
+router.delete('/usuarios/:id', ensureAuthenticated, UsuariosController.deleteByIdValidation, UsuariosController.deleteById);
 
 // Rotas da paginas vendedores
 router.post('/vendedores', ensureAuthenticated, VendedoresController.createValidation, VendedoresController.create);
