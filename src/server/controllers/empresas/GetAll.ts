@@ -26,8 +26,7 @@ export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Respons
         req.query.page || 1, 
         req.query.limit || 7, 
         req.query.filter || '', 
-        Number(req.query.id),
-        Number(req.headers.empresaId));
+        Number(req.query.id));
 
     const count = await EmpresasProvider.count(req.query.filter);
 

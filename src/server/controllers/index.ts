@@ -13,3 +13,4 @@ export * from './transportadoras';
 export * from './tributacoes';
 export * from './usuarios';
 export * from './vendedores';
+

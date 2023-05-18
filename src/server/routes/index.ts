@@ -13,6 +13,7 @@ router.get('/', (_, res) => { return res.send('Olá, DEV!'); });
 // Rotas da paginas de Login
 router.post('/entrar', LoginController.singInValidation, LoginController.singIn);
 
+///////////////////////Rotas para salvar no banco de dados///////////////////////
 // Rotas da paginas atividades
 router.post('/atividades', ensureAuthenticated, AtividadesController.createValidation, AtividadesController.create);
 router.get('/atividades', ensureAuthenticated, AtividadesController.getAllValidation, AtividadesController.getAll);
@@ -111,6 +112,21 @@ router.get('/vendedores/:id', ensureAuthenticated, VendedoresController.getByIdV
 router.put('/vendedores/:id', ensureAuthenticated, VendedoresController.updateByIdValidation, VendedoresController.updateById);
 router.delete('/vendedores/:id', ensureAuthenticated, VendedoresController.deleteByIdValidation, VendedoresController.deleteById);
 
+
+///////////////////////Rotas para contas nas paginas///////////////////////
+//Rotas da pagina produto
+router.post('/produtos/somaCapagem', ProdutosController.somaCapagem);
+router.post('/produtos/subtracaoCapagem', ProdutosController.subtracaoCapagem);
+router.post('/produtos/precoVenda1', ProdutosController.precoVenda1);
+router.post('/produtos/precoVenda2', ProdutosController.precoVenda2);
+router.post('/produtos/precoVenda3', ProdutosController.precoVenda3);
+router.post('/produtos/precoVenda4', ProdutosController.precoVenda4);
+router.post('/produtos/precoVenda5', ProdutosController.precoVenda5);
+router.post('/produtos/margemLucro1', ProdutosController.margemLucro1);
+router.post('/produtos/margemLucro2', ProdutosController.margemLucro2);
+router.post('/produtos/margemLucro3', ProdutosController.margemLucro3);
+router.post('/produtos/margemLucro4', ProdutosController.margemLucro4);
+router.post('/produtos/margemLucro5', ProdutosController.margemLucro5);
 
 //Exporta os caminhos para o Server.ts
 export { router };

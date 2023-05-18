@@ -56,18 +56,12 @@ export const createValidation = validation((getSchema) => ({
         tipoContribuicao: yup.string().optional().max(1).default(''),        
         codigoEstrutura: yup.string().optional().max(1).default(''),        
         codigoOperacao: yup.string().optional().max(1).default(''),
-        usuarioId: yup.number().optional().default(0)   
+        usuarioId: yup.number().optional().default(0)
     }))
 }));
 
 
 export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
-
-    // Adicionar usuario id e empresaId ao corpo da solicitação
-    const idUser = req.headers.id;
-    if (typeof idUser === 'string' && !isNaN(Number(idUser))) {
-        req.body.usuarioId = parseInt(idUser);
-    }
     
     // Salvar no bd
     const result = await EmpresasProvider.create(req.body);
