@@ -12,3 +12,6 @@ export * from './Transportadoras';
 export * from './Tributacoes';
 export * from './Usuarios';
 export * from './Vendedores';
+export * from './NotaFiscalPedidos';
+export * from './NotaFiscalProdutos';
+export * from './NotaFiscalTotais';
