@@ -5,7 +5,7 @@ import * as getById from './GetById';
 import * as updateById from './UpdateById';
 import * as deleteById from './DeleteById';
 
-export const NotaFiscalPedidosProvider = {
+export const PedidosVendasProvider = {
     ...count,
     ...create,
     ...getAll,

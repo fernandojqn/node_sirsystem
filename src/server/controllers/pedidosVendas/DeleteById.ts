@@ -2,7 +2,7 @@ import { validation } from '../../shared/middlewares';
 import { StatusCodes } from 'http-status-codes';
 import { Request, Response } from 'express';
 import * as yup from 'yup';
-import { NotaFiscalTotaisProvider } from '../../database/providers';
+import { PedidosVendasProvider } from '../../database/providers';
 
 
 //Validação
@@ -27,7 +27,7 @@ export const deleteById = async (req: Request<IParamProps>, res: Response) => {
         });
     }
     
-    const result = await NotaFiscalTotaisProvider.deleteById(req.params.id);
+    const result = await PedidosVendasProvider.deleteById(req.params.id);
     if (result instanceof Error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: {

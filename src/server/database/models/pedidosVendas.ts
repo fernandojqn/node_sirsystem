@@ -1,4 +1,4 @@
-export interface INotaFiscalPedidos { //30
+export interface IPedidosVendas { //30
     id: number;
     
     numeroPedido?: number;
@@ -10,7 +10,11 @@ export interface INotaFiscalPedidos { //30
     validadeProposta?: string;
     
     clienteId?: number;
-    nomeCliente?: string;
+    sufixo?: string;
+    contato?: string;
+    telefone?: string;
+    celular?: string;
+
 
     naturezaOperacaoCFOP?: string;
     tipoDocumento?: boolean;
@@ -29,8 +33,8 @@ export interface INotaFiscalPedidos { //30
     dataLiberacao?: string;
     totalNota?: number;
     dataFaturamento?: string;
-    nfe?: string;
-    chaveNFe?: string;
+    nfe?: number;
+    chaveNFe?: number;
     protocolo?: string;
 
     empresaId?: number;

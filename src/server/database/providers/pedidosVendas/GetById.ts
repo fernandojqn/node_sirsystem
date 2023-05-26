@@ -1,12 +1,12 @@
 import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
-import { INotaFiscalPedidos } from '../../models';
+import { IPedidosVendas } from '../../models';
 
 
-export const getById = async (id: number): Promise<INotaFiscalPedidos | Error> => {
+export const getById = async (id: number): Promise<IPedidosVendas | Error> => {
 
     try {
-        const result = await Knex(ETableNames.notaFiscalPedidos)
+        const result = await Knex(ETableNames.pedidosVendas)
             .select('*')
             .where('id', '=', id)
             .first(); // só quero o primeiro da lista, ele para de procurar no bd

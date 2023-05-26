@@ -1,13 +1,10 @@
-
-import { Knex } from 'knex';
-
 import { ETableNames } from '../ETableNames';
-
+import { Knex } from 'knex';
 
 export async function up(knex: Knex) {
     return knex
         .schema
-        .createTable(ETableNames.notaFiscalPedidos, table => {
+        .createTable(ETableNames.pedidosVendas, table => {
             table.bigIncrements('id').primary().index();
 
             table.float('numeroPedido');
@@ -20,7 +17,12 @@ export async function up(knex: Knex) {
 
             table.bigInteger('clienteId').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.clientes).onUpdate('CASCADE').onDelete('RESTRICT');
-            table.string('nomeCliente', 50).checkLength('<=', 50).notNullable();
+            table.string('sufixo', 50).checkLength('<=', 50).notNullable();
+            table.string('contato', 50).checkLength('<=', 50).notNullable();
+            table.string('telefone', 15).checkLength('<=', 15).notNullable();
+            table.string('celular', 15).checkLength('<=', 15).notNullable();
+
+
 
             table.string('naturezaOperacaoCFOP', 4).checkLength('<=', 4);
             table.boolean('tipoDocumento');
@@ -31,18 +33,18 @@ export async function up(knex: Knex) {
             table.boolean('finalidadeDevolucao');
             table.boolean('consumidorFinal');
 
-            table.string('chaveNFeDevolucao1', 22).checkLength('<=', 22);
-            table.string('chaveNFeDevolucao2', 22).checkLength('<=', 22);
-            table.string('chaveNFeDevolucao3', 22).checkLength('<=', 22);
-            table.string('chaveNFeDevolucao4', 22).checkLength('<=', 22);
+            table.string('chaveNFeDevolucao1', 44).checkLength('<=', 44);
+            table.string('chaveNFeDevolucao2', 44).checkLength('<=', 44);
+            table.string('chaveNFeDevolucao3', 44).checkLength('<=', 44);
+            table.string('chaveNFeDevolucao4', 44).checkLength('<=', 44);
 
             
             table.date('dataLiberacao');
             table.float('totalNota');
             table.date('dataFaturamento');
-            table.string('nfe', 30).checkLength('<=', 30);
-            table.string('chaveNFe', 30).checkLength('<=', 30);
-            table.string('protocolo', 30).checkLength('<=', 30);
+            table.float('nfe');
+            table.float('chaveNFe');
+            table.string('protocolo', 15).checkLength('<=', 15);
 
             //Para o banco logico
             table.bigInteger('empresaId').index().references('id')
@@ -54,15 +56,15 @@ export async function up(knex: Knex) {
             table.comment('Tabela usada para armazenar Nota Fiscal Pedidos.');
         })
         .then(() => {
-            console.log(`# Created table ${ETableNames.notaFiscalPedidos}`);
+            console.log(`# Created table ${ETableNames.pedidosVendas}`);
         });
 }
 
 export async function down(knex: Knex) {
     return knex
         .schema
-        .dropTable(ETableNames.notaFiscalPedidos)
+        .dropTable(ETableNames.pedidosVendas)
         .then(() => {
-            console.log(`# Dropped table ${ETableNames.notaFiscalPedidos}`);
+            console.log(`# Dropped table ${ETableNames.pedidosVendas}`);
         });
 }

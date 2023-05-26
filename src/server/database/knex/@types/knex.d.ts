@@ -17,8 +17,6 @@ declare module 'knex/types/tables' {
         tributacoes: ITributacao,
         usuarios: IUsuario,
         vendedores: IVendedor,
-        notaFiscalPedidos: INotaFiscalPedidos,
-        notaFiscalProdutos: INotaFiscalProdutos,
-        notaFiscalTotais: INotaFiscalTotais,
+        pedidosVendas: IPedidosVendas
     }
   }

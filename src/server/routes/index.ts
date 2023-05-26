@@ -1,8 +1,8 @@
 import { ensureAuthenticated } from '../shared/middlewares';
 import { Router } from 'express';
 import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, LoginController, 
-    ModelosController, NcmController, NotaFiscalPedidosController, NotaFiscalProdutosController, NotaFiscalTotaisController, ProdutosController, SubTiposController, TiposController, TransportadorasController, 
-    TributacoesController, UsuariosController, VendedoresController } from './../controllers';
+    ModelosController, NcmController, PedidosVendasController, ProdutosController, SubTiposController, TiposController, 
+    TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 
 
 const router = Router();
@@ -63,26 +63,13 @@ router.get('/ncm/:id', ensureAuthenticated, NcmController.getByIdValidation, Ncm
 router.put('/ncm/:id', ensureAuthenticated, NcmController.updateByIdValidation, NcmController.updateById);
 router.delete('/ncm/:id', ensureAuthenticated, NcmController.deleteByIdValidation, NcmController.deleteById);
 
-// Rotas da paginas Nota Fiscal Pedidos
-router.post('/notafiscalpedidos', ensureAuthenticated, NotaFiscalPedidosController.createValidation, NotaFiscalPedidosController.create);
-router.get('/notafiscalpedidos', ensureAuthenticated, NotaFiscalPedidosController.getAllValidation, NotaFiscalPedidosController.getAll);
-router.get('/notafiscalpedidos/:id', ensureAuthenticated, NotaFiscalPedidosController.getByIdValidation, NotaFiscalPedidosController.getById);
-router.put('/notafiscalpedidos/:id', ensureAuthenticated, NotaFiscalPedidosController.updateByIdValidation, NotaFiscalPedidosController.updateById);
-router.delete('/notafiscalpedidos/:id', ensureAuthenticated, NotaFiscalPedidosController.deleteByIdValidation, NotaFiscalPedidosController.deleteById);
+// Rotas da paginas Nota Pedidos Vendas
+router.post('/pedidosvendas', ensureAuthenticated, PedidosVendasController.createValidation, PedidosVendasController.create);
+router.get('/pedidosvendas', ensureAuthenticated, PedidosVendasController.getAllValidation, PedidosVendasController.getAll);
+router.get('/pedidosvendas/:id', ensureAuthenticated, PedidosVendasController.getByIdValidation, PedidosVendasController.getById);
+router.put('/pedidosvendas/:id', ensureAuthenticated, PedidosVendasController.updateByIdValidation, PedidosVendasController.updateById);
+router.delete('/pedidosvendas/:id', ensureAuthenticated, PedidosVendasController.deleteByIdValidation, PedidosVendasController.deleteById);
 
-// Rotas da paginas Nota Fiscal Produtos
-router.post('/notafiscalprodutos', ensureAuthenticated, NotaFiscalProdutosController.createValidation, NotaFiscalProdutosController.create);
-router.get('/notafiscalprodutos', ensureAuthenticated, NotaFiscalProdutosController.getAllValidation, NotaFiscalProdutosController.getAll);
-router.get('/notafiscalprodutos/:id', ensureAuthenticated, NotaFiscalProdutosController.getByIdValidation, NotaFiscalProdutosController.getById);
-router.put('/notafiscalprodutos/:id', ensureAuthenticated, NotaFiscalProdutosController.updateByIdValidation, NotaFiscalProdutosController.updateById);
-router.delete('/notafiscalprodutos/:id', ensureAuthenticated, NotaFiscalProdutosController.deleteByIdValidation, NotaFiscalProdutosController.deleteById);
-
-// Rotas da paginas Nota Fiscal Totais
-router.post('/notafiscaltotais', ensureAuthenticated, NotaFiscalTotaisController.createValidation, NotaFiscalTotaisController.create);
-router.get('/notafiscaltotais', ensureAuthenticated, NotaFiscalTotaisController.getAllValidation, NotaFiscalTotaisController.getAll);
-router.get('/notafiscaltotais/:id', ensureAuthenticated, NotaFiscalTotaisController.getByIdValidation, NotaFiscalTotaisController.getById);
-router.put('/notafiscaltotais/:id', ensureAuthenticated, NotaFiscalTotaisController.updateByIdValidation, NotaFiscalTotaisController.updateById);
-router.delete('/notafiscaltotais/:id', ensureAuthenticated, NotaFiscalTotaisController.deleteByIdValidation, NotaFiscalTotaisController.deleteById);
 
 // Rotas da paginas Produtos
 router.post('/produtos', ensureAuthenticated, ProdutosController.createValidation, ProdutosController.create);

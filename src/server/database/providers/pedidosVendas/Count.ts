@@ -7,7 +7,7 @@ export const count = async (filter = ''): Promise<number | Error> => {
 
     try {
         //fiz uma lista array para colocar todos os registros
-        const [{ count }] = await Knex(ETableNames.notaFiscalPedidos)
+        const [{ count }] = await Knex(ETableNames.pedidosVendas)
             .where('numeroPedido', 'like', `%${filter}%`)
             .count<[{ count: number}]>('* as count');
             //tipo a count do SQL e coloco todos os resultados nela
