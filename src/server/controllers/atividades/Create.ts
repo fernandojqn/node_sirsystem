@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { IAtividade } from '../../database/models';
 import { AtividadesProvider } from '../../database/providers';
 
+
 //Validação
 interface IBodyProps extends Omit<IAtividade, 'id'> {}
 
