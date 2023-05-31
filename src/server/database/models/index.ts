@@ -13,5 +13,5 @@ export * from './Tributacoes';
 export * from './Usuarios';
 export * from './Vendedores';
 export * from './pedidosVendas';
-export * from './NotaFiscalProdutos';
+export * from './PedidosVendasProdutos';
 export * from './NotaFiscalTotais';

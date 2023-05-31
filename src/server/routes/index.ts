@@ -4,7 +4,6 @@ import { AtividadesController, ClientesController, EmpresasController, Fornecedo
     ModelosController, NcmController, PedidosVendasController, ProdutosController, SubTiposController, TiposController, 
     TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 
-
 const router = Router();
 
 // Rota teste
@@ -109,7 +108,7 @@ router.delete('/tributacoes/:id', ensureAuthenticated, TributacoesController.del
 // Rotas da paginas Usuarios
 router.post('/usuarios', UsuariosController.createValidation, UsuariosController.create);
 router.get('/usuarios', UsuariosController.getAllValidation, UsuariosController.getAll);
-router.get('/usuarios/:id', ensureAuthenticated, UsuariosController.getByIdValidation, UsuariosController.getById);
+router.get('/usuarios/:id', UsuariosController.getByIdValidation, UsuariosController.getById);
 router.put('/usuarios/:id', ensureAuthenticated, UsuariosController.updateByIdValidation, UsuariosController.updateById);
 router.delete('/usuarios/:id', ensureAuthenticated, UsuariosController.deleteByIdValidation, UsuariosController.deleteById);
 

@@ -13,5 +13,6 @@ export enum ETableNames {
     tributacoes = 'tributacoes',
     usuarios = 'usuarios',
     vendedores = 'vendedores',
-    pedidosVendas = 'pedidosVendas'
+    pedidosVendas = 'pedidosVendas',
+    pedidosVendasProdutos = 'pedidosVendasProdutos'
 }

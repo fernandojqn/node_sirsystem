@@ -4,7 +4,7 @@ export interface INotaFiscalProdutos {
     pedidoId?: number;
     
     produtoId?: number;
-
+    
     numeroItem?: number;
     embalagemUnidade?: boolean;
     quantidade?: number;

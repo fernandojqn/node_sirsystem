@@ -17,12 +17,10 @@ export async function up(knex: Knex) {
 
             table.bigInteger('clienteId').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.clientes).onUpdate('CASCADE').onDelete('RESTRICT');
-            table.string('sufixo', 50).checkLength('<=', 50).notNullable();
-            table.string('contato', 50).checkLength('<=', 50).notNullable();
-            table.string('telefone', 15).checkLength('<=', 15).notNullable();
-            table.string('celular', 15).checkLength('<=', 15).notNullable();
-
-
+            table.string('sufixo', 50).checkLength('<=', 50);
+            table.string('contato', 50).checkLength('<=', 50);
+            table.string('telefone', 15).checkLength('<=', 15);
+            table.string('celular', 15).checkLength('<=', 15);
 
             table.string('naturezaOperacaoCFOP', 4).checkLength('<=', 4);
             table.boolean('tipoDocumento');
@@ -37,7 +35,6 @@ export async function up(knex: Knex) {
             table.string('chaveNFeDevolucao2', 44).checkLength('<=', 44);
             table.string('chaveNFeDevolucao3', 44).checkLength('<=', 44);
             table.string('chaveNFeDevolucao4', 44).checkLength('<=', 44);
-
             
             table.date('dataLiberacao');
             table.float('totalNota');

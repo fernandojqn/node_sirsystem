@@ -6,6 +6,7 @@ import { IUsuario } from '../../database/models';
 import { UsuariosProvider } from '../../database/providers';
 import { JWTService, PasswordCrypto } from '../../shared/services';
 
+
 //Validação
 interface IBodyProps extends Omit<IUsuario, 'id' | 'nome' | 'permissoes' | 'departamento' | 
         'telefone' | 'celular' | 'empresaId'> {}

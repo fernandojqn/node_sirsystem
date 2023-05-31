@@ -2,7 +2,6 @@ import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
 import { IEmpresa } from '../../models';
 
-
 export const create = async (empresa: Omit<IEmpresa, 'id' | 'usuarioId'>): Promise<object | number | Error> => {
 
     try {
@@ -10,10 +9,9 @@ export const create = async (empresa: Omit<IEmpresa, 'id' | 'usuarioId'>): Promi
             .insert(empresa)
             .returning('id');
 
-        return result;
-          
+        return result;          
 
     } catch (error) {
-        return new Error('Erro ao cadastrar o registro!!!!2');
+        return new Error('Erro ao cadastrar o registro!!!!');
     }
 };

@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { IPedidosVendas } from '../../database/models';
 import { PedidosVendasProvider } from '../../database/providers';
 
+
 //Validação
 interface IBodyProps extends Omit<IPedidosVendas, 'id'> {}
 
