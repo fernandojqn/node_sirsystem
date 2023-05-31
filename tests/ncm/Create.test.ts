@@ -1,5 +1,4 @@
-// teste depois apaga essa linha
-//teste 2 apagar linha
+
 import { StatusCodes } from 'http-status-codes';
 import { testServer } from '../jest.setup';
 
