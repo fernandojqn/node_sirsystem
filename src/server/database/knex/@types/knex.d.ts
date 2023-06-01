@@ -1,5 +1,5 @@
 import { IAtividade, IVendedor, INcm, ICliente, IEmpresa, IFornecedor, IGrupo, IModelo, 
-    IProduto, ISubTipo, ITipo, ITransportadora, ITributacao, IUsuario, INotaFiscalPedidos, INotaFiscalProdutos, INotaFiscalTotais } from '../../models';
+    IProduto, ISubTipo, ITipo, ITransportadora, ITributacao, IUsuario } from '../../models';
 
 declare module 'knex/types/tables' {
     interface Tables {

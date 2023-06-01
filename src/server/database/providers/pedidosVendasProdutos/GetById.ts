@@ -1,18 +1,16 @@
 import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
-import { INotaFiscalProdutos } from '../../models';
+import { IPedidosVendasProdutos } from '../../models';
 
-
-export const getById = async (id: number): Promise<INotaFiscalProdutos | Error> => {
+export const getById = async (id: number): Promise<IPedidosVendasProdutos | Error> => {
 
     try {
-        const result = await Knex(ETableNames.notaFiscalProdutos)
+        const result = await Knex(ETableNames.pedidosVendasProdutos)
             .select('*')
             .where('id', '=', id)
             .first(); // só quero o primeiro da lista, ele para de procurar no bd
 
         if(result) return result;
-
 
         return new Error('Registro não encontrado');
     } catch (error) {

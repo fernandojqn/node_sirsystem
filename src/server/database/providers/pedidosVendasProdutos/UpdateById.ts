@@ -1,9 +1,8 @@
+import { IPedidosVendasProdutos } from '../../models';
 import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
-import { INotaFiscalProdutos } from '../../models';
 
-
-export const updateById = async (id: number, produto: Omit<INotaFiscalProdutos, 'id' | 'empresaId' | 'usuarioId'>): Promise<void | Error> => {
+export const updateById = async (id: number, produto: Omit<IPedidosVendasProdutos, 'id' | 'empresaId' | 'usuarioId'>): Promise<void | Error> => {
 
     try {
         if (produto.pedidoId === 0) { 
@@ -14,11 +13,8 @@ export const updateById = async (id: number, produto: Omit<INotaFiscalProdutos, 
             delete produto.produtoId; 
         }
 
-        if (produto.regraTributacaoId === 0) { 
-            delete produto.regraTributacaoId; 
-        }
 
-        const result = await Knex(ETableNames.notaFiscalProdutos)
+        const result = await Knex(ETableNames.pedidosVendasProdutos)
             .update(produto)
             .where('id', '=', id);
             

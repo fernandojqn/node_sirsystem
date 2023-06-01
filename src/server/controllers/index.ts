@@ -7,6 +7,7 @@ export * from './login';
 export * from './modelos';
 export * from './ncm';
 export * from './pedidosVendas';
+export * from './pedidosVendasProdutos';
 export * from './produtos';
 export * from './subTipos';
 export * from './tipos';

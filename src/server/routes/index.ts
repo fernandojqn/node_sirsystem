@@ -1,7 +1,7 @@
 import { ensureAuthenticated } from '../shared/middlewares';
 import { Router } from 'express';
 import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, LoginController, 
-    ModelosController, NcmController, PedidosVendasController, ProdutosController, SubTiposController, TiposController, 
+    ModelosController, NcmController, PedidosVendasController, PedidosVendasProdutosController, ProdutosController, SubTiposController, TiposController, 
     TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 
 const router = Router();
@@ -62,13 +62,19 @@ router.get('/ncm/:id', ensureAuthenticated, NcmController.getByIdValidation, Ncm
 router.put('/ncm/:id', ensureAuthenticated, NcmController.updateByIdValidation, NcmController.updateById);
 router.delete('/ncm/:id', ensureAuthenticated, NcmController.deleteByIdValidation, NcmController.deleteById);
 
-// Rotas da paginas Nota Pedidos Vendas
+// Rotas da paginas Pedidos Vendas
 router.post('/pedidosvendas', ensureAuthenticated, PedidosVendasController.createValidation, PedidosVendasController.create);
 router.get('/pedidosvendas', ensureAuthenticated, PedidosVendasController.getAllValidation, PedidosVendasController.getAll);
 router.get('/pedidosvendas/:id', ensureAuthenticated, PedidosVendasController.getByIdValidation, PedidosVendasController.getById);
 router.put('/pedidosvendas/:id', ensureAuthenticated, PedidosVendasController.updateByIdValidation, PedidosVendasController.updateById);
 router.delete('/pedidosvendas/:id', ensureAuthenticated, PedidosVendasController.deleteByIdValidation, PedidosVendasController.deleteById);
 
+// Rotas da paginas Pedidos Vendas Produtos
+router.post('/pedidosvendasprodutos', ensureAuthenticated, PedidosVendasProdutosController.createValidation, PedidosVendasProdutosController.create);
+router.get('/pedidosvendasprodutos', ensureAuthenticated, PedidosVendasProdutosController.getAllValidation, PedidosVendasProdutosController.getAll);
+router.get('/pedidosvendasprodutos/:id', ensureAuthenticated, PedidosVendasProdutosController.getByIdValidation, PedidosVendasProdutosController.getById);
+router.put('/pedidosvendasprodutos/:id', ensureAuthenticated, PedidosVendasProdutosController.updateByIdValidation, PedidosVendasProdutosController.updateById);
+router.delete('/pedidosvendasprodutos/:id', ensureAuthenticated, PedidosVendasProdutosController.deleteByIdValidation, PedidosVendasProdutosController.deleteById);
 
 // Rotas da paginas Produtos
 router.post('/produtos', ensureAuthenticated, ProdutosController.createValidation, ProdutosController.create);

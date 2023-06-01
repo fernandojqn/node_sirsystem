@@ -80,21 +80,11 @@ export async function up(knex: Knex) {
             table.float('valorBaseCalculoUFDestino');
             table.float('valorBaseCalculoFCPnaUF');
             table.float('internaUFdestino');
-            table.float('');
-            table.float('');
-            table.float('');
-            table.float('');
-            table.float('');
-
-    ?: number;
-    ?: number;
-    ?: number;
-    ?: number;
-    ?: number;
-    provisoriaPartilha?: number;
-    icmsPartilhaUFdestino?: number;
-    icmsPartilhaUFremetente?: number;
-    icmsRelativoFCPufDestino?: number;
+            table.float('interestadual');
+            table.float('provisoriaPartilha');
+            table.float('icmsPartilhaUFdestino');
+            table.float('icmsPartilhaUFremetente');
+            table.float('icmsRelativoFCPufDestino');
 
             //Para o banco logico
             table.bigInteger('empresaId').index().references('id')

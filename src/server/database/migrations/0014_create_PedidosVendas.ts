@@ -17,6 +17,7 @@ export async function up(knex: Knex) {
 
             table.bigInteger('clienteId').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.clientes).onUpdate('CASCADE').onDelete('RESTRICT');
+                
             table.string('sufixo', 50).checkLength('<=', 50);
             table.string('contato', 50).checkLength('<=', 50);
             table.string('telefone', 15).checkLength('<=', 15);

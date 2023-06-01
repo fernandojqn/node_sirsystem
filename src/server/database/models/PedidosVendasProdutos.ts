@@ -1,4 +1,4 @@
-export interface INotaFiscalProdutos {
+export interface IPedidosVendasProdutos {
     id: number;
     
     pedidoId?: number;

@@ -3,7 +3,7 @@ export interface IProduto {
     produto: string;    
     codigoProduto: string;     
     ean: string;
-    
+        
     grupoId?: number; //forgot grupo
     tipoId?: number; //forgot tipo
     subId?: number; //forgot subtipo
