@@ -1,5 +1,6 @@
-import { IAtividade, IVendedor, INcm, ICliente, IEmpresa, IFornecedor, IGrupo, IModelo, 
-    IProduto, ISubTipo, ITipo, ITransportadora, ITributacao, IUsuario } from '../../models';
+import { IAtividade, IVendedor, INcm, ICliente, IEmpresa, IFornecedor, IGrupo, IModelo, IProduto, ISubTipo, 
+    ITipo, ITransportadora, ITributacao, IUsuario, IPedidosVendas, IPedidosVendasProdutos, 
+    IPedidosVendasTotais } from '../../models';
 
 declare module 'knex/types/tables' {
     interface Tables {
@@ -18,6 +19,7 @@ declare module 'knex/types/tables' {
         usuarios: IUsuario,
         vendedores: IVendedor,
         pedidosVendas: IPedidosVendas,
-        pedidosVendasProdutos: IPedidosVendasProdutos
+        pedidosVendasProdutos: IPedidosVendasProdutos,
+        pedidosVendasTotais: IPedidosVendasTotais
     }
   }

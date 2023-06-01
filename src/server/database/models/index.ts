@@ -14,3 +14,4 @@ export * from './Usuarios';
 export * from './Vendedores';
 export * from './pedidosVendas';
 export * from './PedidosVendasProdutos';
+export * from './pedidosVendasTotais';

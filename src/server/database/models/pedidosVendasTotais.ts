@@ -1,7 +1,6 @@
-export interface INotaFiscalTotais {//56
+export interface IPedidosVendasTotais {//56
     id: number;
-    pedidoId?: number;
-    
+    pedidoId?: number;    
     
     totalProdutosServicos?: number;
     baseCalculo1?: number;
@@ -65,8 +64,6 @@ export interface INotaFiscalTotais {//56
     impressaoPedido?: string;
     informacoesAdicionais?: string;
     observacoesInternas?: string;
-
-
 
     empresaId: number;
     usuarioId: number;

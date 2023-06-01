@@ -1,7 +1,7 @@
 import { ensureAuthenticated } from '../shared/middlewares';
 import { Router } from 'express';
 import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, LoginController, 
-    ModelosController, NcmController, PedidosVendasController, PedidosVendasProdutosController, ProdutosController, SubTiposController, TiposController, 
+    ModelosController, NcmController, PedidosVendasController, PedidosVendasProdutosController, PedidosVendasTotaisController, ProdutosController, SubTiposController, TiposController, 
     TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 
 const router = Router();
@@ -75,6 +75,13 @@ router.get('/pedidosvendasprodutos', ensureAuthenticated, PedidosVendasProdutosC
 router.get('/pedidosvendasprodutos/:id', ensureAuthenticated, PedidosVendasProdutosController.getByIdValidation, PedidosVendasProdutosController.getById);
 router.put('/pedidosvendasprodutos/:id', ensureAuthenticated, PedidosVendasProdutosController.updateByIdValidation, PedidosVendasProdutosController.updateById);
 router.delete('/pedidosvendasprodutos/:id', ensureAuthenticated, PedidosVendasProdutosController.deleteByIdValidation, PedidosVendasProdutosController.deleteById);
+
+// Rotas da paginas Pedidos Vendas Totais
+router.post('/pedidosvendastotais', ensureAuthenticated, PedidosVendasTotaisController.createValidation, PedidosVendasTotaisController.create);
+router.get('/pedidosvendastotais', ensureAuthenticated, PedidosVendasTotaisController.getAllValidation, PedidosVendasTotaisController.getAll);
+router.get('/pedidosvendastotais/:id', ensureAuthenticated, PedidosVendasTotaisController.getByIdValidation, PedidosVendasTotaisController.getById);
+router.put('/pedidosvendastotais/:id', ensureAuthenticated, PedidosVendasTotaisController.updateByIdValidation, PedidosVendasTotaisController.updateById);
+router.delete('/pedidosvendastotais/:id', ensureAuthenticated, PedidosVendasTotaisController.deleteByIdValidation, PedidosVendasTotaisController.deleteById);
 
 // Rotas da paginas Produtos
 router.post('/produtos', ensureAuthenticated, ProdutosController.createValidation, ProdutosController.create);

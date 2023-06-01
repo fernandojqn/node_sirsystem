@@ -7,8 +7,11 @@ export async function up(knex: Knex) {
         .createTable(ETableNames.pedidosVendasProdutos, table => {
             table.bigIncrements('id').primary().index();
 
-            table.float('pedidoId');
-            table.float('produtoId');
+            table.bigInteger('pedidoId').nullable().defaultTo(null).index().references('id')
+                .inTable(ETableNames.pedidosVendas).onUpdate('CASCADE').onDelete('RESTRICT');
+
+            table.bigInteger('produtoId').nullable().defaultTo(null).index().references('id').inTable(ETableNames.produtos).onUpdate('CASCADE').onDelete('RESTRICT');
+
             table.float('numeroItem');
             table.boolean('embalagemUnidade');
             table.float('quantidade');
@@ -30,7 +33,9 @@ export async function up(knex: Knex) {
             table.string('pedidoCliente', 50).checkLength('<=', 50);
             table.string('pedidoNFe', 50).checkLength('<=', 50);
 
-            table.float('regraTributacaoId');
+            table.bigInteger('regraTributacaoId').nullable().defaultTo(null).index().references('id')
+                .inTable(ETableNames.tributacoes).onUpdate('CASCADE').onDelete('RESTRICT');
+
             table.string('cst', 3).checkLength('<=', 3);
             table.string('cfop', 4).checkLength('<=', 4);
             table.string('cest', 7).checkLength('<=', 7);
