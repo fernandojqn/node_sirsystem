@@ -23,6 +23,7 @@ export interface IPedidosVendasTotais {//56
     totalDesconto?: number;
     totalSeguro?: number;
     totalOutros?: number;
+    totalNota?: number;
 
     //Forma de Pagamento
     vistaprazo?: boolean;
@@ -40,6 +41,7 @@ export interface IPedidosVendasTotais {//56
     prazoDias10?: number;
     prazoDias11?: number;
     prazoDias12?: number;
+    tipoDePagamento?: string;
 
     //Comissionamento
     comissaoValor?: boolean;

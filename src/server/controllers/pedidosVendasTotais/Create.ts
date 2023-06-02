@@ -31,6 +31,8 @@ export const createValidation = validation((getSchema) => ({
         totalDesconto: yup.number().optional().default(0),
         totalSeguro: yup.number().optional().default(0),
         totalOutros: yup.number().optional().default(0),
+        totalNota: yup.number().optional().default(0),
+
         vistaprazo: yup.boolean().optional().default(false),
         dataVencimento: yup.string().optional().default('').max(10),
         descricaoAvista: yup.string().optional().default('').max(250),
@@ -46,6 +48,7 @@ export const createValidation = validation((getSchema) => ({
         prazoDias10: yup.number().optional().default(0),
         prazoDias11: yup.number().optional().default(0),
         prazoDias12: yup.number().optional().default(0),
+        tipoDePagamento: yup.string().optional().default(''),
         comissaoValor: yup.boolean().optional().default(false),
         comissao: yup.number().optional().default(0),
         valor: yup.number().optional().default(0),

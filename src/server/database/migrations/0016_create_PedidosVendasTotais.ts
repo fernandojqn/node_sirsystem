@@ -29,6 +29,7 @@ export async function up(knex: Knex) {
             table.float('totalDesconto');
             table.float('totalSeguro');
             table.float('totalOutros');
+            table.float('totalNota');
             
             table.boolean('vistaprazo');
             table.date('dataVencimento');
@@ -45,6 +46,7 @@ export async function up(knex: Knex) {
             table.float('prazoDias10');
             table.float('prazoDias11');
             table.float('prazoDias12');
+            table.string('tipoDePagamento', 20).checkLength('<=', 20);
             
             table.boolean('comissaoValor');
             table.float('comissao');
