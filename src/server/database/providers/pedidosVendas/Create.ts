@@ -3,9 +3,28 @@ import { ETableNames } from '../../ETableNames';
 import { format, parse } from 'date-fns';
 import { Knex } from '../../knex';
 
-export const create = async (pedido: Omit<IPedidosVendas, 'id'>): Promise<object | Number | Error> => {
+export const create = async (pedido: Omit<IPedidosVendas, 'id'>): Promise<object | number | Error> => {
     
     try {
+        // Obter o maior número de numeroPedido da tabela
+        const maxResult: { maxNumeroPedido?: string | undefined }[] = await Knex(ETableNames.pedidosVendas)
+            .max({ maxNumeroPedido: 'numeroPedido' })
+            .where('empresaId', pedido.empresaId);
+
+        const maxNumeroPedido = maxResult[0]?.maxNumeroPedido;
+        const parsedMaxNumeroPedido = maxNumeroPedido ? parseInt(maxNumeroPedido) : undefined;
+
+
+        // Verificar se o número do pedido é nulo ou zero
+        if (!parsedMaxNumeroPedido || parsedMaxNumeroPedido === 0) {
+            // Definir o número do pedido como 1 se for nulo ou zero
+            pedido.numeroPedido = 1;
+        } else {
+            // Incrementar o número do pedido em 1 se for maior que 1
+            pedido.numeroPedido = parsedMaxNumeroPedido ? parsedMaxNumeroPedido + 1 : 1;
+        }
+    
+        
         if (pedido.clienteId === 0) { delete pedido.clienteId; }
 
         let dataEmissaoFormatada;

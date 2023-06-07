@@ -71,6 +71,7 @@ router.delete('/pedidosvendas/:id', ensureAuthenticated, PedidosVendasController
 
 // Rotas da paginas Pedidos Vendas Produtos
 router.post('/pedidosvendasprodutos', ensureAuthenticated, PedidosVendasProdutosController.createValidation, PedidosVendasProdutosController.create);
+router.get('/pedidosvendasprodutos', ensureAuthenticated, PedidosVendasProdutosController.getAllValidation, PedidosVendasProdutosController.getAll);
 router.get('/pedidosvendasprodutos/:id', ensureAuthenticated, PedidosVendasProdutosController.getByIdValidation, PedidosVendasProdutosController.getById);
 router.put('/pedidosvendasprodutos/:id', ensureAuthenticated, PedidosVendasProdutosController.updateByIdValidation, PedidosVendasProdutosController.updateById);
 router.delete('/pedidosvendasprodutos/:id', ensureAuthenticated, PedidosVendasProdutosController.deleteByIdValidation, PedidosVendasProdutosController.deleteById);

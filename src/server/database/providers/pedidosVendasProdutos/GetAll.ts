@@ -1,21 +1,21 @@
 import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
-import { IPedidosVendas } from '../../models';
+import { IPedidosVendasProdutos } from '../../models';
 
-export const getAll = async (page: number, limit: number, filter: string, id = 0, empresaId: number): Promise<IPedidosVendas[] | Error> => {
+
+export const getAll = async (page: number, limit: number, filter: string, id = 0, empresaId: number): Promise<IPedidosVendasProdutos[] | Error> => {
 
     try {
-        const result = await Knex(ETableNames.pedidosVendas)
+        const result = await Knex(ETableNames.pedidosVendasProdutos)
             .select('*') // seleciona tudo
-            .where('id', Number(id)) //que tenha esse id
-            .orWhere('numeroPedido', 'like', `%${filter}%`) // "ou" que o nome "seja igual" ao filtro
+            .where('pedidoId', 'like', `%${filter}%`) // "ou" que o nome "seja igual" ao filtro
             .andWhere('empresaId', Number(empresaId))
             .offset((page - 1) * limit) //formula para aparecer a quantidade por pagina
-            .limit(limit); // limita quantos registros vai aparecer por paginação
+            .limit(limit); // limita quantos registros vai aparecer por paginação        
 
         //se teve resultado  && every(diferente) se todos os ids forem diferente do resultado da busca {
         if (id > 0 && result.every(item => item.id !== id)) { 
-            const resultById = await Knex(ETableNames.pedidosVendas)
+            const resultById = await Knex(ETableNames.pedidosVendasProdutos)
                 .select('*')
                 .where('id', '=', id)
                 .first();

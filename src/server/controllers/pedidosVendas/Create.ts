@@ -62,7 +62,8 @@ export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
     if (typeof idEmpresa === 'string' && !isNaN(Number(idEmpresa))) {
         req.body.empresaId = parseInt(idEmpresa);
     }
-    
+       
+
     // Salvar no bd
     const result = await PedidosVendasProvider.create(req.body);
     
