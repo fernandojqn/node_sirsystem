@@ -17,8 +17,8 @@ export const createValidation = validation((getSchema) => ({
         embalagemUnidade: yup.boolean().optional().default(false),
         quantidade: yup.number().optional().default(0),
         quantidadeEmbalagem: yup.number().optional().default(0),
-        tipoEmbalagem: yup.string().optional().default('').max(3),
         unidade: yup.number().optional().default(0),
+        condicao: yup.string().optional().default('').max(20),
         precoUnitario: yup.number().optional().default(0),
         precoItem: yup.number().optional().default(0),
         desconto: yup.number().optional().default(0),
@@ -29,9 +29,7 @@ export const createValidation = validation((getSchema) => ({
         compoemValorTotal: yup.boolean().optional().default(false),  
         pedidoCompra: yup.string().optional().default('').max(50),
         pedidoCompraItem: yup.string().optional().default('').max(50),
-        localEstoque: yup.string().optional().default('').max(50),
-        pedidoCliente: yup.string().optional().default('').max(50),
-        pedidoNFe: yup.string().optional().default('').max(50),    
+        localEstoque: yup.string().optional().default('').max(50),    
         regraTributacaoId: yup.number().optional().default(0),
         cst: yup.string().optional().default('').max(3),
         cfop: yup.string().optional().default('').max(4),
@@ -97,8 +95,7 @@ export const create = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
     }
     
     // Salvar no bd
-    const result = await PedidosVendasProdutosProvider.create(req.body);
-    
+    const result = await PedidosVendasProdutosProvider.create(req.body);    
 
     // Se der errado
     if (result instanceof Error) {

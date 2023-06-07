@@ -11,7 +11,7 @@ export async function up(knex: Knex) {
             table.date('dataEmissao');
             table.string('status', 3).checkLength('<=', 3);
             table.string('pedidoCliente', 20).checkLength('<=', 20);
-            table.date('prazoEntrega');
+            table.string('prazoEntrega', 20).checkLength('<=', 20);
             table.string('garantia', 20).checkLength('<=', 20);
             table.string('validadeProposta', 20).checkLength('<=', 20);
 

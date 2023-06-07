@@ -10,14 +10,15 @@ export async function up(knex: Knex) {
             table.bigInteger('pedidoId').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.pedidosVendas).onUpdate('CASCADE').onDelete('RESTRICT');
 
-            table.bigInteger('produtoId').nullable().defaultTo(null).index().references('id').inTable(ETableNames.produtos).onUpdate('CASCADE').onDelete('RESTRICT');
+            table.bigInteger('produtoId').nullable().defaultTo(null).index().references('id')
+                .inTable(ETableNames.produtos).onUpdate('CASCADE').onDelete('RESTRICT');
 
             table.float('numeroItem');
             table.boolean('embalagemUnidade');
             table.float('quantidade');
             table.float('quantidadeEmbalagem');
-            table.string('tipoEmbalagem', 3).checkLength('<=', 3);
             table.float('unidade');
+            table.string('condicao', 20).checkLength('<=', 20);
             table.float('precoUnitario');
             table.float('precoItem');
             table.float('desconto');
@@ -30,18 +31,15 @@ export async function up(knex: Knex) {
             table.string('pedidoCompra', 50).checkLength('<=', 50);
             table.string('pedidoCompraItem', 50).checkLength('<=', 50);
             table.string('localEstoque', 50).checkLength('<=', 50);
-            table.string('pedidoCliente', 50).checkLength('<=', 50);
-            table.string('pedidoNFe', 50).checkLength('<=', 50);
 
+            //////Impostos//////
             table.bigInteger('regraTributacaoId').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.tributacoes).onUpdate('CASCADE').onDelete('RESTRICT');
 
             table.string('cst', 3).checkLength('<=', 3);
             table.string('cfop', 4).checkLength('<=', 4);
             table.string('cest', 7).checkLength('<=', 7);
-            table.string('ncm', 8).checkLength('<=', 8);
-
-            //////Impostos//////
+            table.string('ncm', 8).checkLength('<=', 8);            
             //icms
             table.string('situacaoTributariaICMS', 3).checkLength('<=', 3);
             table.string('origemICMS', 3).checkLength('<=', 3);
@@ -66,17 +64,17 @@ export async function up(knex: Knex) {
             table.float('aliquotaICMSfcp');
             table.float('icmsFCP');
             //IPI
-            table.string('situacaoTributariaIPI', 2).checkLength('<=', 2);
+            table.string('situacaoTributariaIPI', 3).checkLength('<=', 3);
             table.float('baseCalculoIPI');
             table.float('aliquotaIPI');
             table.float('valorIPI');
             //COFINS
-            table.string('situacaoTributariaCOFINS', 2).checkLength('<=', 2);
+            table.string('situacaoTributariaCOFINS', 3).checkLength('<=', 3);
             table.float('baseCalculoCOFINS');
             table.float('aliquotaCOFINS');
             table.float('valorCOFINS');
             //PIS
-            table.string('situacaoTributariaPIS', 2).checkLength('<=', 2);
+            table.string('situacaoTributariaPIS', 3).checkLength('<=', 3);
             table.float('baseCalculoPIS');
             table.float('aliquotaPIS');
             table.float('valorPIS');

@@ -16,12 +16,6 @@ export const updateById = async (id: number, pedido: Omit<IPedidosVendas, 'id' |
             dataEmissaoFormatada = format(dataEmissao, 'yyyy-MM-dd');
         }
 
-        let prazoEntregaFormatada;
-        if (pedido.prazoEntrega) {
-            const prazoEntrega = parse(pedido.prazoEntrega, 'ddMMyyyy', new Date());
-            prazoEntregaFormatada = format(prazoEntrega, 'yyyy-MM-dd');
-        }
-
         let dataLiberacaoFormatada;
         if (pedido.dataLiberacao) {
             const dataLiberacao = parse(pedido.dataLiberacao, 'ddMMyyyy', new Date());
@@ -38,7 +32,6 @@ export const updateById = async (id: number, pedido: Omit<IPedidosVendas, 'id' |
         const result = await Knex(ETableNames.pedidosVendas)
             .update({...pedido, 
                 dataEmissao: dataEmissaoFormatada,
-                prazoEntrega: prazoEntregaFormatada,
                 dataLiberacao: dataLiberacaoFormatada,
                 dataFaturamento: dataFaturamentoFormatada
             })

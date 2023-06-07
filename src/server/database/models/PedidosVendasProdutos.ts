@@ -2,15 +2,14 @@ export interface IPedidosVendasProdutos {
     id: number;
     
     pedidoId?: number;
-    
     produtoId?: number;
     
     numeroItem?: number;
     embalagemUnidade?: boolean;
     quantidade?: number;
     quantidadeEmbalagem?: number;
-    tipoEmbalagem?: string;
     unidade?: number;
+    condicao?: string;
     precoUnitario?: number;
     precoItem?: number;
     desconto?: number;
@@ -23,8 +22,6 @@ export interface IPedidosVendasProdutos {
     pedidoCompra?: string;
     pedidoCompraItem?: string;
     localEstoque?: string;
-    pedidoCliente?: string;
-    pedidoNFe?: string;
 
     //////Impostos//////
     regraTributacaoId?: number;

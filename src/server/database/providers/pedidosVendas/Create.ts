@@ -13,12 +13,7 @@ export const create = async (pedido: Omit<IPedidosVendas, 'id'>): Promise<object
             const dataEmissao = parse(pedido.dataEmissao, 'ddMMyyyy', new Date());
             dataEmissaoFormatada = format(dataEmissao, 'yyyy-MM-dd');
         }
-
-        let prazoEntregaFormatada;
-        if (pedido.prazoEntrega) {
-            const prazoEntrega = parse(pedido.prazoEntrega, 'ddMMyyyy', new Date());
-            prazoEntregaFormatada = format(prazoEntrega, 'yyyy-MM-dd');
-        }
+       
 
         let dataLiberacaoFormatada;
         if (pedido.dataLiberacao) {
@@ -36,7 +31,6 @@ export const create = async (pedido: Omit<IPedidosVendas, 'id'>): Promise<object
         const [result] = await Knex(ETableNames.pedidosVendas)
             .insert({...pedido, 
                 dataEmissao: dataEmissaoFormatada,
-                prazoEntrega: prazoEntregaFormatada,
                 dataLiberacao: dataLiberacaoFormatada,
                 dataFaturamento: dataFaturamentoFormatada
             })

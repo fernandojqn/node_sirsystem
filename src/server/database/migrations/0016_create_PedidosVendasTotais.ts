@@ -60,6 +60,7 @@ export async function up(knex: Knex) {
             
             table.string('modalidadeFrete', 1).checkLength('<=', 1);
             table.float('valorTotalFrete');
+            
             table.float('pesoEmbalagem');
             table.string('numeroEmbalagem', 50).checkLength('<=', 50);
             table.float('quantidadeEmbalagem');

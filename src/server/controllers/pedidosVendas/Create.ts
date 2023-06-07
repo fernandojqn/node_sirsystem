@@ -15,7 +15,7 @@ export const createValidation = validation((getSchema) => ({
         dataEmissao: yup.string().optional().max(10).default(''),
         status: yup.string().optional().max(3).default(''),
         pedidoCliente: yup.string().optional().max(20).default(''),
-        prazoEntrega: yup.string().optional().max(10).default(''),
+        prazoEntrega: yup.string().optional().max(20).default(''),
         garantia: yup.string().optional().max(20).default(''),
         validadeProposta: yup.string().optional().max(20).default(''),
 
