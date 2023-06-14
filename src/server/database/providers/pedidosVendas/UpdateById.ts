@@ -6,9 +6,7 @@ import { Knex } from '../../knex';
 export const updateById = async (id: number, pedido: Omit<IPedidosVendas, 'id' | 'empresaId' | 'usuarioId'>): Promise<void | Error> => {
 
     try {
-        if (pedido.clienteId === 0) { 
-            delete pedido.clienteId; 
-        }
+        if (pedido.clienteId === 0) { delete pedido.clienteId; }
 
         let dataEmissaoFormatada;
         if (pedido.dataEmissao) {

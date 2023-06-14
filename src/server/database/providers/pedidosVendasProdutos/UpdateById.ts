@@ -5,18 +5,11 @@ import { Knex } from '../../knex';
 export const updateById = async (id: number, produto: Omit<IPedidosVendasProdutos, 'id' | 'empresaId' | 'usuarioId'>): Promise<void | Error> => {
 
     try {
-        if (produto.pedidoId === 0) { 
-            delete produto.pedidoId; 
-        }
-
-        if (produto.produtoId === 0) { 
-            delete produto.produtoId; 
-        }
-
-        if (produto.regraTributacaoId === 0) { 
-            delete produto.regraTributacaoId; 
-        }
-
+        delete produto.produto;
+        delete produto.descricaoDetalhada;
+        
+        if (produto.pedidoId === 0) { delete produto.pedidoId; }
+        if (produto.produtoId === 0) { delete produto.produtoId; }
         
         const result = await Knex(ETableNames.pedidosVendasProdutos)
             .update(produto)

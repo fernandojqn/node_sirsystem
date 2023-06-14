@@ -16,8 +16,9 @@ export async function up(knex: Knex) {
             table.float('numeroItem');
             table.boolean('embalagemUnidade');
             table.float('quantidade');
+            
             table.float('quantidadeEmbalagem');
-            table.float('unidade');
+            table.string('unidade', 3).checkLength('<=', 3);
             table.string('condicao', 20).checkLength('<=', 20);
             table.float('precoUnitario');
             table.float('precoItem');
@@ -32,62 +33,7 @@ export async function up(knex: Knex) {
             table.string('pedidoCompraItem', 50).checkLength('<=', 50);
             table.string('localEstoque', 50).checkLength('<=', 50);
 
-            //////Impostos//////
-            table.bigInteger('regraTributacaoId').nullable().defaultTo(null).index().references('id')
-                .inTable(ETableNames.tributacoes).onUpdate('CASCADE').onDelete('RESTRICT');
-
-            table.string('cst', 3).checkLength('<=', 3);
-            table.string('cfop', 4).checkLength('<=', 4);
-            table.string('cest', 7).checkLength('<=', 7);
-            table.string('ncm', 8).checkLength('<=', 8);            
-            //icms
-            table.string('situacaoTributariaICMS', 3).checkLength('<=', 3);
-            table.string('origemICMS', 3).checkLength('<=', 3);
-            table.float('baseReducaoICMS');
-            table.float('reducaoICMS');
-            table.float('baseCalculoICMS');
-            table.float('aliquotaICMS');
-            table.float('valorICMS');
-            table.float('operacaoICMS');
-            table.float('diferencaICMS');
-            table.float('diferidoICMS');
-            //ICMS ST
-            table.float('reducaoICMSst');
-            table.float('valorICMSst');
-            table.float('mvaICMSst');
-            table.float('MVAvalorICMSst');
-            table.float('aliquotaICMSst');
-            table.float('icmsST');
-            table.string('ufICMSst', 2).checkLength('<=', 2);
-            //FCP
-            table.float('baseICMSfcp');
-            table.float('aliquotaICMSfcp');
-            table.float('icmsFCP');
-            //IPI
-            table.string('situacaoTributariaIPI', 3).checkLength('<=', 3);
-            table.float('baseCalculoIPI');
-            table.float('aliquotaIPI');
-            table.float('valorIPI');
-            //COFINS
-            table.string('situacaoTributariaCOFINS', 3).checkLength('<=', 3);
-            table.float('baseCalculoCOFINS');
-            table.float('aliquotaCOFINS');
-            table.float('valorCOFINS');
-            //PIS
-            table.string('situacaoTributariaPIS', 3).checkLength('<=', 3);
-            table.float('baseCalculoPIS');
-            table.float('aliquotaPIS');
-            table.float('valorPIS');
-            //ICMS-Estadual
-            table.float('porcentagemICMSrelativoFCPufDestino');
-            table.float('valorBaseCalculoUFDestino');
-            table.float('valorBaseCalculoFCPnaUF');
-            table.float('internaUFdestino');
-            table.float('interestadual');
-            table.float('provisoriaPartilha');
-            table.float('icmsPartilhaUFdestino');
-            table.float('icmsPartilhaUFremetente');
-            table.float('icmsRelativoFCPufDestino');
+            
 
             //Para o banco logico
             table.bigInteger('empresaId').index().references('id')

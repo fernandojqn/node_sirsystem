@@ -14,7 +14,6 @@ export const create = async (pedido: Omit<IPedidosVendas, 'id'>): Promise<object
         const maxNumeroPedido = maxResult[0]?.maxNumeroPedido;
         const parsedMaxNumeroPedido = maxNumeroPedido ? parseInt(maxNumeroPedido) : undefined;
 
-
         // Verificar se o número do pedido é nulo ou zero
         if (!parsedMaxNumeroPedido || parsedMaxNumeroPedido === 0) {
             // Definir o número do pedido como 1 se for nulo ou zero
@@ -23,7 +22,7 @@ export const create = async (pedido: Omit<IPedidosVendas, 'id'>): Promise<object
             // Incrementar o número do pedido em 1 se for maior que 1
             pedido.numeroPedido = parsedMaxNumeroPedido ? parsedMaxNumeroPedido + 1 : 1;
         }
-    
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
         
         if (pedido.clienteId === 0) { delete pedido.clienteId; }
 

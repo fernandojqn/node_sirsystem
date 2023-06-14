@@ -18,13 +18,9 @@ export interface IProduto {
     ncmId?: number; //forgot ncm
 
     embalagem?: string; 
-
     quantidadeEmbalagem?: number; 
-
     unidade?: string; 
-
     liquido?: number; 
-
     bruto?: number; 
 
     fornecedor1Id?: number; // forgot fornecedor
