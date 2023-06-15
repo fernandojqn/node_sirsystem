@@ -11,9 +11,6 @@ export const create = async (produto: Omit<IPedidosVendasProdutos, 'id'>): Promi
         if (produto.pedidoId === 0) { delete produto.pedidoId; }
         if (produto.produtoId === 0) { delete produto.produtoId; }
         
-
-        console.log(produto)
-        
         const [result] = await Knex(ETableNames.pedidosVendasProdutos)
             .insert(produto)
             .returning('id');
