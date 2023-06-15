@@ -14,6 +14,7 @@ export const createValidation = validation((getSchema) => ({
         pedidoId:  yup.number().optional().default(0),
         produtoId:  yup.number().optional().default(0),
 
+        codigoProduto: yup.string().optional().default(''),
         produto: yup.string().optional().default(''),
         descricaoDetalhada: yup.string().optional().default(''),
         

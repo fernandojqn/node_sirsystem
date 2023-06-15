@@ -4,6 +4,7 @@ export interface IPedidosVendasProdutos {
     pedidoId?: number;
     produtoId?: number;
 
+    codigoProduto?: string;
     produto?: string;
     descricaoDetalhada?: string;
     
@@ -26,7 +27,6 @@ export interface IPedidosVendasProdutos {
     pedidoCompra?: string;
     pedidoCompraItem?: string;
     localEstoque?: string;
-
     
     empresaId: number;
     usuarioId: number;

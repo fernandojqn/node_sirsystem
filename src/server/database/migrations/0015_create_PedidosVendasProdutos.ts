@@ -13,6 +13,9 @@ export async function up(knex: Knex) {
             table.bigInteger('produtoId').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.produtos).onUpdate('CASCADE').onDelete('RESTRICT');
 
+            table.string('codigoProduto', 13).checkLength('<=', 13);
+            table.string('produto', 50).checkLength('<=', 50);
+
             table.float('numeroItem');
             table.boolean('embalagemUnidade');
             table.float('quantidade');
