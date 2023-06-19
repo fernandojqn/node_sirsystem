@@ -9,6 +9,7 @@ export const updateById = async (id: number, produto: Omit<IPedidosVendasProduto
         
         if (produto.pedidoId === 0) { delete produto.pedidoId; }
         if (produto.produtoId === 0) { delete produto.produtoId; }
+        if (produto.regraTributacaoId === 0) { delete produto.regraTributacaoId; }
         
         const result = await Knex(ETableNames.pedidosVendasProdutos)
             .update(produto)

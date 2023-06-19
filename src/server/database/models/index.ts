@@ -15,3 +15,6 @@ export * from './Vendedores';
 export * from './pedidosVendas';
 export * from './PedidosVendasProdutos';
 export * from './pedidosVendasTotais';
+export * from './pedidosVendasPagamentos';
+export * from './pedidosVendasTransportadoras';
+export * from './pedidosVendasMensagens';

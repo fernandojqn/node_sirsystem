@@ -20,6 +20,9 @@ declare module 'knex/types/tables' {
         vendedores: IVendedor,
         pedidosVendas: IPedidosVendas,
         pedidosVendasProdutos: IPedidosVendasProdutos,
-        pedidosVendasTotais: IPedidosVendasTotais
+        pedidosVendasTotais: IPedidosVendasTotais,
+        pedidosVendasPagamentos: IPedidosVendasPagamentos,
+        pedidosVendasTransportadoras: IPedidosVendasTransportadoras,
+        pedidosVendasMensagens: IPedidosVendasMensagens
     }
   }

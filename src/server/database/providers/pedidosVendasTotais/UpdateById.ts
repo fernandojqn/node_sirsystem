@@ -9,19 +9,6 @@ export const updateById = async (id: number, totais: Omit<IPedidosVendasTotais, 
             delete totais.pedidoId; 
         }
 
-        if (totais.vendedorId === 0) { 
-            delete totais.vendedorId; 
-        }
-
-        if (totais.transportadoraId === 0) { 
-            delete totais.transportadoraId; 
-        }
-
-        if (totais.codigoMensagemId === 0) { 
-            delete totais.codigoMensagemId; 
-        }
-
-
         const result = await Knex(ETableNames.pedidosVendasTotais)
             .update(totais)
             .where('id', '=', id);

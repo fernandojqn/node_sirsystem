@@ -15,5 +15,8 @@ export enum ETableNames {
     vendedores = 'vendedores',
     pedidosVendas = 'pedidosVendas',
     pedidosVendasProdutos = 'pedidosVendasProdutos',
-    pedidosVendasTotais = 'pedidosVendasTotais'
+    pedidosVendasTotais = 'pedidosVendasTotais',
+    pedidosVendasPagamentos = 'pedidosVendasPagamentos',
+    pedidosVendasTransportadoras = 'pedidosVendasTransportadoras',
+    pedidosVendasMensagens = 'pedidosVendasMensagens'
 }
