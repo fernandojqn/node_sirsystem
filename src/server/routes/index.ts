@@ -1,6 +1,7 @@
 import { ensureAuthenticated } from '../shared/middlewares';
 import { Router } from 'express';
 import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, LoginController, 
+    MensagensController, 
     ModelosController, NcmController, PedidosVendasController, PedidosVendasMensagensController, PedidosVendasPagamentosController, PedidosVendasProdutosController, PedidosVendasTotaisController, PedidosVendasTransportadorasController, ProdutosController, SubTiposController, TiposController, 
     TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 
@@ -47,6 +48,13 @@ router.get('/grupos', ensureAuthenticated, GruposController.getAllValidation, Gr
 router.get('/grupos/:id', ensureAuthenticated, GruposController.getByIdValidation, GruposController.getById);
 router.put('/grupos/:id', ensureAuthenticated, GruposController.updateByIdValidation, GruposController.updateById);
 router.delete('/grupos/:id', ensureAuthenticated, GruposController.deleteByIdValidation, GruposController.deleteById);
+
+// Rotas da paginas Mensagens
+router.post('/mensagens', ensureAuthenticated, MensagensController.createValidation, MensagensController.create);
+router.get('/mensagens', ensureAuthenticated, MensagensController.getAllValidation, MensagensController.getAll);
+router.get('/mensagens/:id', ensureAuthenticated, MensagensController.getByIdValidation, MensagensController.getById);
+router.put('/mensagens/:id', ensureAuthenticated, MensagensController.updateByIdValidation, MensagensController.updateById);
+router.delete('/mensagens/:id', ensureAuthenticated, MensagensController.deleteByIdValidation, MensagensController.deleteById);
 
 // Rotas da paginas Modelos
 router.post('/modelos', ensureAuthenticated, ModelosController.createValidation, ModelosController.create);

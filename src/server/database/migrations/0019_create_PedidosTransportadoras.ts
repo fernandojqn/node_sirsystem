@@ -34,15 +34,15 @@ export async function up(knex: Knex) {
             table.comment('Tabela usada para armazenar Nota Fiscal Pedidos.');
         })
         .then(() => {
-            console.log(`# Created table ${ETableNames.pedidosVendas}`);
+            console.log(`# Created table ${ETableNames.pedidosVendasTransportadoras}`);
         });
 }
 
 export async function down(knex: Knex) {
     return knex
         .schema
-        .dropTable(ETableNames.pedidosVendas)
+        .dropTable(ETableNames.pedidosVendasTransportadoras)
         .then(() => {
-            console.log(`# Dropped table ${ETableNames.pedidosVendas}`);
+            console.log(`# Dropped table ${ETableNames.pedidosVendasTransportadoras}`);
         });
 }

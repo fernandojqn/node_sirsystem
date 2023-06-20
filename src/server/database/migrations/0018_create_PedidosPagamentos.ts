@@ -46,15 +46,15 @@ export async function up(knex: Knex) {
             table.comment('Tabela usada para armazenar Nota Fiscal Pedidos.');
         })
         .then(() => {
-            console.log(`# Created table ${ETableNames.pedidosVendas}`);
+            console.log(`# Created table ${ETableNames.pedidosVendasPagamentos}`);
         });
 }
 
 export async function down(knex: Knex) {
     return knex
         .schema
-        .dropTable(ETableNames.pedidosVendas)
+        .dropTable(ETableNames.pedidosVendasPagamentos)
         .then(() => {
-            console.log(`# Dropped table ${ETableNames.pedidosVendas}`);
+            console.log(`# Dropped table ${ETableNames.pedidosVendasPagamentos}`);
         });
 }

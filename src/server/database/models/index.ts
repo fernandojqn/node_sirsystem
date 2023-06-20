@@ -3,6 +3,7 @@ export * from './Clientes';
 export * from './Empresas';
 export * from './Fornecedores';
 export * from './Grupos';
+export * from './Mensagens';
 export * from './Modelos';
 export * from './Ncm';
 export * from './Produtos';

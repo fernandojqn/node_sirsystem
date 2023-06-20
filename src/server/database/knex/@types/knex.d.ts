@@ -9,6 +9,7 @@ declare module 'knex/types/tables' {
         empresas: IEmpresa,
         fornecedores: IFornecedor,
         grupos: IGrupo,
+        mensagens: IMensagem,
         modelos: IModelo,
         ncm: INcm,
         produtos: IProduto,

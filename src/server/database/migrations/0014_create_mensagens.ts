@@ -1,4 +1,3 @@
-
 import { Knex } from 'knex';
 
 import { ETableNames } from '../ETableNames';
@@ -6,9 +5,10 @@ import { ETableNames } from '../ETableNames';
 export async function up(knex: Knex) {
     return knex
         .schema
-        .createTable(ETableNames.atividades, table => {
+        .createTable(ETableNames.mensagens, table => {
             table.bigIncrements('id').primary().index();
-            table.string('atividade', 50).checkLength('<=', 50).index().notNullable();
+
+            table.string('mensagemImpressao', 8000).checkLength('<=', 8000).index().notNullable();
 
             //Para o banco logico
             table.bigInteger('empresaId').index().references('id')
@@ -19,18 +19,18 @@ export async function up(knex: Knex) {
 
                 
             
-            table.comment('Tabela usada para armazenar atividades.');
+            table.comment('Tabela usada para armazenar mensagens.');
         })
         .then(() => {
-            console.log(`# Created table ${ETableNames.atividades}`);
+            console.log(`# Created table ${ETableNames.mensagens}`);
         });
 }
 
 export async function down(knex: Knex) {
     return knex
         .schema
-        .dropTable(ETableNames.atividades)
+        .dropTable(ETableNames.mensagens)
         .then(() => {
-            console.log(`# Dropped table ${ETableNames.atividades}`);
+            console.log(`# Dropped table ${ETableNames.mensagens}`);
         });
 }

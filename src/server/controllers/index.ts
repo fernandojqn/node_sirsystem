@@ -4,6 +4,7 @@ export * from './empresas';
 export * from './fornecedores';
 export * from './grupos';
 export * from './login';
+export * from './mensagens';
 export * from './modelos';
 export * from './ncm';
 export * from './pedidosVendas';

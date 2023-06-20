@@ -1,7 +1,7 @@
-export interface IAtividade {
+export interface IMensagem {
     id: number;
     
-    atividade: string;
+    mensagemImpressao: string;
 
     empresaId: number;
     usuarioId: number;

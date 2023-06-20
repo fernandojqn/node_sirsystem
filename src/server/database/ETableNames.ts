@@ -4,6 +4,7 @@ export enum ETableNames {
     empresas = 'empresas',
     fornecedores = 'fornecedores',
     grupos = 'grupos',
+    mensagens = 'mensagens',
     modelos = 'modelos',
     ncm = 'ncm',
     produtos = 'produtos',
