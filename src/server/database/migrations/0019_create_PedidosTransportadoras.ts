@@ -13,7 +13,7 @@ export async function up(knex: Knex) {
             table.bigInteger('transportadoraId').nullable().defaultTo(null).index().references('id')
                 .inTable(ETableNames.transportadoras).onUpdate('CASCADE').onDelete('RESTRICT');
             
-            table.string('modalidadeFrete', 30).checkLength('<=', 30);
+            table.string('modalidadeFrete', 1).checkLength('<=', 1);
             table.float('valorFrete');
 
             table.float('pesoEmbalagem');
