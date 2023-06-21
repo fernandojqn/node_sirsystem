@@ -4,23 +4,23 @@ import { format, parse } from 'date-fns';
 import { Knex } from '../../knex';
 
 export const create = async (pedido: Omit<IPedidosVendas, 'id'>): Promise<object | number | Error> => {
-    
+        
     try {
         // Obter o maior número de numeroPedido da tabela
-        const maxResult: { maxNumeroPedido?: string | undefined }[] = await Knex(ETableNames.pedidosVendas)
-            .max({ maxNumeroPedido: 'numeroPedido' })
+        const maxResult: { maxPedidoId?: string | undefined }[] = await Knex(ETableNames.pedidosVendas)
+            .max({ maxPedidoId: 'pedidoId' })
             .where('empresaId', pedido.empresaId);
 
-        const maxNumeroPedido = maxResult[0]?.maxNumeroPedido;
-        const parsedMaxNumeroPedido = maxNumeroPedido ? parseInt(maxNumeroPedido) : undefined;
+        const maxPedidoId = maxResult[0]?.maxPedidoId;
+        const parsedMaxPedidoId = maxPedidoId ? parseInt(maxPedidoId) : undefined;
 
         // Verificar se o número do pedido é nulo ou zero
-        if (!parsedMaxNumeroPedido || parsedMaxNumeroPedido === 0) {
+        if (!parsedMaxPedidoId || parsedMaxPedidoId === 0) {
             // Definir o número do pedido como 1 se for nulo ou zero
-            pedido.numeroPedido = 1;
+            pedido.pedidoId = 1;
         } else {
             // Incrementar o número do pedido em 1 se for maior que 1
-            pedido.numeroPedido = parsedMaxNumeroPedido ? parsedMaxNumeroPedido + 1 : 1;
+            pedido.pedidoId = parsedMaxPedidoId ? parsedMaxPedidoId + 1 : 1;
         }
         /////////////////////////////////////////////////////////////////////////////////////////////////////
         
@@ -45,20 +45,19 @@ export const create = async (pedido: Omit<IPedidosVendas, 'id'>): Promise<object
             dataFaturamentoFormatada = format(dataFaturamento, 'yyyy-MM-dd');
         }
 
-        
+        // Salvando o Pedidos Vendas
         const [result] = await Knex(ETableNames.pedidosVendas)
             .insert({...pedido, 
                 dataEmissao: dataEmissaoFormatada,
                 dataLiberacao: dataLiberacaoFormatada,
                 dataFaturamento: dataFaturamentoFormatada
-            })
+            })            
             .returning('id');
         
-        return result;
+
+        return result;        
         
     } catch (error) {
         return new Error('Erro ao cadastrar o registro');
     }
 };
-
-

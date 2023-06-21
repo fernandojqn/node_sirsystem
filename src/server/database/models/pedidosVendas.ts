@@ -1,7 +1,7 @@
 export interface IPedidosVendas { //30
     id: number;
         
-    numeroPedido?: number;
+    pedidoId?: number;
     dataEmissao?: string;
     status?: string;
     pedidoCliente?: string;

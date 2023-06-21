@@ -7,7 +7,7 @@ export async function up(knex: Knex) {
         .createTable(ETableNames.pedidosVendas, table => {
             table.bigIncrements('id').primary().index();
 
-            table.float('numeroPedido');
+            table.float('pedidoId');
             table.date('dataEmissao');
             table.string('status', 3).checkLength('<=', 3);
             table.string('pedidoCliente', 20).checkLength('<=', 20);

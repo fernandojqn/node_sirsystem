@@ -7,7 +7,7 @@ export const getById = async (id: number): Promise<IPedidosVendasPagamentos | Er
     try {
         const result = await Knex(ETableNames.pedidosVendasPagamentos)
             .select('*')
-            .where('id', '=', id)
+            .where('pedidoId', '=', id)
             .first(); // só quero o primeiro da lista, ele para de procurar no bd
 
         if(result) return result;

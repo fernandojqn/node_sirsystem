@@ -2,7 +2,6 @@ import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
 import { IPedidosVendas } from '../../models';
 
-
 export const getById = async (id: number): Promise<IPedidosVendas | Error> => {
 
     try {
