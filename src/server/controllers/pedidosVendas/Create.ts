@@ -11,7 +11,7 @@ interface IBodyProps extends Omit<IPedidosVendas, 'id'> {}
 
 export const createValidation = validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
-        numeroPedido: yup.number().optional().default(0),
+        pedidoId: yup.number().optional().default(0),
         dataEmissao: yup.string().optional().max(10).default(''),
         status: yup.string().optional().max(3).default(''),
         pedidoCliente: yup.string().optional().max(20).default(''),

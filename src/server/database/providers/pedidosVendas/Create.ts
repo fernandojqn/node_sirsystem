@@ -54,7 +54,25 @@ export const create = async (pedido: Omit<IPedidosVendas, 'id'>): Promise<object
             })            
             .returning('id');
         
+        await Knex(ETableNames.pedidosVendasTransportadoras)
+            .insert({
+                empresaId: pedido.empresaId,
+                usuarioId: pedido.usuarioId,
+                pedidoId: pedido.pedidoId});        
+        
+        await Knex(ETableNames.pedidosVendasPagamentos)
+            .insert({
+                empresaId: pedido.empresaId,
+                usuarioId: pedido.usuarioId,
+                pedidoId: pedido.pedidoId});
 
+        await Knex(ETableNames.pedidosVendasMensagens)
+            .insert({
+                empresaId: pedido.empresaId,
+                usuarioId: pedido.usuarioId,
+                pedidoId: pedido.pedidoId});
+
+        
         return result;        
         
     } catch (error) {
