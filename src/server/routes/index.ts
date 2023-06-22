@@ -1,8 +1,7 @@
 import { ensureAuthenticated } from '../shared/middlewares';
 import { Router } from 'express';
-import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, LoginController, 
-    MensagensController, 
-    ModelosController, NcmController, PedidosVendasController, PedidosVendasMensagensController, PedidosVendasPagamentosController, PedidosVendasProdutosController, PedidosVendasTotaisController, PedidosVendasTransportadorasController, ProdutosController, SubTiposController, TiposController, 
+import { AtividadesController, ClientesController, EmpresasController, FornecedoresController, GruposController, LoginController, MensagensController, 
+    ModelosController, NcmController, PedidosVendasController, PedidosVendasProdutosController, ProdutosController, SubTiposController, TiposController, 
     TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 
 const router = Router();
@@ -83,32 +82,6 @@ router.get('/pedidosvendasprodutos', ensureAuthenticated, PedidosVendasProdutosC
 router.get('/pedidosvendasprodutos/:id', ensureAuthenticated, PedidosVendasProdutosController.getByIdValidation, PedidosVendasProdutosController.getById);
 router.put('/pedidosvendasprodutos/:id', ensureAuthenticated, PedidosVendasProdutosController.updateByIdValidation, PedidosVendasProdutosController.updateById);
 router.delete('/pedidosvendasprodutos/:id', ensureAuthenticated, PedidosVendasProdutosController.deleteByIdValidation, PedidosVendasProdutosController.deleteById);
-
-// Rotas da paginas Pedidos Vendas Totais
-router.post('/pedidosvendastotais', ensureAuthenticated, PedidosVendasTotaisController.createValidation, PedidosVendasTotaisController.create);
-router.get('/pedidosvendastotais', ensureAuthenticated, PedidosVendasTotaisController.getAllValidation, PedidosVendasTotaisController.getAll);
-router.get('/pedidosvendastotais/:id', ensureAuthenticated, PedidosVendasTotaisController.getByIdValidation, PedidosVendasTotaisController.getById);
-router.put('/pedidosvendastotais/:id', ensureAuthenticated, PedidosVendasTotaisController.updateByIdValidation, PedidosVendasTotaisController.updateById);
-router.delete('/pedidosvendastotais/:id', ensureAuthenticated, PedidosVendasTotaisController.deleteByIdValidation, PedidosVendasTotaisController.deleteById);
-
-// Rotas da paginas Pedidos Vendas Pagamentos
-router.post('/pedidosvendaspagamentos', ensureAuthenticated, PedidosVendasPagamentosController.createValidation, PedidosVendasPagamentosController.create);
-router.get('/pedidosvendaspagamentos', ensureAuthenticated, PedidosVendasPagamentosController.getAllValidation, PedidosVendasPagamentosController.getAll);
-router.get('/pedidosvendaspagamentos/:id', ensureAuthenticated, PedidosVendasPagamentosController.getByIdValidation, PedidosVendasPagamentosController.getById);
-router.put('/pedidosvendaspagamentos/:id', ensureAuthenticated, PedidosVendasPagamentosController.updateByIdValidation, PedidosVendasPagamentosController.updateById);
-router.delete('/pedidosvendaspagamentos/:id', ensureAuthenticated, PedidosVendasPagamentosController.deleteByIdValidation, PedidosVendasPagamentosController.deleteById);
-
-// Rotas da paginas Pedidos Vendas Transportadoras
-router.post('/pedidosvendastransportadoras', ensureAuthenticated, PedidosVendasTransportadorasController.createValidation, PedidosVendasTransportadorasController.create);
-router.get('/pedidosvendastransportadoras/:id', ensureAuthenticated, PedidosVendasTransportadorasController.getByIdValidation, PedidosVendasTransportadorasController.getById);
-router.put('/pedidosvendastransportadoras/:id', ensureAuthenticated, PedidosVendasTransportadorasController.updateByIdValidation, PedidosVendasTransportadorasController.updateById);
-router.delete('/pedidosvendastransportadoras/:id', ensureAuthenticated, PedidosVendasTransportadorasController.deleteByIdValidation, PedidosVendasTransportadorasController.deleteById);
-
-// Rotas da paginas Pedidos Vendas Mensagens
-router.post('/pedidosvendasmensagens', ensureAuthenticated, PedidosVendasMensagensController.createValidation, PedidosVendasMensagensController.create);
-router.get('/pedidosvendasmensagens/:id', ensureAuthenticated, PedidosVendasMensagensController.getByIdValidation, PedidosVendasMensagensController.getById);
-router.put('/pedidosvendasmensagens/:id', ensureAuthenticated, PedidosVendasMensagensController.updateByIdValidation, PedidosVendasMensagensController.updateById);
-router.delete('/pedidosvendasmensagens/:id', ensureAuthenticated, PedidosVendasMensagensController.deleteByIdValidation, PedidosVendasMensagensController.deleteById);
 
 // Rotas da paginas Produtos
 router.post('/produtos', ensureAuthenticated, ProdutosController.createValidation, ProdutosController.create);
