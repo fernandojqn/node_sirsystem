@@ -7,6 +7,9 @@ export const updateById = async (id: number, pedido: Omit<IPedidosVendas, 'id' |
 
     try {
         if (pedido.clienteId === 0) { delete pedido.clienteId; }
+        if (pedido.transportadoraId === 0) { delete pedido.transportadoraId; }
+        if (pedido.vendedorId === 0) { delete pedido.vendedorId; }
+        if (pedido.mensagemId === 0) { delete pedido.mensagemId; }
 
         let dataEmissaoFormatada;
         if (pedido.dataEmissao) {
@@ -26,12 +29,18 @@ export const updateById = async (id: number, pedido: Omit<IPedidosVendas, 'id' |
             dataFaturamentoFormatada = format(dataFaturamento, 'yyyy-MM-dd');
         }
 
+        let dataVencimentoFormatada;
+        if (pedido.dataVencimento) {
+            const dataVencimento = parse(pedido.dataVencimento, 'ddMMyyyy', new Date());
+            dataVencimentoFormatada = format(dataVencimento, 'yyyy-MM-dd');
+        }
 
         const result = await Knex(ETableNames.pedidosVendas)
             .update({...pedido, 
                 dataEmissao: dataEmissaoFormatada,
                 dataLiberacao: dataLiberacaoFormatada,
-                dataFaturamento: dataFaturamentoFormatada
+                dataFaturamento: dataFaturamentoFormatada,
+                dataVencimento: dataVencimentoFormatada
             })
             .where('id', '=', id);
             

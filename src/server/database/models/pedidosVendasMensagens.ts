@@ -1,10 +1,8 @@
 export interface IPedidosVendasMensagens {
-    id: number;
-        
+    id: number;        
     pedidoId?: number;
     
-    mensagemId?: number;
-    
+    mensagemId?: number;    
     mensagemImpressao?: string;
     informacoesAdicionais?: string;
     observacoesInternas?: string;
