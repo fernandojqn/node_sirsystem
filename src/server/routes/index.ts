@@ -51,6 +51,7 @@ router.delete('/grupos/:id', ensureAuthenticated, GruposController.deleteByIdVal
 // Rotas da paginas Mensagens
 router.post('/mensagens', ensureAuthenticated, MensagensController.createValidation, MensagensController.create);
 router.get('/mensagens', ensureAuthenticated, MensagensController.getAllValidation, MensagensController.getAll);
+router.get('/mensagensbyid', ensureAuthenticated, MensagensController.getAllByIdValidation, MensagensController.getAllById);
 router.get('/mensagens/:id', ensureAuthenticated, MensagensController.getByIdValidation, MensagensController.getById);
 router.put('/mensagens/:id', ensureAuthenticated, MensagensController.updateByIdValidation, MensagensController.updateById);
 router.delete('/mensagens/:id', ensureAuthenticated, MensagensController.deleteByIdValidation, MensagensController.deleteById);
