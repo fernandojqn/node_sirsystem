@@ -3,8 +3,8 @@ import { StatusCodes } from 'http-status-codes';
 import { Request, Response } from 'express';
 import * as yup from 'yup';
 import { PedidosVendasProvider } from '../../database/providers';
-
 //Validação
+
 interface IParamProps {
     id?: number;    
 }
