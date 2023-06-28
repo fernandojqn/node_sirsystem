@@ -4,6 +4,7 @@ import { AtividadesController, ClientesController, EmpresasController, Fornecedo
     ModelosController, NcmController, PedidosVendasController, PedidosVendasProdutosController, ProdutosController, SubTiposController, TiposController, 
     TransportadorasController, TributacoesController, UsuariosController, VendedoresController } from './../controllers';
 
+
 const router = Router();
 
 // Rota teste
@@ -134,7 +135,7 @@ router.put('/vendedores/:id', ensureAuthenticated, VendedoresController.updateBy
 router.delete('/vendedores/:id', ensureAuthenticated, VendedoresController.deleteByIdValidation, VendedoresController.deleteById);
 
 
-///////////////////////Rotas para contas nas paginas///////////////////////
+///////////////////////Rotas para calculos das paginas///////////////////////
 //Rotas da pagina produto
 router.post('/produtos/somaCapagem', ProdutosController.somaCapagem);
 router.post('/produtos/subtracaoCapagem', ProdutosController.subtracaoCapagem);
@@ -148,6 +149,11 @@ router.post('/produtos/margemLucro2', ProdutosController.margemLucro2);
 router.post('/produtos/margemLucro3', ProdutosController.margemLucro3);
 router.post('/produtos/margemLucro4', ProdutosController.margemLucro4);
 router.post('/produtos/margemLucro5', ProdutosController.margemLucro5);
+
+
+///////////////////////Rotas para impressões das paginas///////////////////////
+//Rotas da pagina pedidos
+router.post('/pedidosvendas/print', PedidosVendasController.printPedidosVendas);
 
 //Exporta os caminhos para o Server.ts
 export { router };

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 export const margemLucro1 = async (req: Request, res: Response) => {
-
+    
     const precoCompra = parseFloat(req.body.precoCompra);
     const precoVenda1 = parseFloat(req.body.precoVenda1);
 

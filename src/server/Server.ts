@@ -10,9 +10,9 @@ server.use(express.json()); //avisar que o tipo de dados que está vindo pelo o 
 
 server.use(cors());
 
-server.use(cors({
-    origin: process.env.ENABLED_CORS?.split(';') || []
-}));
+//server.use(cors({
+//    origin: process.env.ENABLED_CORS?.split(';') || []
+//}));
 
 
 server.use( router ); // puxar as rotas do routes/index.ts
