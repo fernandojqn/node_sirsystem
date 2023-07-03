@@ -1,11 +1,57 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nota Fiscal</title>
+  <style>
+    /* Estilos CSS para a nota fiscal */
+    /* Define os estilos para o cabeçalho, corpo, rodapé, etc. */
+  </style>
 </head>
 <body>
-    <p> ID: <%= nome %> </p>
+  <header>
+    <!-- Cabeçalho da nota fiscal -->
+    <h1>Nota Fiscal</h1>
+    <!-- Inclua aqui as informações do cabeçalho da nota fiscal, como emitente, destinatário, data, etc. -->
+  </header>
+  
+  <section>
+    <!-- Corpo da nota fiscal -->
+    <table>
+      <!-- Tabela para exibir os itens da nota fiscal -->
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Quantidade</th>
+          <th>Valor Unitário</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Inclua aqui os itens da nota fiscal, cada item em uma linha da tabela -->
+        <tr>
+          <td>Item 1</td>
+          <td>2</td>
+          <td>10.00</td>
+          <td>20.00</td>
+        </tr>
+        <tr>
+          <td>Item 2</td>
+          <td>3</td>
+          <td>15.00</td>
+          <td>45.00</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <!-- Inclua aqui outros detalhes do corpo da nota fiscal, como impostos, descontos, etc. -->
+  </section>
+  
+  <footer>
+    <!-- Rodapé da nota fiscal -->
+    <p>Total: R$ 65.00</p>
+    <!-- Inclua aqui outras informações do rodapé, como forma de pagamento, data de vencimento, etc. -->
+  </footer>
 </body>
 </html>
