@@ -3,8 +3,6 @@ import { Knex } from '../../knex';
 import { ICliente } from '../../models';
 
 
-
-
 export const create = async (cliente: Omit<ICliente, 'id' | 'empresaId' | 'usuarioId'>): Promise<object | Error> => {
 
     try {

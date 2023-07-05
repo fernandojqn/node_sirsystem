@@ -2,7 +2,6 @@ import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
 import { ICliente } from '../../models';
 
-
 export const getAll = async (page: number, limit: number, filter: string, id = 0, empresaId: number): Promise<ICliente[] | Error> => {
 
     try {

@@ -4,54 +4,184 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nota Fiscal</title>
-  <style>
-    /* Estilos CSS para a nota fiscal */
-    /* Define os estilos para o cabeçalho, corpo, rodapé, etc. */
-  </style>
+    <style>        
+        .box {
+            display: inline-block;                       
+        }
+
+        .div1, .div2 {
+        width: 48%;
+        display: inline-block;
+        text-align: center;
+        }
+
+
+        div{
+            border: 1px solid black; 
+            margin-bottom: 9px;
+            border-radius: 10px;
+            padding: 5px;
+            box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 0.470);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        tfoot td {
+            font-weight: bold;
+        }
+        p {
+            font-size: 14px;
+            margin: 2px;
+        }
+        .thTexto {
+            font-size: 13px;
+        }
+        .tdTexto {
+            border: none;
+            border-bottom: 1px solid black;
+            padding: 4px;
+            text-align: left;
+            font-size: 11px;
+        }
+
+        main {
+            position: relative;
+            min-height: calc(100vh - 70px - 25px); /* Subtraia a altura do header e do footer da altura total da viewport */
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .container {
+            min-height: 100%;
+            position: relative;
+            padding-bottom: 25px; /* Altura do footer */
+        }
+
+        footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 25px; /* Altura do footer */
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <!-- Cabeçalho da nota fiscal -->
-    <h1>Nota Fiscal</h1>
-    <!-- Inclua aqui as informações do cabeçalho da nota fiscal, como emitente, destinatário, data, etc. -->
-  </header>
-  
-  <section>
-    <!-- Corpo da nota fiscal -->
-    <table>
-      <!-- Tabela para exibir os itens da nota fiscal -->
-      <thead>
-        <tr>
-          <th>Descrição</th>
-          <th>Quantidade</th>
-          <th>Valor Unitário</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Inclua aqui os itens da nota fiscal, cada item em uma linha da tabela -->
-        <tr>
-          <td>Item 1</td>
-          <td>2</td>
-          <td>10.00</td>
-          <td>20.00</td>
-        </tr>
-        <tr>
-          <td>Item 2</td>
-          <td>3</td>
-          <td>15.00</td>
-          <td>45.00</td>
-        </tr>
-      </tbody>
-    </table>
-    
-    <!-- Inclua aqui outros detalhes do corpo da nota fiscal, como impostos, descontos, etc. -->
-  </section>
-  
-  <footer>
-    <!-- Rodapé da nota fiscal -->
-    <p>Total: R$ 65.00</p>
-    <!-- Inclua aqui outras informações do rodapé, como forma de pagamento, data de vencimento, etc. -->
-  </footer>
+    <div class="container">
+        <header style="height: 70px;">
+            <p>aqui imagem</p>
+        </header>
+        <main>
+            <div style="border: none; box-shadow: none;">
+                <div class="box" style="width: 75%; margin: 0px;">
+                    <p><strong>Cliente:</strong>&nbsp; <%= cliente %></p>
+                    <p> <strong>Contato:</strong>&nbsp; <%=contato%></p>
+                    <p style="display: inline-block;  margin: 2px 30px 2px 2px;"> <strong>Telefone:</strong>&nbsp;<%= telefone %></p>
+                    <p style="display: inline-block; ;"><strong>Celuar:</strong>&nbsp;<%= celular %></p>
+                    <p><strong>Email:</strong>&nbsp;<%= email %></p>
+                </div>
+                <div class="box" style="width: 20%; margin: 0px; float: right; text-align: center;">
+                    <p><strong>Orçamento:</strong></p>
+                    <p><strong>N<sup>o</sup></strong> <%= pedido %> </p>
+                    <p style="color: white;">A</p>
+                    <p> <strong>Data:</strong>&nbsp; <%= dataImpressao %> </p>
+                </div>
+            </div>
+
+            <div>
+                <h3 style="margin: 2px;"> 1. Descrição Detalhada </h3>
+                <table>
+                    <thead>
+                        <tr style="background-color: rgba(128, 128, 128, 0.24);">
+                            <th class='thTexto' style="width: 5%;">Item</th>
+                            <th class='thTexto' style="width: 10%;">QTDE</th>
+                            <th class='thTexto' style="width: 55%;">Descrição</th>
+                            <th class='thTexto' style="width: 15%;">VL. Unitario</th>
+                            <th class='thTexto' style="width: 15%;">SubTotal</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% resultProdutos.forEach((produto, index) => { %>
+                        <tr>
+                            <td class='tdTexto'><%= index + 1 %></td>
+                            <td class='tdTexto'><%= produto.quantidade %></td>
+                            <td class='tdTexto'><%= produto.produto %></td>
+                            <td class='tdTexto' style="text-align: right;"><%= produto.precoUnitario %></td>
+                            <td class='tdTexto' style="text-align: right;"><%= produto.subTotal %></td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+
+                    <tfoot>
+                        <td colspan="4" style="text-align: right; border: none;">Total</td>
+                        <td style="text-align: right;  border: none;"> <%= totalNota %> </td>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="box" style="margin-right: 10px;">
+                <h3 style="margin: 2px; padding-right: 11px;">2. Validade da proposta </h3>
+                <p> <%= validadeProposta %> </p>
+            </div>
+            
+            <div class="box" style="margin-right: 10px; padding-right: 11px;">
+                <h3 style="margin: 2px;">3. Forma de pagamento </h3>
+                <p> <%= formaDePagamento %> </p>
+            </div>
+
+            <div class="box" style="margin-right: 10px; padding-right: 11px;">
+                <h3 style="margin: 2px;">4. prazo de entrega </h3>
+                <p> <%= prazoEntrega %> </p>
+            </div>
+
+            <div class="box" >
+                <h3 style="margin: 2px; padding-right: 11px;">5. Garantia </h3>
+                <p> <%= garantia %> </p>
+            </div>
+
+            <div>
+                <h3 style="margin: 2px;">6. Observações </h3>
+                
+                <% const linhas = observacoes.split('\n'); %>
+                <% linhas.forEach((linha) => { %>
+                <p style="margin: 2px;"><%= linha %></p>
+                <% }); %>
+
+            </div>
+        </main>
+    </div>
+
+    <footer  class="footer">
+        <div style="border: none; box-shadow: none; padding-top: -100px;">
+            <div class="div1" style="border: none; box-shadow: none;">
+                <p style="margin: 2px;">_______________________________</p>
+                <p style="margin: 2px;"> <%= venNome %> </p>
+                <p style="margin: 2px;"><%= venDocumento %> </p>
+            </div>
+            <div class="div2" style="border: none; box-shadow: none;">
+                <p style="margin: 2px; padding-top: 30px;">_______________________________</p>
+                <p style="margin: 2px;"> Cliente </p>
+                <p style="margin: 2px; padding-bottom: 10px; color: white;">a2</p>
+            </div>
+        </div>
+        <div style="border: none; box-shadow: none; text-align: center;">
+            <p style="margin: 2px; font-size: 14px;"><strong><%= empSufixo %>.</strong></p>
+            <p style="margin: 2px; font-size: 12px;">CNPJ: <%= documento %> - IE: <%= inscricaoEstadual %> </p>
+            <p style="margin: 2px; font-size: 12px;"><%= endereco %>, <%= numero %>, <%= complemento %>, <%= bairro %>, CEP: <%= cep %>, <%= cidade %>/<%= uf %></p>
+            <p style="margin: 2px; font-size: 12px;">Tel: <%= empTelefone %> - Email: <%= empEmail %></p>
+        </div>
+    </footer>
 </body>
 </html>
