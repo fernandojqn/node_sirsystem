@@ -4,7 +4,6 @@ import { Request, Response } from 'express';
 import * as yup from 'yup';
 import { IModelo } from '../../database/models';
 import { ModelosProvider } from '../../database/providers';
-
 //Validação
 interface IBodyProps extends Omit<IModelo, 'id'> {}
 

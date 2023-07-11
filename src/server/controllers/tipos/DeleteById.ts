@@ -4,7 +4,6 @@ import { Request, Response } from 'express';
 import * as yup from 'yup';
 import { TiposProvider } from '../../database/providers';
 
-
 //Validação
 interface IParamProps {
     id?: number;    

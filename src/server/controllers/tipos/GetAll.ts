@@ -3,7 +3,6 @@ import { validation } from '../../shared/middlewares';
 import * as yup from 'yup';
 import { StatusCodes } from 'http-status-codes';
 import { TiposProvider } from '../../database/providers';
-
 //Validação
 interface IQueryProps {
     id?: number;
@@ -24,8 +23,11 @@ export const getAllValidation = validation((getSchema) => ({
 
 
 export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) => {
-    const result = await TiposProvider.getAll(req.query.page || 1, 
-        req.query.limit || 7, req.query.filter || '', Number(req.query.id),
+    const result = await TiposProvider.getAll(
+        req.query.page || 1, 
+        req.query.limit || 7, 
+        req.query.filter || '', 
+        Number(req.query.id),
         Number(req.headers.empresaId));
         
     const count = await TiposProvider.count(req.query.filter);

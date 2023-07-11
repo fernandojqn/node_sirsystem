@@ -2,7 +2,6 @@ import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
 import { IModelo } from '../../models';
 
-
 export const updateById = async (id: number, modelo: Omit<IModelo, 'id' | 'empresaId' | 'usuarioId'>): Promise<void | Error> => {
 
     try {
@@ -11,7 +10,6 @@ export const updateById = async (id: number, modelo: Omit<IModelo, 'id' | 'empre
             .where('id', '=', id);
             
         if(result) return;
-
 
         return new Error('Erro ao atualizar o registro');        
     } catch (error) {

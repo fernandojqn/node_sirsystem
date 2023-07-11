@@ -3,7 +3,6 @@ import { validation } from '../../shared/middlewares';
 import * as yup from 'yup';
 import { StatusCodes } from 'http-status-codes';
 import { ModelosProvider } from '../../database/providers';
-
 //Validação
 interface IQueryProps {
     id?: number;
@@ -26,12 +25,17 @@ export const getAllValidation = validation((getSchema) => ({
 
 
 export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) => {
-    const result = await ModelosProvider.getAll(req.query.page || 1, 
-        req.query.limit || 7, req.query.filter || '', req.query.filter2 || '',
+    const result = await ModelosProvider.getAll(
+        req.query.page || 1, 
+        req.query.limit || 7, 
+        req.query.filter || '', 
+        req.query.filter2 || '',
         Number(req.headers.empresaId));
 
+    console.log(req.query.filter2);
+
     
-    const count = await ModelosProvider.count(req.query.filter);
+    const count = await ModelosProvider.count(req.query.filter2);
 
     if (result instanceof Error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

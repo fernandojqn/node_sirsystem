@@ -11,4 +11,3 @@ export const AtividadesController = {
     ...updateById,
     ...deleteById
 };
-

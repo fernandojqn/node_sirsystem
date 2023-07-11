@@ -5,7 +5,6 @@ import * as yup from 'yup';
 import { StatusCodes } from 'http-status-codes';
 import { ModelosProvider } from '../../database/providers';
 
-
 interface IParamProps {
   id?: number;
 }
@@ -45,8 +44,7 @@ export const updateById = async (req: Request<IParamProps, {}, IBodyProps>, res:
         });
     }
 
-    const result = await ModelosProvider.updateById(req.params.id, req.body);
-    
+    const result = await ModelosProvider.updateById(req.params.id, req.body);    
     if (result instanceof Error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: {

@@ -5,7 +5,6 @@ import * as yup from 'yup';
 import { StatusCodes } from 'http-status-codes';
 import { SubTiposProvider } from '../../database/providers';
 
-
 interface IParamProps {
   id?: number;
 }

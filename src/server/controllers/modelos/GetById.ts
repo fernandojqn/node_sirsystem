@@ -4,7 +4,6 @@ import { Request, Response } from 'express';
 import * as yup from 'yup';
 import { ModelosProvider } from '../../database/providers';
 
-
 //Validação
 interface IParamProps {
     id?: number;    
@@ -28,7 +27,6 @@ export const getById = async (req: Request<IParamProps>, res: Response) => {
     }
     
     const result = await ModelosProvider.getById(req.params.id);
-
     if (result instanceof Error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: {

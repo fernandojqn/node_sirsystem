@@ -3,7 +3,6 @@ import { Knex } from '../../knex';
 import { IModelo } from '../../models';
 
 
-
 export const getAll = async (page: number, limit: number, filter: string, filter2: string, empresaId: number): Promise<IModelo[] | Error> => {
 
     try {

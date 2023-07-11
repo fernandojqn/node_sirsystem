@@ -2,7 +2,6 @@ import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
 import { ISubTipo } from '../../models';
 
-
 export const getAll = async (page: number, limit: number, filter: string, id = 0, empresaId: number): Promise<ISubTipo[] | Error> => {
 
     try {

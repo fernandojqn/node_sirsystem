@@ -4,7 +4,6 @@ import { validation } from '../../shared/middlewares';
 import * as yup from 'yup';
 import { StatusCodes } from 'http-status-codes';
 import { AtividadesProvider } from '../../database/providers';
-
 interface IParamProps {
   id?: number;
 }

@@ -4,7 +4,6 @@ import { Request, Response } from 'express';
 import * as yup from 'yup';
 import { ISubTipo } from '../../database/models';
 import { SubTiposProvider } from '../../database/providers';
-
 //Validação
 interface IBodyProps extends Omit<ISubTipo, 'id'> {}
 

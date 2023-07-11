@@ -4,7 +4,6 @@ import { Request, Response } from 'express';
 import * as yup from 'yup';
 import { TiposProvider } from '../../database/providers';
 
-
 //Validação
 interface IParamProps {
     id?: number;    
@@ -36,6 +35,5 @@ export const getById = async (req: Request<IParamProps>, res: Response) => {
         });
     }
     
-    return res.status(StatusCodes.OK).json(result);
-    
+    return res.status(StatusCodes.OK).json(result);    
 };
