@@ -2,8 +2,7 @@ import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
 import { ITipo } from '../../models';
 
-
-export const create = async (tipo: Omit<ITipo, 'id' | 'empresaId' | 'usuarioId'>): Promise<object | number | Error> => {
+export const create = async (tipo: Omit<ITipo, 'id'>): Promise<object | number | Error> => {
 
     try {
         const [result] = await Knex(ETableNames.tipos)

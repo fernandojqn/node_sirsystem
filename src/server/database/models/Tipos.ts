@@ -1,8 +1,7 @@
 export interface ITipo {
     id: number;
     
-    tipoDescricao: string;
-    
+    tipoDescricao: string;    
 
     empresaId: number;
     usuarioId: number;

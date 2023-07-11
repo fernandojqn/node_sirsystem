@@ -2,7 +2,6 @@ import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
 import { IAtividade } from '../../models';
 
-
 export const create = async (atividade: Omit<IAtividade, 'id'>): Promise<object | Number | Error> => {
 
     try {

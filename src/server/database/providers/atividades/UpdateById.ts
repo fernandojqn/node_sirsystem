@@ -2,7 +2,6 @@ import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
 import { IAtividade } from '../../models';
 
-
 export const updateById = async (id: number, atividade: Omit<IAtividade, 'id' | 'empresaId' | 'usuarioId'>): Promise<void | Error> => {
 
     try {
